@@ -1,0 +1,12 @@
+{
+  "name": "Presentation for Mathworks",
+  "version": "1.0.0",
+  "description": "Dhanannjay (Djay) Deo's Background and selected projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Dhanannjay (Djay) Deo",
+  "license": "CC-BY-NC-4.0"
+}
