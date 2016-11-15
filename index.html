@@ -5,15 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 
     <title>Djay for Mathworks</title>
+    <style>
+    .slide-number {
+      font-size:24px;
+    }
+    </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>First Slide</section>
-        <section>Second Slide</section>
-        <section>Third Slide</section>
-        <section>Fourth Slide</section>
-        <section>Thank you !</section>
+
+<section>
+  <section>Djay for <img src="img/mathworks_logo.jpg" style="vertical-align: middle;"></section>
+  <section></section>
+  <section>About me</section>
+</section>
+
+<section>
+  <section>Outline</section>
+  <section>About this Presentation</section>
+  <section>Why web</section>
+  <section>Where to find it</section>
+</section>
+
+<section>
+  <section>Education</section>
+  <section>Master of Science (faculty of engineering)</section>
+  <section>Doctor of Philosophy (Mechanical engineering)</section>
+</section>
+
+<section>
+  <section>Skills</section>
+  <section>Programming</section>
+  <section>Math</section>
+  <section>Misc</section>
+</section>
+
+<section>
+  <section>Notable Projects</section>
+  <section>Microscopy Automation</section>
+  <section>Digital SlideAtlas</section>
+  <section>Aladdin GENIE</section>
+  <section>Visual Recognition of Objects</section>
+  <section>Digital Surgery Simulation</section>
+  <section>Outside work hours</section>
+</section>
+
+<section>Digital Slide Atlas</section>
+  <aside class="notes">
+    I'm your Notes :)
+  </aside>
+</section>
+
+<section>Challenges</section>
+<section data-markdown> <script type="text/template">
+  ## Features
+
+  - An open-source, web-based microscopy image platform
+  - Automated upload and pre-processing, directly from slide scanners
+  - Interactive high-performance viewing on desktop and mobile devices
+  - Archiving, access control, and voice search features
+  - Annotation tools
+  - 3D stack creation and viewing
+</script></section>
+
+<section>Logistics</section>
+
+<section>
+  <section>Image pyramid</section>
+  <section>Locating the image tile</section>
+  <section data-markdown> <script type="text/template">
+    ## Cutting the corners
+    - Jpeg quantization tables
+    - Websockets
+  </script> </section>
+</section>
+
+<section>
+  <section>Deployment and workflow</section>
+  <section>Developer setup</section>
+  <section>Production</section>
+  <section>Sustainance</section>
+</section>
+
+<section data-markdown> <script type="text/template">
+    ## Education
+    - Targeting medical schools, residency training, continuing education
+    - Features for selective hiding of annotations, quiz mode, and full-screen presentation creation
+    - Remote and collaborative viewing
+
+    ## Research
+    - Supporting image processing algorithms, and very large datasets
+    - Consulting
+    - Automatic batch upload of images
+</script> </section>
+
+<section data-markdown> <script type="text/template">
+  ## Blocking vs non-blocking io
+  - Serve multiple users simultaneously
+  - Monkey patching python standard library
+</script> </section>
+
+<section>
+  <section data-markdown> <script type="text/template">
+    ## Design decisions
+    - Websockets
+    - Monkey patching python standard library
+  </script> </section>
+  <section>Design decisions</section>
+  <section>MongoDB</section>
+  <section>Deployment</section>
+</section>
+
+<section data-markdown> <script type="text/template">
+    # Memory mapped files
+
+    - Map files in virtual memory and access data directly instead of file io system calls
+    - Efficient access for large files
+    - Easy to share large file resources across processes
+
+</script> </section>
+
+<section>Annotation management</section>
+<section>Analysis plugins
+<img src="img/histograms.png" height="70%">
+</section>
+
+<section>
+<section>Profiling and automated tests
+<p><img src="img/testing.jpg">
+</section>
+<section data-markdown> <script type="text/template">
+  # Empty
+</script> </section>
+</section>
+
+<section data-markdown> <script type="text/template">
+# Latest/Future considerations
+- Portable embeddeble module
+- Use of memory maps for TIFF storage
+- ZeroMQ connected server and image tile serving microservices
+- Continuous integration
+- Distribution as a plugin for girder
+
+</script> </section>
+
+
+
+<section>Questions</section>
+<section>Thank you !</section>
+
+
       </div>
     </div>
 

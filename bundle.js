@@ -51,9 +51,22 @@
 	  __webpack_require__(5);
 
 	  var Reveal = __webpack_require__(11);
-	  Reveal.initialize();
-	  console.log("Hurray");
+	  __webpack_require__(12);
+	  __webpack_require__(13);
 
+	  Reveal.initialize({
+	    history:true,
+	    slideNumber:true,
+
+	    // More info https://github.com/hakimel/reveal.js#dependencies
+	    // dependencies: [
+	    //   { src: 'node_modules/reveal/plugin/markdown/marked.js', condition: true },
+	    //   { src: 'node_modules/reveal/plugin/markdown/markdown.js', condition: true},
+	      // { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	      // { src: 'plugin/zoom-js/zoom.js', async: true },
+	      // { src: 'plugin/notes/notes.js', async: true }
+	    // ]
+	});
 	})();
 
 
@@ -73,8 +86,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../css-loader/index.js!./index.css", function() {
-				var newContent = require("!!./../css-loader/index.js!./index.css");
+			module.hot.accept("!!./../../css-loader/index.js!./reveal.css", function() {
+				var newContent = require("!!./../../css-loader/index.js!./reveal.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -92,7 +105,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n\n/*!\n * reveal.js\n * http://lab.hakim.se/reveal-js\n * MIT licensed\n *\n * Copyright (C) 2013 Hakim El Hattab, http://hakim.se\n */\n\n\n/*********************************************\n * RESET STYLES\n *********************************************/\n\nhtml, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal iframe,\n.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6, .reveal p, .reveal blockquote, .reveal pre,\n.reveal a, .reveal abbr, .reveal acronym, .reveal address, .reveal big, .reveal cite, .reveal code,\n.reveal del, .reveal dfn, .reveal em, .reveal img, .reveal ins, .reveal kbd, .reveal q, .reveal s, .reveal samp,\n.reveal small, .reveal strike, .reveal strong, .reveal sub, .reveal sup, .reveal tt, .reveal var,\n.reveal b, .reveal u, .reveal i, .reveal center,\n.reveal dl, .reveal dt, .reveal dd, .reveal ol, .reveal ul, .reveal li,\n.reveal fieldset, .reveal form, .reveal label, .reveal legend,\n.reveal table, .reveal caption, .reveal tbody, .reveal tfoot, .reveal thead, .reveal tr, .reveal th, .reveal td,\n.reveal article, .reveal aside, .reveal canvas, .reveal details, .reveal embed,\n.reveal figure, .reveal figcaption, .reveal footer, .reveal header, .reveal hgroup,\n.reveal menu, .reveal nav, .reveal output, .reveal ruby, .reveal section, .reveal summary,\n.reveal time, .reveal mark, .reveal audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n.reveal article, .reveal aside, .reveal details, .reveal figcaption, .reveal figure,\n.reveal footer, .reveal header, .reveal hgroup, .reveal menu, .reveal nav, .reveal section {\n\tdisplay: block;\n}\n\n\n/*********************************************\n * GLOBAL STYLES\n *********************************************/\n\nhtml,\nbody {\n\twidth: 100%;\n\theight: 100%;\n\toverflow: hidden;\n}\n\nbody {\n\tposition: relative;\n\tline-height: 1;\n}\n\n::selection {\n\tbackground: #FF5E99;\n\tcolor: #fff;\n\ttext-shadow: none;\n}\n\n\n/*********************************************\n * HEADERS\n *********************************************/\n\n.reveal h1,\n.reveal h2,\n.reveal h3,\n.reveal h4,\n.reveal h5,\n.reveal h6 {\n\t-webkit-hyphens: auto;\n\t   -moz-hyphens: auto;\n\t        hyphens: auto;\n\n\tword-wrap: break-word;\n\tline-height: 1;\n}\n\n.reveal h1 { font-size: 3.77em; }\n.reveal h2 { font-size: 2.11em;\t}\n.reveal h3 { font-size: 1.55em;\t}\n.reveal h4 { font-size: 1em;\t}\n\n\n/*********************************************\n * VIEW FRAGMENTS\n *********************************************/\n\n.reveal .slides section .fragment {\n\topacity: 0;\n\n\t-webkit-transition: all .2s ease;\n\t   -moz-transition: all .2s ease;\n\t    -ms-transition: all .2s ease;\n\t     -o-transition: all .2s ease;\n\t        transition: all .2s ease;\n}\n\t.reveal .slides section .fragment.visible {\n\t\topacity: 1;\n\t}\n\n.reveal .slides section .fragment.grow {\n\topacity: 1;\n}\n\t.reveal .slides section .fragment.grow.visible {\n\t\t-webkit-transform: scale( 1.3 );\n\t\t   -moz-transform: scale( 1.3 );\n\t\t    -ms-transform: scale( 1.3 );\n\t\t     -o-transform: scale( 1.3 );\n\t\t        transform: scale( 1.3 );\n\t}\n\n.reveal .slides section .fragment.shrink {\n\topacity: 1;\n}\n\t.reveal .slides section .fragment.shrink.visible {\n\t\t-webkit-transform: scale( 0.7 );\n\t\t   -moz-transform: scale( 0.7 );\n\t\t    -ms-transform: scale( 0.7 );\n\t\t     -o-transform: scale( 0.7 );\n\t\t        transform: scale( 0.7 );\n\t}\n\n.reveal .slides section .fragment.zoom-in {\n\topacity: 0;\n\n\t-webkit-transform: scale( 0.1 );\n\t   -moz-transform: scale( 0.1 );\n\t    -ms-transform: scale( 0.1 );\n\t     -o-transform: scale( 0.1 );\n\t        transform: scale( 0.1 );\n}\n\n\t.reveal .slides section .fragment.zoom-in.visible {\n\t\topacity: 1;\n\n\t\t-webkit-transform: scale( 1 );\n\t\t   -moz-transform: scale( 1 );\n\t\t    -ms-transform: scale( 1 );\n\t\t     -o-transform: scale( 1 );\n\t\t        transform: scale( 1 );\n\t}\n\n.reveal .slides section .fragment.roll-in {\n\topacity: 0;\n\n\t-webkit-transform: rotateX( 90deg );\n\t   -moz-transform: rotateX( 90deg );\n\t    -ms-transform: rotateX( 90deg );\n\t     -o-transform: rotateX( 90deg );\n\t        transform: rotateX( 90deg );\n}\n\t.reveal .slides section .fragment.roll-in.visible {\n\t\topacity: 1;\n\n\t\t-webkit-transform: rotateX( 0 );\n\t\t   -moz-transform: rotateX( 0 );\n\t\t    -ms-transform: rotateX( 0 );\n\t\t     -o-transform: rotateX( 0 );\n\t\t        transform: rotateX( 0 );\n\t}\n\n.reveal .slides section .fragment.fade-out {\n\topacity: 1;\n}\n\t.reveal .slides section .fragment.fade-out.visible {\n\t\topacity: 0;\n\t}\n\n.reveal .slides section .fragment.semi-fade-out {\n\topacity: 1;\n}\n\t.reveal .slides section .fragment.semi-fade-out.visible {\n\t\topacity: 0.5;\n\t}\n\n.reveal .slides section .fragment.current-visible {\n\topacity:0;\n}\n\n.reveal .slides section .fragment.current-visible.current-fragment {\n\topacity:1;\n}\n\n.reveal .slides section .fragment.highlight-red,\n.reveal .slides section .fragment.highlight-current-red,\n.reveal .slides section .fragment.highlight-green,\n.reveal .slides section .fragment.highlight-current-green,\n.reveal .slides section .fragment.highlight-blue,\n.reveal .slides section .fragment.highlight-current-blue {\n\topacity: 1;\n}\n\t.reveal .slides section .fragment.highlight-red.visible {\n\t\tcolor: #ff2c2d\n\t}\n\t.reveal .slides section .fragment.highlight-green.visible {\n\t\tcolor: #17ff2e;\n\t}\n\t.reveal .slides section .fragment.highlight-blue.visible {\n\t\tcolor: #1b91ff;\n\t}\n\n.reveal .slides section .fragment.highlight-current-red.current-fragment {\n\tcolor: #ff2c2d\n}\n.reveal .slides section .fragment.highlight-current-green.current-fragment {\n\tcolor: #17ff2e;\n}\n.reveal .slides section .fragment.highlight-current-blue.current-fragment {\n\tcolor: #1b91ff;\n}\n\n\n/*********************************************\n * DEFAULT ELEMENT STYLES\n *********************************************/\n\n/* Fixes issue in Chrome where italic fonts did not appear when printing to PDF */\n.reveal:after {\n  content: '';\n  font-style: italic;\n}\n\n.reveal iframe {\n\tz-index: 1;\n}\n\n/* Ensure certain elements are never larger than the slide itself */\n.reveal img,\n.reveal video,\n.reveal iframe {\n\tmax-width: 95%;\n\tmax-height: 95%;\n}\n\n/** Prevents layering issues in certain browser/transition combinations */\n.reveal a {\n\tposition: relative;\n}\n\n.reveal strong,\n.reveal b {\n\tfont-weight: bold;\n}\n\n.reveal em,\n.reveal i {\n\tfont-style: italic;\n}\n\n.reveal ol,\n.reveal ul {\n\tdisplay: inline-block;\n\n\ttext-align: left;\n\tmargin: 0 0 0 1em;\n}\n\n.reveal ol {\n\tlist-style-type: decimal;\n}\n\n.reveal ul {\n\tlist-style-type: disc;\n}\n\n.reveal ul ul {\n\tlist-style-type: square;\n}\n\n.reveal ul ul ul {\n\tlist-style-type: circle;\n}\n\n.reveal ul ul,\n.reveal ul ol,\n.reveal ol ol,\n.reveal ol ul {\n\tdisplay: block;\n\tmargin-left: 40px;\n}\n\n.reveal p {\n\tmargin-bottom: 10px;\n\tline-height: 1.2em;\n}\n\n.reveal q,\n.reveal blockquote {\n\tquotes: none;\n}\n\n.reveal blockquote {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 70%;\n\tmargin: 5px auto;\n\tpadding: 5px;\n\n\tfont-style: italic;\n\tbackground: rgba(255, 255, 255, 0.05);\n\tbox-shadow: 0px 0px 2px rgba(0,0,0,0.2);\n}\n\t.reveal blockquote p:first-child,\n\t.reveal blockquote p:last-child {\n\t\tdisplay: inline-block;\n\t}\n\n.reveal q {\n\tfont-style: italic;\n}\n\n.reveal pre {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 90%;\n\tmargin: 15px auto;\n\n\ttext-align: left;\n\tfont-size: 0.55em;\n\tfont-family: monospace;\n\tline-height: 1.2em;\n\n\tword-wrap: break-word;\n\n\tbox-shadow: 0px 0px 6px rgba(0,0,0,0.3);\n}\n.reveal code {\n\tfont-family: monospace;\n}\n.reveal pre code {\n\tpadding: 5px;\n\toverflow: auto;\n\tmax-height: 400px;\n\tword-wrap: normal;\n}\n.reveal pre.stretch code {\n\theight: 100%;\n\tmax-height: 100%;\n\n\t-webkit-box-sizing: border-box;\n\t   -moz-box-sizing: border-box;\n\t        box-sizing: border-box;\n}\n\n.reveal table th,\n.reveal table td {\n\ttext-align: left;\n\tpadding-right: .3em;\n}\n\n.reveal table th {\n\tfont-weight: bold;\n}\n\n.reveal sup {\n\tvertical-align: super;\n}\n.reveal sub {\n\tvertical-align: sub;\n}\n\n.reveal small {\n\tdisplay: inline-block;\n\tfont-size: 0.6em;\n\tline-height: 1.2em;\n\tvertical-align: top;\n}\n\n.reveal small * {\n\tvertical-align: top;\n}\n\n.reveal .stretch {\n\tmax-width: none;\n\tmax-height: none;\n}\n\n\n/*********************************************\n * CONTROLS\n *********************************************/\n\n.reveal .controls {\n\tdisplay: none;\n\tposition: fixed;\n\twidth: 110px;\n\theight: 110px;\n\tz-index: 30;\n\tright: 10px;\n\tbottom: 10px;\n}\n\n.reveal .controls div {\n\tposition: absolute;\n\topacity: 0.05;\n\twidth: 0;\n\theight: 0;\n\tborder: 12px solid transparent;\n\n\t-moz-transform: scale(.9999);\n\n\t-webkit-transition: all 0.2s ease;\n\t   -moz-transition: all 0.2s ease;\n\t    -ms-transition: all 0.2s ease;\n\t     -o-transition: all 0.2s ease;\n\t        transition: all 0.2s ease;\n}\n\n.reveal .controls div.enabled {\n\topacity: 0.7;\n\tcursor: pointer;\n}\n\n.reveal .controls div.enabled:active {\n\tmargin-top: 1px;\n}\n\n\t.reveal .controls div.navigate-left {\n\t\ttop: 42px;\n\n\t\tborder-right-width: 22px;\n\t\tborder-right-color: #eee;\n\t}\n\t\t.reveal .controls div.navigate-left.fragmented {\n\t\t\topacity: 0.3;\n\t\t}\n\n\t.reveal .controls div.navigate-right {\n\t\tleft: 74px;\n\t\ttop: 42px;\n\n\t\tborder-left-width: 22px;\n\t\tborder-left-color: #eee;\n\t}\n\t\t.reveal .controls div.navigate-right.fragmented {\n\t\t\topacity: 0.3;\n\t\t}\n\n\t.reveal .controls div.navigate-up {\n\t\tleft: 42px;\n\n\t\tborder-bottom-width: 22px;\n\t\tborder-bottom-color: #eee;\n\t}\n\t\t.reveal .controls div.navigate-up.fragmented {\n\t\t\topacity: 0.3;\n\t\t}\n\n\t.reveal .controls div.navigate-down {\n\t\tleft: 42px;\n\t\ttop: 74px;\n\n\t\tborder-top-width: 22px;\n\t\tborder-top-color: #eee;\n\t}\n\t\t.reveal .controls div.navigate-down.fragmented {\n\t\t\topacity: 0.3;\n\t\t}\n\n\n/*********************************************\n * PROGRESS BAR\n *********************************************/\n\n.reveal .progress {\n\tposition: fixed;\n\tdisplay: none;\n\theight: 3px;\n\twidth: 100%;\n\tbottom: 0;\n\tleft: 0;\n\tz-index: 10;\n}\n\t.reveal .progress:after {\n\t\tcontent: '';\n\t\tdisplay: 'block';\n\t\tposition: absolute;\n\t\theight: 20px;\n\t\twidth: 100%;\n\t\ttop: -20px;\n\t}\n\t.reveal .progress span {\n\t\tdisplay: block;\n\t\theight: 100%;\n\t\twidth: 0px;\n\n\t\t-webkit-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t\t   -moz-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t\t    -ms-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t\t     -o-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t\t        transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t}\n\n/*********************************************\n * SLIDE NUMBER\n *********************************************/\n\n.reveal .slide-number {\n\tposition: fixed;\n\tdisplay: block;\n\tright: 15px;\n\tbottom: 15px;\n\topacity: 0.5;\n\tz-index: 31;\n\tfont-size: 12px;\n}\n\n/*********************************************\n * SLIDES\n *********************************************/\n\n.reveal {\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\n\t-ms-touch-action: none;\n}\n\n.reveal .slides {\n\tposition: absolute;\n\twidth: 100%;\n\theight: 100%;\n\tleft: 50%;\n\ttop: 50%;\n\n\toverflow: visible;\n\tz-index: 1;\n\ttext-align: center;\n\n\t-webkit-transition: -webkit-perspective .4s ease;\n\t   -moz-transition: -moz-perspective .4s ease;\n\t    -ms-transition: -ms-perspective .4s ease;\n\t     -o-transition: -o-perspective .4s ease;\n\t        transition: perspective .4s ease;\n\n\t-webkit-perspective: 600px;\n\t   -moz-perspective: 600px;\n\t    -ms-perspective: 600px;\n\t        perspective: 600px;\n\n\t-webkit-perspective-origin: 0px -100px;\n\t   -moz-perspective-origin: 0px -100px;\n\t    -ms-perspective-origin: 0px -100px;\n\t        perspective-origin: 0px -100px;\n}\n\n.reveal .slides>section {\n\t-ms-perspective: 600px;\n}\n\n.reveal .slides>section,\n.reveal .slides>section>section {\n\tdisplay: none;\n\tposition: absolute;\n\twidth: 100%;\n\tpadding: 20px 0px;\n\n\tz-index: 10;\n\tline-height: 1.2em;\n\tfont-weight: inherit;\n\n\t-webkit-transform-style: preserve-3d;\n\t   -moz-transform-style: preserve-3d;\n\t    -ms-transform-style: preserve-3d;\n\t        transform-style: preserve-3d;\n\n\t-webkit-transition: -webkit-transform-origin 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\t-webkit-transform 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\tvisibility 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\topacity 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t   -moz-transition: -moz-transform-origin 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\t-moz-transform 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\tvisibility 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\topacity 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t    -ms-transition: -ms-transform-origin 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\t-ms-transform 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\tvisibility 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\topacity 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t     -o-transition: -o-transform-origin 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\t-o-transform 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\tvisibility 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\topacity 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t        transition: transform-origin 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\ttransform 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\tvisibility 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985),\n\t\t\t\t\t\topacity 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n}\n\n/* Global transition speed settings */\n.reveal[data-transition-speed=\"fast\"] .slides section {\n\t-webkit-transition-duration: 400ms;\n\t   -moz-transition-duration: 400ms;\n\t    -ms-transition-duration: 400ms;\n\t        transition-duration: 400ms;\n}\n.reveal[data-transition-speed=\"slow\"] .slides section {\n\t-webkit-transition-duration: 1200ms;\n\t   -moz-transition-duration: 1200ms;\n\t    -ms-transition-duration: 1200ms;\n\t        transition-duration: 1200ms;\n}\n\n/* Slide-specific transition speed overrides */\n.reveal .slides section[data-transition-speed=\"fast\"] {\n\t-webkit-transition-duration: 400ms;\n\t   -moz-transition-duration: 400ms;\n\t    -ms-transition-duration: 400ms;\n\t        transition-duration: 400ms;\n}\n.reveal .slides section[data-transition-speed=\"slow\"] {\n\t-webkit-transition-duration: 1200ms;\n\t   -moz-transition-duration: 1200ms;\n\t    -ms-transition-duration: 1200ms;\n\t        transition-duration: 1200ms;\n}\n\n.reveal .slides>section {\n\tleft: -50%;\n\ttop: -50%;\n}\n\n.reveal .slides>section.stack {\n\tpadding-top: 0;\n\tpadding-bottom: 0;\n}\n\n.reveal .slides>section.present,\n.reveal .slides>section>section.present {\n\tdisplay: block;\n\tz-index: 11;\n\topacity: 1;\n}\n\n.reveal.center,\n.reveal.center .slides,\n.reveal.center .slides section {\n\tmin-height: auto !important;\n}\n\n/* Don't allow interaction with invisible slides */\n.reveal .slides>section.future,\n.reveal .slides>section>section.future,\n.reveal .slides>section.past,\n.reveal .slides>section>section.past {\n\tpointer-events: none;\n}\n\n.reveal.overview .slides>section,\n.reveal.overview .slides>section>section {\n\tpointer-events: auto;\n}\n\n\n\n/*********************************************\n * DEFAULT TRANSITION\n *********************************************/\n\n.reveal .slides>section[data-transition=default].past,\n.reveal .slides>section.past {\n\tdisplay: block;\n\topacity: 0;\n\n\t-webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n\t   -moz-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n\t    -ms-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n\t        transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n}\n.reveal .slides>section[data-transition=default].future,\n.reveal .slides>section.future {\n\tdisplay: block;\n\topacity: 0;\n\n\t-webkit-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n\t   -moz-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n\t    -ms-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n\t        transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n}\n\n.reveal .slides>section>section[data-transition=default].past,\n.reveal .slides>section>section.past {\n\tdisplay: block;\n\topacity: 0;\n\n\t-webkit-transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);\n\t   -moz-transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);\n\t    -ms-transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);\n\t        transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);\n}\n.reveal .slides>section>section[data-transition=default].future,\n.reveal .slides>section>section.future {\n\tdisplay: block;\n\topacity: 0;\n\n\t-webkit-transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);\n\t   -moz-transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);\n\t    -ms-transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);\n\t        transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);\n}\n\n\n/*********************************************\n * CONCAVE TRANSITION\n *********************************************/\n\n.reveal .slides>section[data-transition=concave].past,\n.reveal.concave  .slides>section.past {\n\t-webkit-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n\t   -moz-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n\t    -ms-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n\t        transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n}\n.reveal .slides>section[data-transition=concave].future,\n.reveal.concave .slides>section.future {\n\t-webkit-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n\t   -moz-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n\t    -ms-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n\t        transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n}\n\n.reveal .slides>section>section[data-transition=concave].past,\n.reveal.concave .slides>section>section.past {\n\t-webkit-transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);\n\t   -moz-transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);\n\t    -ms-transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);\n\t        transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);\n}\n.reveal .slides>section>section[data-transition=concave].future,\n.reveal.concave .slides>section>section.future {\n\t-webkit-transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);\n\t   -moz-transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);\n\t    -ms-transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);\n\t        transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);\n}\n\n\n/*********************************************\n * ZOOM TRANSITION\n *********************************************/\n\n.reveal .slides>section[data-transition=zoom],\n.reveal.zoom .slides>section {\n\t-webkit-transition-timing-function: ease;\n\t   -moz-transition-timing-function: ease;\n\t    -ms-transition-timing-function: ease;\n\t     -o-transition-timing-function: ease;\n\t        transition-timing-function: ease;\n}\n\n.reveal .slides>section[data-transition=zoom].past,\n.reveal.zoom .slides>section.past {\n\topacity: 0;\n\tvisibility: hidden;\n\n\t-webkit-transform: scale(16);\n\t   -moz-transform: scale(16);\n\t    -ms-transform: scale(16);\n\t     -o-transform: scale(16);\n\t        transform: scale(16);\n}\n.reveal .slides>section[data-transition=zoom].future,\n.reveal.zoom .slides>section.future {\n\topacity: 0;\n\tvisibility: hidden;\n\n\t-webkit-transform: scale(0.2);\n\t   -moz-transform: scale(0.2);\n\t    -ms-transform: scale(0.2);\n\t     -o-transform: scale(0.2);\n\t        transform: scale(0.2);\n}\n\n.reveal .slides>section>section[data-transition=zoom].past,\n.reveal.zoom .slides>section>section.past {\n\t-webkit-transform: translate(0, -150%);\n\t   -moz-transform: translate(0, -150%);\n\t    -ms-transform: translate(0, -150%);\n\t     -o-transform: translate(0, -150%);\n\t        transform: translate(0, -150%);\n}\n.reveal .slides>section>section[data-transition=zoom].future,\n.reveal.zoom .slides>section>section.future {\n\t-webkit-transform: translate(0, 150%);\n\t   -moz-transform: translate(0, 150%);\n\t    -ms-transform: translate(0, 150%);\n\t     -o-transform: translate(0, 150%);\n\t        transform: translate(0, 150%);\n}\n\n\n/*********************************************\n * LINEAR TRANSITION\n *********************************************/\n\n.reveal.linear section {\n\t-webkit-backface-visibility: hidden;\n\t   -moz-backface-visibility: hidden;\n\t    -ms-backface-visibility: hidden;\n\t        backface-visibility: hidden;\n}\n\n.reveal .slides>section[data-transition=linear].past,\n.reveal.linear .slides>section.past {\n\t-webkit-transform: translate(-150%, 0);\n\t   -moz-transform: translate(-150%, 0);\n\t    -ms-transform: translate(-150%, 0);\n\t     -o-transform: translate(-150%, 0);\n\t        transform: translate(-150%, 0);\n}\n.reveal .slides>section[data-transition=linear].future,\n.reveal.linear .slides>section.future {\n\t-webkit-transform: translate(150%, 0);\n\t   -moz-transform: translate(150%, 0);\n\t    -ms-transform: translate(150%, 0);\n\t     -o-transform: translate(150%, 0);\n\t        transform: translate(150%, 0);\n}\n\n.reveal .slides>section>section[data-transition=linear].past,\n.reveal.linear .slides>section>section.past {\n\t-webkit-transform: translate(0, -150%);\n\t   -moz-transform: translate(0, -150%);\n\t    -ms-transform: translate(0, -150%);\n\t     -o-transform: translate(0, -150%);\n\t        transform: translate(0, -150%);\n}\n.reveal .slides>section>section[data-transition=linear].future,\n.reveal.linear .slides>section>section.future {\n\t-webkit-transform: translate(0, 150%);\n\t   -moz-transform: translate(0, 150%);\n\t    -ms-transform: translate(0, 150%);\n\t     -o-transform: translate(0, 150%);\n\t        transform: translate(0, 150%);\n}\n\n\n/*********************************************\n * CUBE TRANSITION\n *********************************************/\n\n.reveal.cube .slides {\n\t-webkit-perspective: 1300px;\n\t   -moz-perspective: 1300px;\n\t    -ms-perspective: 1300px;\n\t        perspective: 1300px;\n}\n\n.reveal.cube .slides section {\n\tpadding: 30px;\n\tmin-height: 700px;\n\n\t-webkit-backface-visibility: hidden;\n\t   -moz-backface-visibility: hidden;\n\t    -ms-backface-visibility: hidden;\n\t        backface-visibility: hidden;\n\n\t-webkit-box-sizing: border-box;\n\t   -moz-box-sizing: border-box;\n\t        box-sizing: border-box;\n}\n\t.reveal.center.cube .slides section {\n\t\tmin-height: auto;\n\t}\n\t.reveal.cube .slides section:not(.stack):before {\n\t\tcontent: '';\n\t\tposition: absolute;\n\t\tdisplay: block;\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tleft: 0;\n\t\ttop: 0;\n\t\tbackground: rgba(0,0,0,0.1);\n\t\tborder-radius: 4px;\n\n\t\t-webkit-transform: translateZ( -20px );\n\t\t   -moz-transform: translateZ( -20px );\n\t\t    -ms-transform: translateZ( -20px );\n\t\t     -o-transform: translateZ( -20px );\n\t\t        transform: translateZ( -20px );\n\t}\n\t.reveal.cube .slides section:not(.stack):after {\n\t\tcontent: '';\n\t\tposition: absolute;\n\t\tdisplay: block;\n\t\twidth: 90%;\n\t\theight: 30px;\n\t\tleft: 5%;\n\t\tbottom: 0;\n\t\tbackground: none;\n\t\tz-index: 1;\n\n\t\tborder-radius: 4px;\n\t\tbox-shadow: 0px 95px 25px rgba(0,0,0,0.2);\n\n\t\t-webkit-transform: translateZ(-90px) rotateX( 65deg );\n\t\t   -moz-transform: translateZ(-90px) rotateX( 65deg );\n\t\t    -ms-transform: translateZ(-90px) rotateX( 65deg );\n\t\t     -o-transform: translateZ(-90px) rotateX( 65deg );\n\t\t        transform: translateZ(-90px) rotateX( 65deg );\n\t}\n\n.reveal.cube .slides>section.stack {\n\tpadding: 0;\n\tbackground: none;\n}\n\n.reveal.cube .slides>section.past {\n\t-webkit-transform-origin: 100% 0%;\n\t   -moz-transform-origin: 100% 0%;\n\t    -ms-transform-origin: 100% 0%;\n\t        transform-origin: 100% 0%;\n\n\t-webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg);\n\t   -moz-transform: translate3d(-100%, 0, 0) rotateY(-90deg);\n\t    -ms-transform: translate3d(-100%, 0, 0) rotateY(-90deg);\n\t        transform: translate3d(-100%, 0, 0) rotateY(-90deg);\n}\n\n.reveal.cube .slides>section.future {\n\t-webkit-transform-origin: 0% 0%;\n\t   -moz-transform-origin: 0% 0%;\n\t    -ms-transform-origin: 0% 0%;\n\t        transform-origin: 0% 0%;\n\n\t-webkit-transform: translate3d(100%, 0, 0) rotateY(90deg);\n\t   -moz-transform: translate3d(100%, 0, 0) rotateY(90deg);\n\t    -ms-transform: translate3d(100%, 0, 0) rotateY(90deg);\n\t        transform: translate3d(100%, 0, 0) rotateY(90deg);\n}\n\n.reveal.cube .slides>section>section.past {\n\t-webkit-transform-origin: 0% 100%;\n\t   -moz-transform-origin: 0% 100%;\n\t    -ms-transform-origin: 0% 100%;\n\t        transform-origin: 0% 100%;\n\n\t-webkit-transform: translate3d(0, -100%, 0) rotateX(90deg);\n\t   -moz-transform: translate3d(0, -100%, 0) rotateX(90deg);\n\t    -ms-transform: translate3d(0, -100%, 0) rotateX(90deg);\n\t        transform: translate3d(0, -100%, 0) rotateX(90deg);\n}\n\n.reveal.cube .slides>section>section.future {\n\t-webkit-transform-origin: 0% 0%;\n\t   -moz-transform-origin: 0% 0%;\n\t    -ms-transform-origin: 0% 0%;\n\t        transform-origin: 0% 0%;\n\n\t-webkit-transform: translate3d(0, 100%, 0) rotateX(-90deg);\n\t   -moz-transform: translate3d(0, 100%, 0) rotateX(-90deg);\n\t    -ms-transform: translate3d(0, 100%, 0) rotateX(-90deg);\n\t        transform: translate3d(0, 100%, 0) rotateX(-90deg);\n}\n\n\n/*********************************************\n * PAGE TRANSITION\n *********************************************/\n\n.reveal.page .slides {\n\t-webkit-perspective-origin: 0% 50%;\n\t   -moz-perspective-origin: 0% 50%;\n\t    -ms-perspective-origin: 0% 50%;\n\t        perspective-origin: 0% 50%;\n\n\t-webkit-perspective: 3000px;\n\t   -moz-perspective: 3000px;\n\t    -ms-perspective: 3000px;\n\t        perspective: 3000px;\n}\n\n.reveal.page .slides section {\n\tpadding: 30px;\n\tmin-height: 700px;\n\n\t-webkit-box-sizing: border-box;\n\t   -moz-box-sizing: border-box;\n\t        box-sizing: border-box;\n}\n\t.reveal.page .slides section.past {\n\t\tz-index: 12;\n\t}\n\t.reveal.page .slides section:not(.stack):before {\n\t\tcontent: '';\n\t\tposition: absolute;\n\t\tdisplay: block;\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tleft: 0;\n\t\ttop: 0;\n\t\tbackground: rgba(0,0,0,0.1);\n\n\t\t-webkit-transform: translateZ( -20px );\n\t\t   -moz-transform: translateZ( -20px );\n\t\t    -ms-transform: translateZ( -20px );\n\t\t     -o-transform: translateZ( -20px );\n\t\t        transform: translateZ( -20px );\n\t}\n\t.reveal.page .slides section:not(.stack):after {\n\t\tcontent: '';\n\t\tposition: absolute;\n\t\tdisplay: block;\n\t\twidth: 90%;\n\t\theight: 30px;\n\t\tleft: 5%;\n\t\tbottom: 0;\n\t\tbackground: none;\n\t\tz-index: 1;\n\n\t\tborder-radius: 4px;\n\t\tbox-shadow: 0px 95px 25px rgba(0,0,0,0.2);\n\n\t\t-webkit-transform: translateZ(-90px) rotateX( 65deg );\n\t}\n\n.reveal.page .slides>section.stack {\n\tpadding: 0;\n\tbackground: none;\n}\n\n.reveal.page .slides>section.past {\n\t-webkit-transform-origin: 0% 0%;\n\t   -moz-transform-origin: 0% 0%;\n\t    -ms-transform-origin: 0% 0%;\n\t        transform-origin: 0% 0%;\n\n\t-webkit-transform: translate3d(-40%, 0, 0) rotateY(-80deg);\n\t   -moz-transform: translate3d(-40%, 0, 0) rotateY(-80deg);\n\t    -ms-transform: translate3d(-40%, 0, 0) rotateY(-80deg);\n\t        transform: translate3d(-40%, 0, 0) rotateY(-80deg);\n}\n\n.reveal.page .slides>section.future {\n\t-webkit-transform-origin: 100% 0%;\n\t   -moz-transform-origin: 100% 0%;\n\t    -ms-transform-origin: 100% 0%;\n\t        transform-origin: 100% 0%;\n\n\t-webkit-transform: translate3d(0, 0, 0);\n\t   -moz-transform: translate3d(0, 0, 0);\n\t    -ms-transform: translate3d(0, 0, 0);\n\t        transform: translate3d(0, 0, 0);\n}\n\n.reveal.page .slides>section>section.past {\n\t-webkit-transform-origin: 0% 0%;\n\t   -moz-transform-origin: 0% 0%;\n\t    -ms-transform-origin: 0% 0%;\n\t        transform-origin: 0% 0%;\n\n\t-webkit-transform: translate3d(0, -40%, 0) rotateX(80deg);\n\t   -moz-transform: translate3d(0, -40%, 0) rotateX(80deg);\n\t    -ms-transform: translate3d(0, -40%, 0) rotateX(80deg);\n\t        transform: translate3d(0, -40%, 0) rotateX(80deg);\n}\n\n.reveal.page .slides>section>section.future {\n\t-webkit-transform-origin: 0% 100%;\n\t   -moz-transform-origin: 0% 100%;\n\t    -ms-transform-origin: 0% 100%;\n\t        transform-origin: 0% 100%;\n\n\t-webkit-transform: translate3d(0, 0, 0);\n\t   -moz-transform: translate3d(0, 0, 0);\n\t    -ms-transform: translate3d(0, 0, 0);\n\t        transform: translate3d(0, 0, 0);\n}\n\n\n/*********************************************\n * FADE TRANSITION\n *********************************************/\n\n.reveal .slides section[data-transition=fade],\n.reveal.fade .slides section,\n.reveal.fade .slides>section>section {\n    -webkit-transform: none;\n\t   -moz-transform: none;\n\t    -ms-transform: none;\n\t     -o-transform: none;\n\t        transform: none;\n\n\t-webkit-transition: opacity 0.5s;\n\t   -moz-transition: opacity 0.5s;\n\t    -ms-transition: opacity 0.5s;\n\t     -o-transition: opacity 0.5s;\n\t        transition: opacity 0.5s;\n}\n\n\n.reveal.fade.overview .slides section,\n.reveal.fade.overview .slides>section>section,\n.reveal.fade.overview-deactivating .slides section,\n.reveal.fade.overview-deactivating .slides>section>section {\n\t-webkit-transition: none;\n\t   -moz-transition: none;\n\t    -ms-transition: none;\n\t     -o-transition: none;\n\t        transition: none;\n}\n\n\n/*********************************************\n * NO TRANSITION\n *********************************************/\n\n.reveal .slides section[data-transition=none],\n.reveal.none .slides section {\n\t-webkit-transform: none;\n\t   -moz-transform: none;\n\t    -ms-transform: none;\n\t     -o-transform: none;\n\t        transform: none;\n\n\t-webkit-transition: none;\n\t   -moz-transition: none;\n\t    -ms-transition: none;\n\t     -o-transition: none;\n\t        transition: none;\n}\n\n\n/*********************************************\n * OVERVIEW\n *********************************************/\n\n.reveal.overview .slides {\n\t-webkit-perspective-origin: 0% 0%;\n\t   -moz-perspective-origin: 0% 0%;\n\t    -ms-perspective-origin: 0% 0%;\n\t        perspective-origin: 0% 0%;\n\n\t-webkit-perspective: 700px;\n\t   -moz-perspective: 700px;\n\t    -ms-perspective: 700px;\n\t        perspective: 700px;\n}\n\n.reveal.overview .slides section {\n\theight: 600px;\n\ttop: -300px !important;\n\toverflow: hidden;\n\topacity: 1 !important;\n\tvisibility: visible !important;\n\tcursor: pointer;\n\tbackground: rgba(0,0,0,0.1);\n}\n.reveal.overview .slides section .fragment {\n\topacity: 1;\n}\n.reveal.overview .slides section:after,\n.reveal.overview .slides section:before {\n\tdisplay: none !important;\n}\n.reveal.overview .slides section>section {\n\topacity: 1;\n\tcursor: pointer;\n}\n\t.reveal.overview .slides section:hover {\n\t\tbackground: rgba(0,0,0,0.3);\n\t}\n\t.reveal.overview .slides section.present {\n\t\tbackground: rgba(0,0,0,0.3);\n\t}\n.reveal.overview .slides>section.stack {\n\tpadding: 0;\n\ttop: 0 !important;\n\tbackground: none;\n\toverflow: visible;\n}\n\n\n/*********************************************\n * PAUSED MODE\n *********************************************/\n\n.reveal .pause-overlay {\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbackground: black;\n\tvisibility: hidden;\n\topacity: 0;\n\tz-index: 100;\n\n\t-webkit-transition: all 1s ease;\n\t   -moz-transition: all 1s ease;\n\t    -ms-transition: all 1s ease;\n\t     -o-transition: all 1s ease;\n\t        transition: all 1s ease;\n}\n.reveal.paused .pause-overlay {\n\tvisibility: visible;\n\topacity: 1;\n}\n\n\n/*********************************************\n * FALLBACK\n *********************************************/\n\n.no-transforms {\n\toverflow-y: auto;\n}\n\n.no-transforms .reveal .slides {\n\tposition: relative;\n\twidth: 80%;\n\theight: auto !important;\n\ttop: 0;\n\tleft: 50%;\n\tmargin: 0;\n\ttext-align: center;\n}\n\n.no-transforms .reveal .controls,\n.no-transforms .reveal .progress {\n\tdisplay: none !important;\n}\n\n.no-transforms .reveal .slides section {\n\tdisplay: block !important;\n\topacity: 1 !important;\n\tposition: relative !important;\n\theight: auto;\n\tmin-height: auto;\n\ttop: 0;\n\tleft: -50%;\n\tmargin: 70px 0;\n\n\t-webkit-transform: none;\n\t   -moz-transform: none;\n\t    -ms-transform: none;\n\t     -o-transform: none;\n\t        transform: none;\n}\n\n.no-transforms .reveal .slides section section {\n\tleft: 0;\n}\n\n.reveal .no-transition,\n.reveal .no-transition * {\n\t-webkit-transition: none !important;\n\t   -moz-transition: none !important;\n\t    -ms-transition: none !important;\n\t     -o-transition: none !important;\n\t        transition: none !important;\n}\n\n\n/*********************************************\n * BACKGROUND STATES [DEPRECATED]\n *********************************************/\n\n.reveal .state-background {\n\tposition: absolute;\n\twidth: 100%;\n\theight: 100%;\n\tbackground: rgba( 0, 0, 0, 0 );\n\n\t-webkit-transition: background 800ms ease;\n\t   -moz-transition: background 800ms ease;\n\t    -ms-transition: background 800ms ease;\n\t     -o-transition: background 800ms ease;\n\t        transition: background 800ms ease;\n}\n.alert .reveal .state-background {\n\tbackground: rgba( 200, 50, 30, 0.6 );\n}\n.soothe .reveal .state-background {\n\tbackground: rgba( 50, 200, 90, 0.4 );\n}\n.blackout .reveal .state-background {\n\tbackground: rgba( 0, 0, 0, 0.6 );\n}\n.whiteout .reveal .state-background {\n\tbackground: rgba( 255, 255, 255, 0.6 );\n}\n.cobalt .reveal .state-background {\n\tbackground: rgba( 22, 152, 213, 0.6 );\n}\n.mint .reveal .state-background {\n\tbackground: rgba( 22, 213, 75, 0.6 );\n}\n.submerge .reveal .state-background {\n\tbackground: rgba( 12, 25, 77, 0.6);\n}\n.lila .reveal .state-background {\n\tbackground: rgba( 180, 50, 140, 0.6 );\n}\n.sunset .reveal .state-background {\n\tbackground: rgba( 255, 122, 0, 0.6 );\n}\n\n\n/*********************************************\n * PER-SLIDE BACKGROUNDS\n *********************************************/\n\n.reveal>.backgrounds {\n\tposition: absolute;\n\twidth: 100%;\n\theight: 100%;\n\n\t-webkit-perspective: 600px;\n\t   -moz-perspective: 600px;\n\t    -ms-perspective: 600px;\n\t        perspective: 600px;\n}\n\t.reveal .slide-background {\n\t\tposition: absolute;\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\topacity: 0;\n\t\tvisibility: hidden;\n\n\t\tbackground-color: rgba( 0, 0, 0, 0 );\n\t\tbackground-position: 50% 50%;\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-size: cover;\n\n\t\t-webkit-transition: all 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t\t   -moz-transition: all 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t\t    -ms-transition: all 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t\t     -o-transition: all 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t\t        transition: all 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);\n\t}\n\t.reveal .slide-background.present {\n\t\topacity: 1;\n\t\tvisibility: visible;\n\t}\n\n\t.print-pdf .reveal .slide-background {\n\t\topacity: 1 !important;\n\t\tvisibility: visible !important;\n\t}\n\n/* Immediate transition style */\n.reveal[data-background-transition=none]>.backgrounds .slide-background,\n.reveal>.backgrounds .slide-background[data-background-transition=none] {\n\t-webkit-transition: none;\n\t   -moz-transition: none;\n\t    -ms-transition: none;\n\t     -o-transition: none;\n\t        transition: none;\n}\n\n/* 2D slide */\n.reveal[data-background-transition=slide]>.backgrounds .slide-background,\n.reveal>.backgrounds .slide-background[data-background-transition=slide] {\n\topacity: 1;\n\n\t-webkit-backface-visibility: hidden;\n\t   -moz-backface-visibility: hidden;\n\t    -ms-backface-visibility: hidden;\n\t        backface-visibility: hidden;\n}\n\t.reveal[data-background-transition=slide]>.backgrounds .slide-background.past,\n\t.reveal>.backgrounds .slide-background.past[data-background-transition=slide] {\n\t\t-webkit-transform: translate(-100%, 0);\n\t\t   -moz-transform: translate(-100%, 0);\n\t\t    -ms-transform: translate(-100%, 0);\n\t\t     -o-transform: translate(-100%, 0);\n\t\t        transform: translate(-100%, 0);\n\t}\n\t.reveal[data-background-transition=slide]>.backgrounds .slide-background.future,\n\t.reveal>.backgrounds .slide-background.future[data-background-transition=slide] {\n\t\t-webkit-transform: translate(100%, 0);\n\t\t   -moz-transform: translate(100%, 0);\n\t\t    -ms-transform: translate(100%, 0);\n\t\t     -o-transform: translate(100%, 0);\n\t\t        transform: translate(100%, 0);\n\t}\n\n\t.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.past,\n\t.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=slide] {\n\t\t-webkit-transform: translate(0, -100%);\n\t\t   -moz-transform: translate(0, -100%);\n\t\t    -ms-transform: translate(0, -100%);\n\t\t     -o-transform: translate(0, -100%);\n\t\t        transform: translate(0, -100%);\n\t}\n\t.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.future,\n\t.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=slide] {\n\t\t-webkit-transform: translate(0, 100%);\n\t\t   -moz-transform: translate(0, 100%);\n\t\t    -ms-transform: translate(0, 100%);\n\t\t     -o-transform: translate(0, 100%);\n\t\t        transform: translate(0, 100%);\n\t}\n\n\n/* Convex */\n.reveal[data-background-transition=convex]>.backgrounds .slide-background.past,\n.reveal>.backgrounds .slide-background.past[data-background-transition=convex] {\n\topacity: 0;\n\n\t-webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n\t   -moz-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n\t    -ms-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n\t        transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n}\n.reveal[data-background-transition=convex]>.backgrounds .slide-background.future,\n.reveal>.backgrounds .slide-background.future[data-background-transition=convex] {\n\topacity: 0;\n\n\t-webkit-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n\t   -moz-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n\t    -ms-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n\t        transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n}\n\n.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.past,\n.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=convex] {\n\topacity: 0;\n\n\t-webkit-transform: translate3d(0, -100%, 0) rotateX(90deg) translate3d(0, -100%, 0);\n\t   -moz-transform: translate3d(0, -100%, 0) rotateX(90deg) translate3d(0, -100%, 0);\n\t    -ms-transform: translate3d(0, -100%, 0) rotateX(90deg) translate3d(0, -100%, 0);\n\t        transform: translate3d(0, -100%, 0) rotateX(90deg) translate3d(0, -100%, 0);\n}\n.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.future,\n.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=convex] {\n\topacity: 0;\n\n\t-webkit-transform: translate3d(0, 100%, 0) rotateX(-90deg) translate3d(0, 100%, 0);\n\t   -moz-transform: translate3d(0, 100%, 0) rotateX(-90deg) translate3d(0, 100%, 0);\n\t    -ms-transform: translate3d(0, 100%, 0) rotateX(-90deg) translate3d(0, 100%, 0);\n\t        transform: translate3d(0, 100%, 0) rotateX(-90deg) translate3d(0, 100%, 0);\n}\n\n\n/* Concave */\n.reveal[data-background-transition=concave]>.backgrounds .slide-background.past,\n.reveal>.backgrounds .slide-background.past[data-background-transition=concave] {\n\topacity: 0;\n\n\t-webkit-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n\t   -moz-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n\t    -ms-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n\t        transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n}\n.reveal[data-background-transition=concave]>.backgrounds .slide-background.future,\n.reveal>.backgrounds .slide-background.future[data-background-transition=concave] {\n\topacity: 0;\n\n\t-webkit-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n\t   -moz-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n\t    -ms-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n\t        transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n}\n\n.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.past,\n.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=concave] {\n\topacity: 0;\n\n\t-webkit-transform: translate3d(0, -100%, 0) rotateX(-90deg) translate3d(0, -100%, 0);\n\t   -moz-transform: translate3d(0, -100%, 0) rotateX(-90deg) translate3d(0, -100%, 0);\n\t    -ms-transform: translate3d(0, -100%, 0) rotateX(-90deg) translate3d(0, -100%, 0);\n\t        transform: translate3d(0, -100%, 0) rotateX(-90deg) translate3d(0, -100%, 0);\n}\n.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.future,\n.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=concave] {\n\topacity: 0;\n\n\t-webkit-transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0, 100%, 0);\n\t   -moz-transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0, 100%, 0);\n\t    -ms-transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0, 100%, 0);\n\t        transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0, 100%, 0);\n}\n\n/* Zoom */\n.reveal[data-background-transition=zoom]>.backgrounds .slide-background,\n.reveal>.backgrounds .slide-background[data-background-transition=zoom] {\n\t-webkit-transition-timing-function: ease;\n\t   -moz-transition-timing-function: ease;\n\t    -ms-transition-timing-function: ease;\n\t     -o-transition-timing-function: ease;\n\t        transition-timing-function: ease;\n}\n\n.reveal[data-background-transition=zoom]>.backgrounds .slide-background.past,\n.reveal>.backgrounds .slide-background.past[data-background-transition=zoom] {\n\topacity: 0;\n\tvisibility: hidden;\n\n\t-webkit-transform: scale(16);\n\t   -moz-transform: scale(16);\n\t    -ms-transform: scale(16);\n\t     -o-transform: scale(16);\n\t        transform: scale(16);\n}\n.reveal[data-background-transition=zoom]>.backgrounds .slide-background.future,\n.reveal>.backgrounds .slide-background.future[data-background-transition=zoom] {\n\topacity: 0;\n\tvisibility: hidden;\n\n\t-webkit-transform: scale(0.2);\n\t   -moz-transform: scale(0.2);\n\t    -ms-transform: scale(0.2);\n\t     -o-transform: scale(0.2);\n\t        transform: scale(0.2);\n}\n\n.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.past,\n.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=zoom] {\n\topacity: 0;\n\t\tvisibility: hidden;\n\n\t\t-webkit-transform: scale(16);\n\t\t   -moz-transform: scale(16);\n\t\t    -ms-transform: scale(16);\n\t\t     -o-transform: scale(16);\n\t\t        transform: scale(16);\n}\n.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.future,\n.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=zoom] {\n\topacity: 0;\n\tvisibility: hidden;\n\n\t-webkit-transform: scale(0.2);\n\t   -moz-transform: scale(0.2);\n\t    -ms-transform: scale(0.2);\n\t     -o-transform: scale(0.2);\n\t        transform: scale(0.2);\n}\n\n\n/* Global transition speed settings */\n.reveal[data-transition-speed=\"fast\"]>.backgrounds .slide-background {\n\t-webkit-transition-duration: 400ms;\n\t   -moz-transition-duration: 400ms;\n\t    -ms-transition-duration: 400ms;\n\t        transition-duration: 400ms;\n}\n.reveal[data-transition-speed=\"slow\"]>.backgrounds .slide-background {\n\t-webkit-transition-duration: 1200ms;\n\t   -moz-transition-duration: 1200ms;\n\t    -ms-transition-duration: 1200ms;\n\t        transition-duration: 1200ms;\n}\n\n\n/*********************************************\n * RTL SUPPORT\n *********************************************/\n\n.reveal.rtl .slides,\n.reveal.rtl .slides h1,\n.reveal.rtl .slides h2,\n.reveal.rtl .slides h3,\n.reveal.rtl .slides h4,\n.reveal.rtl .slides h5,\n.reveal.rtl .slides h6 {\n\tdirection: rtl;\n\tfont-family: sans-serif;\n}\n\n.reveal.rtl pre,\n.reveal.rtl code {\n\tdirection: ltr;\n}\n\n.reveal.rtl ol,\n.reveal.rtl ul {\n\ttext-align: right;\n}\n\n.reveal.rtl .progress span {\n\tfloat: right\n}\n\n/*********************************************\n * PARALLAX BACKGROUND\n *********************************************/\n\n.reveal.has-parallax-background .backgrounds {\n\t-webkit-transition: all 0.8s ease;\n\t   -moz-transition: all 0.8s ease;\n\t    -ms-transition: all 0.8s ease;\n\t        transition: all 0.8s ease;\n}\n\n/* Global transition speed settings */\n.reveal.has-parallax-background[data-transition-speed=\"fast\"] .backgrounds {\n\t-webkit-transition-duration: 400ms;\n\t   -moz-transition-duration: 400ms;\n\t    -ms-transition-duration: 400ms;\n\t        transition-duration: 400ms;\n}\n.reveal.has-parallax-background[data-transition-speed=\"slow\"] .backgrounds {\n\t-webkit-transition-duration: 1200ms;\n\t   -moz-transition-duration: 1200ms;\n\t    -ms-transition-duration: 1200ms;\n\t        transition-duration: 1200ms;\n}\n\n\n/*********************************************\n * LINK PREVIEW OVERLAY\n *********************************************/\n\n .reveal .preview-link-overlay {\n \tposition: absolute;\n \ttop: 0;\n \tleft: 0;\n \twidth: 100%;\n \theight: 100%;\n \tz-index: 1000;\n \tbackground: rgba( 0, 0, 0, 0.9 );\n \topacity: 0;\n \tvisibility: hidden;\n\n \t-webkit-transition: all 0.3s ease;\n \t   -moz-transition: all 0.3s ease;\n \t    -ms-transition: all 0.3s ease;\n \t        transition: all 0.3s ease;\n }\n \t.reveal .preview-link-overlay.visible {\n \t\topacity: 1;\n \t\tvisibility: visible;\n \t}\n\n \t.reveal .preview-link-overlay .spinner {\n \t\tposition: absolute;\n \t\tdisplay: block;\n \t\ttop: 50%;\n \t\tleft: 50%;\n \t\twidth: 32px;\n \t\theight: 32px;\n \t\tmargin: -16px 0 0 -16px;\n \t\tz-index: 10;\n \t\tbackground-image: url(data:image/gif;base64,R0lGODlhIAAgAPMAAJmZmf%2F%2F%2F6%2Bvr8nJybW1tcDAwOjo6Nvb26ioqKOjo7Ozs%2FLy8vz8%2FAAAAAAAAAAAACH%2FC05FVFNDQVBFMi4wAwEAAAAh%2FhpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh%2BQQJCgAAACwAAAAAIAAgAAAE5xDISWlhperN52JLhSSdRgwVo1ICQZRUsiwHpTJT4iowNS8vyW2icCF6k8HMMBkCEDskxTBDAZwuAkkqIfxIQyhBQBFvAQSDITM5VDW6XNE4KagNh6Bgwe60smQUB3d4Rz1ZBApnFASDd0hihh12BkE9kjAJVlycXIg7CQIFA6SlnJ87paqbSKiKoqusnbMdmDC2tXQlkUhziYtyWTxIfy6BE8WJt5YJvpJivxNaGmLHT0VnOgSYf0dZXS7APdpB309RnHOG5gDqXGLDaC457D1zZ%2FV%2FnmOM82XiHRLYKhKP1oZmADdEAAAh%2BQQJCgAAACwAAAAAIAAgAAAE6hDISWlZpOrNp1lGNRSdRpDUolIGw5RUYhhHukqFu8DsrEyqnWThGvAmhVlteBvojpTDDBUEIFwMFBRAmBkSgOrBFZogCASwBDEY%2FCZSg7GSE0gSCjQBMVG023xWBhklAnoEdhQEfyNqMIcKjhRsjEdnezB%2BA4k8gTwJhFuiW4dokXiloUepBAp5qaKpp6%2BHo7aWW54wl7obvEe0kRuoplCGepwSx2jJvqHEmGt6whJpGpfJCHmOoNHKaHx61WiSR92E4lbFoq%2BB6QDtuetcaBPnW6%2BO7wDHpIiK9SaVK5GgV543tzjgGcghAgAh%2BQQJCgAAACwAAAAAIAAgAAAE7hDISSkxpOrN5zFHNWRdhSiVoVLHspRUMoyUakyEe8PTPCATW9A14E0UvuAKMNAZKYUZCiBMuBakSQKG8G2FzUWox2AUtAQFcBKlVQoLgQReZhQlCIJesQXI5B0CBnUMOxMCenoCfTCEWBsJColTMANldx15BGs8B5wlCZ9Po6OJkwmRpnqkqnuSrayqfKmqpLajoiW5HJq7FL1Gr2mMMcKUMIiJgIemy7xZtJsTmsM4xHiKv5KMCXqfyUCJEonXPN2rAOIAmsfB3uPoAK%2B%2BG%2Bw48edZPK%2BM6hLJpQg484enXIdQFSS1u6UhksENEQAAIfkECQoAAAAsAAAAACAAIAAABOcQyEmpGKLqzWcZRVUQnZYg1aBSh2GUVEIQ2aQOE%2BG%2BcD4ntpWkZQj1JIiZIogDFFyHI0UxQwFugMSOFIPJftfVAEoZLBbcLEFhlQiqGp1Vd140AUklUN3eCA51C1EWMzMCezCBBmkxVIVHBWd3HHl9JQOIJSdSnJ0TDKChCwUJjoWMPaGqDKannasMo6WnM562R5YluZRwur0wpgqZE7NKUm%2BFNRPIhjBJxKZteWuIBMN4zRMIVIhffcgojwCF117i4nlLnY5ztRLsnOk%2BaV%2BoJY7V7m76PdkS4trKcdg0Zc0tTcKkRAAAIfkECQoAAAAsAAAAACAAIAAABO4QyEkpKqjqzScpRaVkXZWQEximw1BSCUEIlDohrft6cpKCk5xid5MNJTaAIkekKGQkWyKHkvhKsR7ARmitkAYDYRIbUQRQjWBwJRzChi9CRlBcY1UN4g0%2FVNB0AlcvcAYHRyZPdEQFYV8ccwR5HWxEJ02YmRMLnJ1xCYp0Y5idpQuhopmmC2KgojKasUQDk5BNAwwMOh2RtRq5uQuPZKGIJQIGwAwGf6I0JXMpC8C7kXWDBINFMxS4DKMAWVWAGYsAdNqW5uaRxkSKJOZKaU3tPOBZ4DuK2LATgJhkPJMgTwKCdFjyPHEnKxFCDhEAACH5BAkKAAAALAAAAAAgACAAAATzEMhJaVKp6s2nIkolIJ2WkBShpkVRWqqQrhLSEu9MZJKK9y1ZrqYK9WiClmvoUaF8gIQSNeF1Er4MNFn4SRSDARWroAIETg1iVwuHjYB1kYc1mwruwXKC9gmsJXliGxc%2BXiUCby9ydh1sOSdMkpMTBpaXBzsfhoc5l58Gm5yToAaZhaOUqjkDgCWNHAULCwOLaTmzswadEqggQwgHuQsHIoZCHQMMQgQGubVEcxOPFAcMDAYUA85eWARmfSRQCdcMe0zeP1AAygwLlJtPNAAL19DARdPzBOWSm1brJBi45soRAWQAAkrQIykShQ9wVhHCwCQCACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiRMDjI0Fd30%2FiI2UA5GSS5UDj2l6NoqgOgN4gksEBgYFf0FDqKgHnyZ9OX8HrgYHdHpcHQULXAS2qKpENRg7eAMLC7kTBaixUYFkKAzWAAnLC7FLVxLWDBLKCwaKTULgEwbLA4hJtOkSBNqITT3xEgfLpBtzE%2FjiuL04RGEBgwWhShRgQExHBAAh%2BQQJCgAAACwAAAAAIAAgAAAE7xDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfZiCqGk5dTESJeaOAlClzsJsqwiJwiqnFrb2nS9kmIcgEsjQydLiIlHehhpejaIjzh9eomSjZR%2BipslWIRLAgMDOR2DOqKogTB9pCUJBagDBXR6XB0EBkIIsaRsGGMMAxoDBgYHTKJiUYEGDAzHC9EACcUGkIgFzgwZ0QsSBcXHiQvOwgDdEwfFs0sDzt4S6BK4xYjkDOzn0unFeBzOBijIm1Dgmg5YFQwsCMjp1oJ8LyIAACH5BAkKAAAALAAAAAAgACAAAATwEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GGl6NoiPOH16iZKNlH6KmyWFOggHhEEvAwwMA0N9GBsEC6amhnVcEwavDAazGwIDaH1ipaYLBUTCGgQDA8NdHz0FpqgTBwsLqAbWAAnIA4FWKdMLGdYGEgraigbT0OITBcg5QwPT4xLrROZL6AuQAPUS7bxLpoWidY0JtxLHKhwwMJBTHgPKdEQAACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GAULDJCRiXo1CpGXDJOUjY%2BYip9DhToJA4RBLwMLCwVDfRgbBAaqqoZ1XBMHswsHtxtFaH1iqaoGNgAIxRpbFAgfPQSqpbgGBqUD1wBXeCYp1AYZ19JJOYgH1KwA4UBvQwXUBxPqVD9L3sbp2BNk2xvvFPJd%2BMFCN6HAAIKgNggY0KtEBAAh%2BQQJCgAAACwAAAAAIAAgAAAE6BDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfYIDMaAFdTESJeaEDAIMxYFqrOUaNW4E4ObYcCXaiBVEgULe0NJaxxtYksjh2NLkZISgDgJhHthkpU4mW6blRiYmZOlh4JWkDqILwUGBnE6TYEbCgevr0N1gH4At7gHiRpFaLNrrq8HNgAJA70AWxQIH1%2BvsYMDAzZQPC9VCNkDWUhGkuE5PxJNwiUK4UfLzOlD4WvzAHaoG9nxPi5d%2BjYUqfAhhykOFwJWiAAAIfkECQoAAAAsAAAAACAAIAAABPAQyElpUqnqzaciSoVkXVUMFaFSwlpOCcMYlErAavhOMnNLNo8KsZsMZItJEIDIFSkLGQoQTNhIsFehRww2CQLKF0tYGKYSg%2BygsZIuNqJksKgbfgIGepNo2cIUB3V1B3IvNiBYNQaDSTtfhhx0CwVPI0UJe0%2Bbm4g5VgcGoqOcnjmjqDSdnhgEoamcsZuXO1aWQy8KAwOAuTYYGwi7w5h%2BKr0SJ8MFihpNbx%2B4Erq7BYBuzsdiH1jCAzoSfl0rVirNbRXlBBlLX%2BBP0XJLAPGzTkAuAOqb0WT5AH7OcdCm5B8TgRwSRKIHQtaLCwg1RAAAOwAAAAAAAAAAAA%3D%3D);\n\n \t\tvisibility: visible;\n \t\topacity: 0.6;\n\n \t\t-webkit-transition: all 0.3s ease;\n \t\t   -moz-transition: all 0.3s ease;\n \t\t    -ms-transition: all 0.3s ease;\n \t\t        transition: all 0.3s ease;\n \t}\n\n \t.reveal .preview-link-overlay header {\n \t\tposition: absolute;\n \t\tleft: 0;\n \t\ttop: 0;\n \t\twidth: 100%;\n \t\theight: 40px;\n \t\tz-index: 2;\n \t\tborder-bottom: 1px solid #222;\n \t}\n \t\t.reveal .preview-link-overlay header a {\n \t\t\tdisplay: inline-block;\n \t\t\twidth: 40px;\n \t\t\theight: 40px;\n \t\t\tpadding: 0 10px;\n \t\t\tfloat: right;\n \t\t\topacity: 0.6;\n\n \t\t\tbox-sizing: border-box;\n \t\t}\n \t\t\t.reveal .preview-link-overlay header a:hover {\n \t\t\t\topacity: 1;\n \t\t\t}\n \t\t\t.reveal .preview-link-overlay header a .icon {\n \t\t\t\tdisplay: inline-block;\n \t\t\t\twidth: 20px;\n \t\t\t\theight: 20px;\n\n \t\t\t\tbackground-position: 50% 50%;\n \t\t\t\tbackground-size: 100%;\n \t\t\t\tbackground-repeat: no-repeat;\n \t\t\t}\n \t\t\t.reveal .preview-link-overlay header a.close .icon {\n \t\t\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABkklEQVRYR8WX4VHDMAxG6wnoJrABZQPYBCaBTWAD2g1gE5gg6OOsXuxIlr40d81dfrSJ9V4c2VLK7spHuTJ/5wpM07QXuXc5X0opX2tEJcadjHuV80li/FgxTIEK/5QBCICBD6xEhSMGHgQPgBgLiYVAB1dpSqKDawxTohFw4JSEA3clzgIBPCURwE2JucBR7rhPJJv5OpJwDX+SfDjgx1wACQeJG1aChP9K/IMmdZ8DtESV1WyP3Bt4MwM6sj4NMxMYiqUWHQu4KYA/SYkIjOsm3BXYWMKFDwU2khjCQ4ELJUJ4SmClRArOCmSXGuKma0fYD5CbzHxFpCSGAhfAVSSUGDUk2BWZaff2g6GE15BsBQ9nwmpIGDiyHQddwNTMKkbZaf9fajXQca1EX44puJZUsnY0ObGmITE3GVLCbEhQUjGVt146j6oasWN+49Vph2w1pZ5EansNZqKBm1txbU57iRRcZ86RWMDdWtBJUHBHwoQPi1GV+JCbntmvok7iTX4/Up9mgyTc/FJYDTcndgH/AA5A/CHsyEkVAAAAAElFTkSuQmCC);\n \t\t\t}\n \t\t\t.reveal .preview-link-overlay header a.external .icon {\n \t\t\t\tbackground-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAcElEQVRYR+2WSQoAIQwEzf8f7XiOMkUQxUPlGkM3hVmiQfQR9GYnH1SsAQlI4DiBqkCMoNb9y2e90IAEJPAcgdznU9+engMaeJ7Azh5Y1U67gAho4DqBqmB1buAf0MB1AlVBek83ZPkmJMGc1wAR+AAqod/B97TRpQAAAABJRU5ErkJggg==);\n \t\t\t}\n\n \t.reveal .preview-link-overlay .viewport {\n \t\tposition: absolute;\n \t\ttop: 40px;\n \t\tright: 0;\n \t\tbottom: 0;\n \t\tleft: 0;\n \t}\n\n \t.reveal .preview-link-overlay .viewport iframe {\n \t\twidth: 100%;\n \t\theight: 100%;\n \t\tmax-width: 100%;\n \t\tmax-height: 100%;\n \t\tborder: 0;\n\n \t\topacity: 0;\n \t\tvisibility: hidden;\n\n \t\t-webkit-transition: all 0.3s ease;\n \t\t   -moz-transition: all 0.3s ease;\n \t\t    -ms-transition: all 0.3s ease;\n \t\t        transition: all 0.3s ease;\n \t}\n\n \t.reveal .preview-link-overlay.loaded .viewport iframe {\n \t\topacity: 1;\n \t\tvisibility: visible;\n \t}\n\n \t.reveal .preview-link-overlay.loaded .spinner {\n \t\topacity: 0;\n \t\tvisibility: hidden;\n\n \t\t-webkit-transform: scale(0.2);\n \t\t   -moz-transform: scale(0.2);\n \t\t    -ms-transform: scale(0.2);\n \t\t        transform: scale(0.2);\n \t}\n\n\n\n/*********************************************\n * PLAYBACK COMPONENT\n *********************************************/\n\n.reveal .playback {\n\tposition: fixed;\n\tleft: 15px;\n\tbottom: 15px;\n\tz-index: 30;\n\tcursor: pointer;\n\n\t-webkit-transition: all 400ms ease;\n\t   -moz-transition: all 400ms ease;\n\t    -ms-transition: all 400ms ease;\n\t        transition: all 400ms ease;\n}\n\n.reveal.overview .playback {\n\topacity: 0;\n\tvisibility: hidden;\n}\n\n\n/*********************************************\n * ROLLING LINKS\n *********************************************/\n\n.reveal .roll {\n\tdisplay: inline-block;\n\tline-height: 1.2;\n\toverflow: hidden;\n\n\tvertical-align: top;\n\n\t-webkit-perspective: 400px;\n\t   -moz-perspective: 400px;\n\t    -ms-perspective: 400px;\n\t        perspective: 400px;\n\n\t-webkit-perspective-origin: 50% 50%;\n\t   -moz-perspective-origin: 50% 50%;\n\t    -ms-perspective-origin: 50% 50%;\n\t        perspective-origin: 50% 50%;\n}\n\t.reveal .roll:hover {\n\t\tbackground: none;\n\t\ttext-shadow: none;\n\t}\n.reveal .roll span {\n\tdisplay: block;\n\tposition: relative;\n\tpadding: 0 2px;\n\n\tpointer-events: none;\n\n\t-webkit-transition: all 400ms ease;\n\t   -moz-transition: all 400ms ease;\n\t    -ms-transition: all 400ms ease;\n\t        transition: all 400ms ease;\n\n\t-webkit-transform-origin: 50% 0%;\n\t   -moz-transform-origin: 50% 0%;\n\t    -ms-transform-origin: 50% 0%;\n\t        transform-origin: 50% 0%;\n\n\t-webkit-transform-style: preserve-3d;\n\t   -moz-transform-style: preserve-3d;\n\t    -ms-transform-style: preserve-3d;\n\t        transform-style: preserve-3d;\n\n\t-webkit-backface-visibility: hidden;\n\t   -moz-backface-visibility: hidden;\n\t        backface-visibility: hidden;\n}\n\t.reveal .roll:hover span {\n\t    background: rgba(0,0,0,0.5);\n\n\t    -webkit-transform: translate3d( 0px, 0px, -45px ) rotateX( 90deg );\n\t       -moz-transform: translate3d( 0px, 0px, -45px ) rotateX( 90deg );\n\t        -ms-transform: translate3d( 0px, 0px, -45px ) rotateX( 90deg );\n\t            transform: translate3d( 0px, 0px, -45px ) rotateX( 90deg );\n\t}\n.reveal .roll span:after {\n\tcontent: attr(data-title);\n\n\tdisplay: block;\n\tposition: absolute;\n\tleft: 0;\n\ttop: 0;\n\tpadding: 0 2px;\n\n\t-webkit-backface-visibility: hidden;\n\t   -moz-backface-visibility: hidden;\n\t        backface-visibility: hidden;\n\n\t-webkit-transform-origin: 50% 0%;\n\t   -moz-transform-origin: 50% 0%;\n\t    -ms-transform-origin: 50% 0%;\n\t        transform-origin: 50% 0%;\n\n\t-webkit-transform: translate3d( 0px, 110%, 0px ) rotateX( -90deg );\n\t   -moz-transform: translate3d( 0px, 110%, 0px ) rotateX( -90deg );\n\t    -ms-transform: translate3d( 0px, 110%, 0px ) rotateX( -90deg );\n\t        transform: translate3d( 0px, 110%, 0px ) rotateX( -90deg );\n}\n\n\n/*********************************************\n * SPEAKER NOTES\n *********************************************/\n\n.reveal aside.notes {\n\tdisplay: none;\n}\n\n\n/*********************************************\n * ZOOM PLUGIN\n *********************************************/\n\n.zoomed .reveal *,\n.zoomed .reveal *:before,\n.zoomed .reveal *:after {\n\t-webkit-transform: none !important;\n\t   -moz-transform: none !important;\n\t    -ms-transform: none !important;\n\t        transform: none !important;\n\n\t-webkit-backface-visibility: visible !important;\n\t   -moz-backface-visibility: visible !important;\n\t    -ms-backface-visibility: visible !important;\n\t        backface-visibility: visible !important;\n}\n\n.zoomed .reveal .progress,\n.zoomed .reveal .controls {\n\topacity: 0;\n}\n\n.zoomed .reveal .roll span {\n\tbackground: none;\n}\n\n.zoomed .reveal .roll span:after {\n\tvisibility: hidden;\n}\n\n\n", ""]);
+	exports.push([module.id, "/*!\n * reveal.js\n * http://lab.hakim.se/reveal-js\n * MIT licensed\n *\n * Copyright (C) 2016 Hakim El Hattab, http://hakim.se\n */\n/*********************************************\n * RESET STYLES\n *********************************************/\nhtml, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal iframe,\n.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6, .reveal p, .reveal blockquote, .reveal pre,\n.reveal a, .reveal abbr, .reveal acronym, .reveal address, .reveal big, .reveal cite, .reveal code,\n.reveal del, .reveal dfn, .reveal em, .reveal img, .reveal ins, .reveal kbd, .reveal q, .reveal s, .reveal samp,\n.reveal small, .reveal strike, .reveal strong, .reveal sub, .reveal sup, .reveal tt, .reveal var,\n.reveal b, .reveal u, .reveal center,\n.reveal dl, .reveal dt, .reveal dd, .reveal ol, .reveal ul, .reveal li,\n.reveal fieldset, .reveal form, .reveal label, .reveal legend,\n.reveal table, .reveal caption, .reveal tbody, .reveal tfoot, .reveal thead, .reveal tr, .reveal th, .reveal td,\n.reveal article, .reveal aside, .reveal canvas, .reveal details, .reveal embed,\n.reveal figure, .reveal figcaption, .reveal footer, .reveal header, .reveal hgroup,\n.reveal menu, .reveal nav, .reveal output, .reveal ruby, .reveal section, .reveal summary,\n.reveal time, .reveal mark, .reveal audio, .reveal video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n.reveal article, .reveal aside, .reveal details, .reveal figcaption, .reveal figure,\n.reveal footer, .reveal header, .reveal hgroup, .reveal menu, .reveal nav, .reveal section {\n  display: block; }\n\n/*********************************************\n * GLOBAL STYLES\n *********************************************/\nhtml,\nbody {\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n\nbody {\n  position: relative;\n  line-height: 1;\n  background-color: #fff;\n  color: #000; }\n\n/*********************************************\n * VIEW FRAGMENTS\n *********************************************/\n.reveal .slides section .fragment {\n  opacity: 0;\n  visibility: hidden;\n  -webkit-transition: all .2s ease;\n          transition: all .2s ease; }\n  .reveal .slides section .fragment.visible {\n    opacity: 1;\n    visibility: visible; }\n\n.reveal .slides section .fragment.grow {\n  opacity: 1;\n  visibility: visible; }\n  .reveal .slides section .fragment.grow.visible {\n    -webkit-transform: scale(1.3);\n            transform: scale(1.3); }\n\n.reveal .slides section .fragment.shrink {\n  opacity: 1;\n  visibility: visible; }\n  .reveal .slides section .fragment.shrink.visible {\n    -webkit-transform: scale(0.7);\n            transform: scale(0.7); }\n\n.reveal .slides section .fragment.zoom-in {\n  -webkit-transform: scale(0.1);\n          transform: scale(0.1); }\n  .reveal .slides section .fragment.zoom-in.visible {\n    -webkit-transform: none;\n            transform: none; }\n\n.reveal .slides section .fragment.fade-out {\n  opacity: 1;\n  visibility: visible; }\n  .reveal .slides section .fragment.fade-out.visible {\n    opacity: 0;\n    visibility: hidden; }\n\n.reveal .slides section .fragment.semi-fade-out {\n  opacity: 1;\n  visibility: visible; }\n  .reveal .slides section .fragment.semi-fade-out.visible {\n    opacity: 0.5;\n    visibility: visible; }\n\n.reveal .slides section .fragment.strike {\n  opacity: 1;\n  visibility: visible; }\n  .reveal .slides section .fragment.strike.visible {\n    text-decoration: line-through; }\n\n.reveal .slides section .fragment.fade-up {\n  -webkit-transform: translate(0, 20%);\n          transform: translate(0, 20%); }\n  .reveal .slides section .fragment.fade-up.visible {\n    -webkit-transform: translate(0, 0);\n            transform: translate(0, 0); }\n\n.reveal .slides section .fragment.fade-down {\n  -webkit-transform: translate(0, -20%);\n          transform: translate(0, -20%); }\n  .reveal .slides section .fragment.fade-down.visible {\n    -webkit-transform: translate(0, 0);\n            transform: translate(0, 0); }\n\n.reveal .slides section .fragment.fade-right {\n  -webkit-transform: translate(-20%, 0);\n          transform: translate(-20%, 0); }\n  .reveal .slides section .fragment.fade-right.visible {\n    -webkit-transform: translate(0, 0);\n            transform: translate(0, 0); }\n\n.reveal .slides section .fragment.fade-left {\n  -webkit-transform: translate(20%, 0);\n          transform: translate(20%, 0); }\n  .reveal .slides section .fragment.fade-left.visible {\n    -webkit-transform: translate(0, 0);\n            transform: translate(0, 0); }\n\n.reveal .slides section .fragment.current-visible {\n  opacity: 0;\n  visibility: hidden; }\n  .reveal .slides section .fragment.current-visible.current-fragment {\n    opacity: 1;\n    visibility: visible; }\n\n.reveal .slides section .fragment.highlight-red,\n.reveal .slides section .fragment.highlight-current-red,\n.reveal .slides section .fragment.highlight-green,\n.reveal .slides section .fragment.highlight-current-green,\n.reveal .slides section .fragment.highlight-blue,\n.reveal .slides section .fragment.highlight-current-blue {\n  opacity: 1;\n  visibility: visible; }\n\n.reveal .slides section .fragment.highlight-red.visible {\n  color: #ff2c2d; }\n\n.reveal .slides section .fragment.highlight-green.visible {\n  color: #17ff2e; }\n\n.reveal .slides section .fragment.highlight-blue.visible {\n  color: #1b91ff; }\n\n.reveal .slides section .fragment.highlight-current-red.current-fragment {\n  color: #ff2c2d; }\n\n.reveal .slides section .fragment.highlight-current-green.current-fragment {\n  color: #17ff2e; }\n\n.reveal .slides section .fragment.highlight-current-blue.current-fragment {\n  color: #1b91ff; }\n\n/*********************************************\n * DEFAULT ELEMENT STYLES\n *********************************************/\n/* Fixes issue in Chrome where italic fonts did not appear when printing to PDF */\n.reveal:after {\n  content: '';\n  font-style: italic; }\n\n.reveal iframe {\n  z-index: 1; }\n\n/** Prevents layering issues in certain browser/transition combinations */\n.reveal a {\n  position: relative; }\n\n.reveal .stretch {\n  max-width: none;\n  max-height: none; }\n\n.reveal pre.stretch code {\n  height: 100%;\n  max-height: 100%;\n  box-sizing: border-box; }\n\n/*********************************************\n * CONTROLS\n *********************************************/\n.reveal .controls {\n  display: none;\n  position: fixed;\n  width: 110px;\n  height: 110px;\n  z-index: 30;\n  right: 10px;\n  bottom: 10px;\n  -webkit-user-select: none; }\n\n.reveal .controls button {\n  padding: 0;\n  position: absolute;\n  opacity: 0.05;\n  width: 0;\n  height: 0;\n  background-color: transparent;\n  border: 12px solid transparent;\n  -webkit-transform: scale(0.9999);\n          transform: scale(0.9999);\n  -webkit-transition: all 0.2s ease;\n          transition: all 0.2s ease;\n  -webkit-appearance: none;\n  -webkit-tap-highlight-color: transparent; }\n\n.reveal .controls .enabled {\n  opacity: 0.7;\n  cursor: pointer; }\n\n.reveal .controls .enabled:active {\n  margin-top: 1px; }\n\n.reveal .controls .navigate-left {\n  top: 42px;\n  border-right-width: 22px;\n  border-right-color: #000; }\n\n.reveal .controls .navigate-left.fragmented {\n  opacity: 0.3; }\n\n.reveal .controls .navigate-right {\n  left: 74px;\n  top: 42px;\n  border-left-width: 22px;\n  border-left-color: #000; }\n\n.reveal .controls .navigate-right.fragmented {\n  opacity: 0.3; }\n\n.reveal .controls .navigate-up {\n  left: 42px;\n  border-bottom-width: 22px;\n  border-bottom-color: #000; }\n\n.reveal .controls .navigate-up.fragmented {\n  opacity: 0.3; }\n\n.reveal .controls .navigate-down {\n  left: 42px;\n  top: 74px;\n  border-top-width: 22px;\n  border-top-color: #000; }\n\n.reveal .controls .navigate-down.fragmented {\n  opacity: 0.3; }\n\n/*********************************************\n * PROGRESS BAR\n *********************************************/\n.reveal .progress {\n  position: fixed;\n  display: none;\n  height: 3px;\n  width: 100%;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  background-color: rgba(0, 0, 0, 0.2); }\n\n.reveal .progress:after {\n  content: '';\n  display: block;\n  position: absolute;\n  height: 20px;\n  width: 100%;\n  top: -20px; }\n\n.reveal .progress span {\n  display: block;\n  height: 100%;\n  width: 0px;\n  background-color: #000;\n  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n          transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }\n\n/*********************************************\n * SLIDE NUMBER\n *********************************************/\n.reveal .slide-number {\n  position: fixed;\n  display: block;\n  right: 8px;\n  bottom: 8px;\n  z-index: 31;\n  font-family: Helvetica, sans-serif;\n  font-size: 12px;\n  line-height: 1;\n  color: #fff;\n  background-color: rgba(0, 0, 0, 0.4);\n  padding: 5px; }\n\n.reveal .slide-number-delimiter {\n  margin: 0 3px; }\n\n/*********************************************\n * SLIDES\n *********************************************/\n.reveal {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  -ms-touch-action: none;\n      touch-action: none; }\n\n.reveal .slides {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  overflow: visible;\n  z-index: 1;\n  text-align: center;\n  -webkit-perspective: 600px;\n          perspective: 600px;\n  -webkit-perspective-origin: 50% 40%;\n          perspective-origin: 50% 40%; }\n\n.reveal .slides > section {\n  -ms-perspective: 600px; }\n\n.reveal .slides > section,\n.reveal .slides > section > section {\n  display: none;\n  position: absolute;\n  width: 100%;\n  padding: 20px 0px;\n  z-index: 10;\n  -webkit-transform-style: preserve-3d;\n          transform-style: preserve-3d;\n  -webkit-transition: -webkit-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -webkit-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n          transition: transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }\n\n/* Global transition speed settings */\n.reveal[data-transition-speed=\"fast\"] .slides section {\n  -webkit-transition-duration: 400ms;\n          transition-duration: 400ms; }\n\n.reveal[data-transition-speed=\"slow\"] .slides section {\n  -webkit-transition-duration: 1200ms;\n          transition-duration: 1200ms; }\n\n/* Slide-specific transition speed overrides */\n.reveal .slides section[data-transition-speed=\"fast\"] {\n  -webkit-transition-duration: 400ms;\n          transition-duration: 400ms; }\n\n.reveal .slides section[data-transition-speed=\"slow\"] {\n  -webkit-transition-duration: 1200ms;\n          transition-duration: 1200ms; }\n\n.reveal .slides > section.stack {\n  padding-top: 0;\n  padding-bottom: 0; }\n\n.reveal .slides > section.present,\n.reveal .slides > section > section.present {\n  display: block;\n  z-index: 11;\n  opacity: 1; }\n\n.reveal.center,\n.reveal.center .slides,\n.reveal.center .slides section {\n  min-height: 0 !important; }\n\n/* Don't allow interaction with invisible slides */\n.reveal .slides > section.future,\n.reveal .slides > section > section.future,\n.reveal .slides > section.past,\n.reveal .slides > section > section.past {\n  pointer-events: none; }\n\n.reveal.overview .slides > section,\n.reveal.overview .slides > section > section {\n  pointer-events: auto; }\n\n.reveal .slides > section.past,\n.reveal .slides > section.future,\n.reveal .slides > section > section.past,\n.reveal .slides > section > section.future {\n  opacity: 0; }\n\n/*********************************************\n * Mixins for readability of transitions\n *********************************************/\n/*********************************************\n * SLIDE TRANSITION\n * Aliased 'linear' for backwards compatibility\n *********************************************/\n.reveal.slide section {\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n\n.reveal .slides > section[data-transition=slide].past,\n.reveal .slides > section[data-transition~=slide-out].past,\n.reveal.slide .slides > section:not([data-transition]).past {\n  -webkit-transform: translate(-150%, 0);\n          transform: translate(-150%, 0); }\n\n.reveal .slides > section[data-transition=slide].future,\n.reveal .slides > section[data-transition~=slide-in].future,\n.reveal.slide .slides > section:not([data-transition]).future {\n  -webkit-transform: translate(150%, 0);\n          transform: translate(150%, 0); }\n\n.reveal .slides > section > section[data-transition=slide].past,\n.reveal .slides > section > section[data-transition~=slide-out].past,\n.reveal.slide .slides > section > section:not([data-transition]).past {\n  -webkit-transform: translate(0, -150%);\n          transform: translate(0, -150%); }\n\n.reveal .slides > section > section[data-transition=slide].future,\n.reveal .slides > section > section[data-transition~=slide-in].future,\n.reveal.slide .slides > section > section:not([data-transition]).future {\n  -webkit-transform: translate(0, 150%);\n          transform: translate(0, 150%); }\n\n.reveal.linear section {\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n\n.reveal .slides > section[data-transition=linear].past,\n.reveal .slides > section[data-transition~=linear-out].past,\n.reveal.linear .slides > section:not([data-transition]).past {\n  -webkit-transform: translate(-150%, 0);\n          transform: translate(-150%, 0); }\n\n.reveal .slides > section[data-transition=linear].future,\n.reveal .slides > section[data-transition~=linear-in].future,\n.reveal.linear .slides > section:not([data-transition]).future {\n  -webkit-transform: translate(150%, 0);\n          transform: translate(150%, 0); }\n\n.reveal .slides > section > section[data-transition=linear].past,\n.reveal .slides > section > section[data-transition~=linear-out].past,\n.reveal.linear .slides > section > section:not([data-transition]).past {\n  -webkit-transform: translate(0, -150%);\n          transform: translate(0, -150%); }\n\n.reveal .slides > section > section[data-transition=linear].future,\n.reveal .slides > section > section[data-transition~=linear-in].future,\n.reveal.linear .slides > section > section:not([data-transition]).future {\n  -webkit-transform: translate(0, 150%);\n          transform: translate(0, 150%); }\n\n/*********************************************\n * CONVEX TRANSITION\n * Aliased 'default' for backwards compatibility\n *********************************************/\n.reveal .slides > section[data-transition=default].past,\n.reveal .slides > section[data-transition~=default-out].past,\n.reveal.default .slides > section:not([data-transition]).past {\n  -webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n          transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0); }\n\n.reveal .slides > section[data-transition=default].future,\n.reveal .slides > section[data-transition~=default-in].future,\n.reveal.default .slides > section:not([data-transition]).future {\n  -webkit-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0); }\n\n.reveal .slides > section > section[data-transition=default].past,\n.reveal .slides > section > section[data-transition~=default-out].past,\n.reveal.default .slides > section > section:not([data-transition]).past {\n  -webkit-transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);\n          transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0); }\n\n.reveal .slides > section > section[data-transition=default].future,\n.reveal .slides > section > section[data-transition~=default-in].future,\n.reveal.default .slides > section > section:not([data-transition]).future {\n  -webkit-transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);\n          transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0); }\n\n.reveal .slides > section[data-transition=convex].past,\n.reveal .slides > section[data-transition~=convex-out].past,\n.reveal.convex .slides > section:not([data-transition]).past {\n  -webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n          transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0); }\n\n.reveal .slides > section[data-transition=convex].future,\n.reveal .slides > section[data-transition~=convex-in].future,\n.reveal.convex .slides > section:not([data-transition]).future {\n  -webkit-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0); }\n\n.reveal .slides > section > section[data-transition=convex].past,\n.reveal .slides > section > section[data-transition~=convex-out].past,\n.reveal.convex .slides > section > section:not([data-transition]).past {\n  -webkit-transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);\n          transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0); }\n\n.reveal .slides > section > section[data-transition=convex].future,\n.reveal .slides > section > section[data-transition~=convex-in].future,\n.reveal.convex .slides > section > section:not([data-transition]).future {\n  -webkit-transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);\n          transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0); }\n\n/*********************************************\n * CONCAVE TRANSITION\n *********************************************/\n.reveal .slides > section[data-transition=concave].past,\n.reveal .slides > section[data-transition~=concave-out].past,\n.reveal.concave .slides > section:not([data-transition]).past {\n  -webkit-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n          transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0); }\n\n.reveal .slides > section[data-transition=concave].future,\n.reveal .slides > section[data-transition~=concave-in].future,\n.reveal.concave .slides > section:not([data-transition]).future {\n  -webkit-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0); }\n\n.reveal .slides > section > section[data-transition=concave].past,\n.reveal .slides > section > section[data-transition~=concave-out].past,\n.reveal.concave .slides > section > section:not([data-transition]).past {\n  -webkit-transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);\n          transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0); }\n\n.reveal .slides > section > section[data-transition=concave].future,\n.reveal .slides > section > section[data-transition~=concave-in].future,\n.reveal.concave .slides > section > section:not([data-transition]).future {\n  -webkit-transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);\n          transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0); }\n\n/*********************************************\n * ZOOM TRANSITION\n *********************************************/\n.reveal .slides section[data-transition=zoom],\n.reveal.zoom .slides section:not([data-transition]) {\n  -webkit-transition-timing-function: ease;\n          transition-timing-function: ease; }\n\n.reveal .slides > section[data-transition=zoom].past,\n.reveal .slides > section[data-transition~=zoom-out].past,\n.reveal.zoom .slides > section:not([data-transition]).past {\n  visibility: hidden;\n  -webkit-transform: scale(16);\n          transform: scale(16); }\n\n.reveal .slides > section[data-transition=zoom].future,\n.reveal .slides > section[data-transition~=zoom-in].future,\n.reveal.zoom .slides > section:not([data-transition]).future {\n  visibility: hidden;\n  -webkit-transform: scale(0.2);\n          transform: scale(0.2); }\n\n.reveal .slides > section > section[data-transition=zoom].past,\n.reveal .slides > section > section[data-transition~=zoom-out].past,\n.reveal.zoom .slides > section > section:not([data-transition]).past {\n  -webkit-transform: translate(0, -150%);\n          transform: translate(0, -150%); }\n\n.reveal .slides > section > section[data-transition=zoom].future,\n.reveal .slides > section > section[data-transition~=zoom-in].future,\n.reveal.zoom .slides > section > section:not([data-transition]).future {\n  -webkit-transform: translate(0, 150%);\n          transform: translate(0, 150%); }\n\n/*********************************************\n * CUBE TRANSITION\n *********************************************/\n.reveal.cube .slides {\n  -webkit-perspective: 1300px;\n          perspective: 1300px; }\n\n.reveal.cube .slides section {\n  padding: 30px;\n  min-height: 700px;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  box-sizing: border-box; }\n\n.reveal.center.cube .slides section {\n  min-height: 0; }\n\n.reveal.cube .slides section:not(.stack):before {\n  content: '';\n  position: absolute;\n  display: block;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.1);\n  border-radius: 4px;\n  -webkit-transform: translateZ(-20px);\n          transform: translateZ(-20px); }\n\n.reveal.cube .slides section:not(.stack):after {\n  content: '';\n  position: absolute;\n  display: block;\n  width: 90%;\n  height: 30px;\n  left: 5%;\n  bottom: 0;\n  background: none;\n  z-index: 1;\n  border-radius: 4px;\n  box-shadow: 0px 95px 25px rgba(0, 0, 0, 0.2);\n  -webkit-transform: translateZ(-90px) rotateX(65deg);\n          transform: translateZ(-90px) rotateX(65deg); }\n\n.reveal.cube .slides > section.stack {\n  padding: 0;\n  background: none; }\n\n.reveal.cube .slides > section.past {\n  -webkit-transform-origin: 100% 0%;\n          transform-origin: 100% 0%;\n  -webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg);\n          transform: translate3d(-100%, 0, 0) rotateY(-90deg); }\n\n.reveal.cube .slides > section.future {\n  -webkit-transform-origin: 0% 0%;\n          transform-origin: 0% 0%;\n  -webkit-transform: translate3d(100%, 0, 0) rotateY(90deg);\n          transform: translate3d(100%, 0, 0) rotateY(90deg); }\n\n.reveal.cube .slides > section > section.past {\n  -webkit-transform-origin: 0% 100%;\n          transform-origin: 0% 100%;\n  -webkit-transform: translate3d(0, -100%, 0) rotateX(90deg);\n          transform: translate3d(0, -100%, 0) rotateX(90deg); }\n\n.reveal.cube .slides > section > section.future {\n  -webkit-transform-origin: 0% 0%;\n          transform-origin: 0% 0%;\n  -webkit-transform: translate3d(0, 100%, 0) rotateX(-90deg);\n          transform: translate3d(0, 100%, 0) rotateX(-90deg); }\n\n/*********************************************\n * PAGE TRANSITION\n *********************************************/\n.reveal.page .slides {\n  -webkit-perspective-origin: 0% 50%;\n          perspective-origin: 0% 50%;\n  -webkit-perspective: 3000px;\n          perspective: 3000px; }\n\n.reveal.page .slides section {\n  padding: 30px;\n  min-height: 700px;\n  box-sizing: border-box; }\n\n.reveal.page .slides section.past {\n  z-index: 12; }\n\n.reveal.page .slides section:not(.stack):before {\n  content: '';\n  position: absolute;\n  display: block;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.1);\n  -webkit-transform: translateZ(-20px);\n          transform: translateZ(-20px); }\n\n.reveal.page .slides section:not(.stack):after {\n  content: '';\n  position: absolute;\n  display: block;\n  width: 90%;\n  height: 30px;\n  left: 5%;\n  bottom: 0;\n  background: none;\n  z-index: 1;\n  border-radius: 4px;\n  box-shadow: 0px 95px 25px rgba(0, 0, 0, 0.2);\n  -webkit-transform: translateZ(-90px) rotateX(65deg); }\n\n.reveal.page .slides > section.stack {\n  padding: 0;\n  background: none; }\n\n.reveal.page .slides > section.past {\n  -webkit-transform-origin: 0% 0%;\n          transform-origin: 0% 0%;\n  -webkit-transform: translate3d(-40%, 0, 0) rotateY(-80deg);\n          transform: translate3d(-40%, 0, 0) rotateY(-80deg); }\n\n.reveal.page .slides > section.future {\n  -webkit-transform-origin: 100% 0%;\n          transform-origin: 100% 0%;\n  -webkit-transform: translate3d(0, 0, 0);\n          transform: translate3d(0, 0, 0); }\n\n.reveal.page .slides > section > section.past {\n  -webkit-transform-origin: 0% 0%;\n          transform-origin: 0% 0%;\n  -webkit-transform: translate3d(0, -40%, 0) rotateX(80deg);\n          transform: translate3d(0, -40%, 0) rotateX(80deg); }\n\n.reveal.page .slides > section > section.future {\n  -webkit-transform-origin: 0% 100%;\n          transform-origin: 0% 100%;\n  -webkit-transform: translate3d(0, 0, 0);\n          transform: translate3d(0, 0, 0); }\n\n/*********************************************\n * FADE TRANSITION\n *********************************************/\n.reveal .slides section[data-transition=fade],\n.reveal.fade .slides section:not([data-transition]),\n.reveal.fade .slides > section > section:not([data-transition]) {\n  -webkit-transform: none;\n          transform: none;\n  -webkit-transition: opacity 0.5s;\n          transition: opacity 0.5s; }\n\n.reveal.fade.overview .slides section,\n.reveal.fade.overview .slides > section > section {\n  -webkit-transition: none;\n          transition: none; }\n\n/*********************************************\n * NO TRANSITION\n *********************************************/\n.reveal .slides section[data-transition=none],\n.reveal.none .slides section:not([data-transition]) {\n  -webkit-transform: none;\n          transform: none;\n  -webkit-transition: none;\n          transition: none; }\n\n/*********************************************\n * PAUSED MODE\n *********************************************/\n.reveal .pause-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: black;\n  visibility: hidden;\n  opacity: 0;\n  z-index: 100;\n  -webkit-transition: all 1s ease;\n          transition: all 1s ease; }\n\n.reveal.paused .pause-overlay {\n  visibility: visible;\n  opacity: 1; }\n\n/*********************************************\n * FALLBACK\n *********************************************/\n.no-transforms {\n  overflow-y: auto; }\n\n.no-transforms .reveal .slides {\n  position: relative;\n  width: 80%;\n  height: auto !important;\n  top: 0;\n  left: 50%;\n  margin: 0;\n  text-align: center; }\n\n.no-transforms .reveal .controls,\n.no-transforms .reveal .progress {\n  display: none !important; }\n\n.no-transforms .reveal .slides section {\n  display: block !important;\n  opacity: 1 !important;\n  position: relative !important;\n  height: auto;\n  min-height: 0;\n  top: 0;\n  left: -50%;\n  margin: 70px 0;\n  -webkit-transform: none;\n          transform: none; }\n\n.no-transforms .reveal .slides section section {\n  left: 0; }\n\n.reveal .no-transition,\n.reveal .no-transition * {\n  -webkit-transition: none !important;\n          transition: none !important; }\n\n/*********************************************\n * PER-SLIDE BACKGROUNDS\n *********************************************/\n.reveal .backgrounds {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  -webkit-perspective: 600px;\n          perspective: 600px; }\n\n.reveal .slide-background {\n  display: none;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n  visibility: hidden;\n  background-color: transparent;\n  background-position: 50% 50%;\n  background-repeat: no-repeat;\n  background-size: cover;\n  -webkit-transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n          transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }\n\n.reveal .slide-background.stack {\n  display: block; }\n\n.reveal .slide-background.present {\n  opacity: 1;\n  visibility: visible; }\n\n.print-pdf .reveal .slide-background {\n  opacity: 1 !important;\n  visibility: visible !important; }\n\n/* Video backgrounds */\n.reveal .slide-background video {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  max-width: none;\n  max-height: none;\n  top: 0;\n  left: 0; }\n\n/* Immediate transition style */\n.reveal[data-background-transition=none] > .backgrounds .slide-background,\n.reveal > .backgrounds .slide-background[data-background-transition=none] {\n  -webkit-transition: none;\n          transition: none; }\n\n/* Slide */\n.reveal[data-background-transition=slide] > .backgrounds .slide-background,\n.reveal > .backgrounds .slide-background[data-background-transition=slide] {\n  opacity: 1;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n\n.reveal[data-background-transition=slide] > .backgrounds .slide-background.past,\n.reveal > .backgrounds .slide-background.past[data-background-transition=slide] {\n  -webkit-transform: translate(-100%, 0);\n          transform: translate(-100%, 0); }\n\n.reveal[data-background-transition=slide] > .backgrounds .slide-background.future,\n.reveal > .backgrounds .slide-background.future[data-background-transition=slide] {\n  -webkit-transform: translate(100%, 0);\n          transform: translate(100%, 0); }\n\n.reveal[data-background-transition=slide] > .backgrounds .slide-background > .slide-background.past,\n.reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition=slide] {\n  -webkit-transform: translate(0, -100%);\n          transform: translate(0, -100%); }\n\n.reveal[data-background-transition=slide] > .backgrounds .slide-background > .slide-background.future,\n.reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition=slide] {\n  -webkit-transform: translate(0, 100%);\n          transform: translate(0, 100%); }\n\n/* Convex */\n.reveal[data-background-transition=convex] > .backgrounds .slide-background.past,\n.reveal > .backgrounds .slide-background.past[data-background-transition=convex] {\n  opacity: 0;\n  -webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);\n          transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0); }\n\n.reveal[data-background-transition=convex] > .backgrounds .slide-background.future,\n.reveal > .backgrounds .slide-background.future[data-background-transition=convex] {\n  opacity: 0;\n  -webkit-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0); }\n\n.reveal[data-background-transition=convex] > .backgrounds .slide-background > .slide-background.past,\n.reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition=convex] {\n  opacity: 0;\n  -webkit-transform: translate3d(0, -100%, 0) rotateX(90deg) translate3d(0, -100%, 0);\n          transform: translate3d(0, -100%, 0) rotateX(90deg) translate3d(0, -100%, 0); }\n\n.reveal[data-background-transition=convex] > .backgrounds .slide-background > .slide-background.future,\n.reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition=convex] {\n  opacity: 0;\n  -webkit-transform: translate3d(0, 100%, 0) rotateX(-90deg) translate3d(0, 100%, 0);\n          transform: translate3d(0, 100%, 0) rotateX(-90deg) translate3d(0, 100%, 0); }\n\n/* Concave */\n.reveal[data-background-transition=concave] > .backgrounds .slide-background.past,\n.reveal > .backgrounds .slide-background.past[data-background-transition=concave] {\n  opacity: 0;\n  -webkit-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);\n          transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0); }\n\n.reveal[data-background-transition=concave] > .backgrounds .slide-background.future,\n.reveal > .backgrounds .slide-background.future[data-background-transition=concave] {\n  opacity: 0;\n  -webkit-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0); }\n\n.reveal[data-background-transition=concave] > .backgrounds .slide-background > .slide-background.past,\n.reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition=concave] {\n  opacity: 0;\n  -webkit-transform: translate3d(0, -100%, 0) rotateX(-90deg) translate3d(0, -100%, 0);\n          transform: translate3d(0, -100%, 0) rotateX(-90deg) translate3d(0, -100%, 0); }\n\n.reveal[data-background-transition=concave] > .backgrounds .slide-background > .slide-background.future,\n.reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition=concave] {\n  opacity: 0;\n  -webkit-transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0, 100%, 0);\n          transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0, 100%, 0); }\n\n/* Zoom */\n.reveal[data-background-transition=zoom] > .backgrounds .slide-background,\n.reveal > .backgrounds .slide-background[data-background-transition=zoom] {\n  -webkit-transition-timing-function: ease;\n          transition-timing-function: ease; }\n\n.reveal[data-background-transition=zoom] > .backgrounds .slide-background.past,\n.reveal > .backgrounds .slide-background.past[data-background-transition=zoom] {\n  opacity: 0;\n  visibility: hidden;\n  -webkit-transform: scale(16);\n          transform: scale(16); }\n\n.reveal[data-background-transition=zoom] > .backgrounds .slide-background.future,\n.reveal > .backgrounds .slide-background.future[data-background-transition=zoom] {\n  opacity: 0;\n  visibility: hidden;\n  -webkit-transform: scale(0.2);\n          transform: scale(0.2); }\n\n.reveal[data-background-transition=zoom] > .backgrounds .slide-background > .slide-background.past,\n.reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition=zoom] {\n  opacity: 0;\n  visibility: hidden;\n  -webkit-transform: scale(16);\n          transform: scale(16); }\n\n.reveal[data-background-transition=zoom] > .backgrounds .slide-background > .slide-background.future,\n.reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition=zoom] {\n  opacity: 0;\n  visibility: hidden;\n  -webkit-transform: scale(0.2);\n          transform: scale(0.2); }\n\n/* Global transition speed settings */\n.reveal[data-transition-speed=\"fast\"] > .backgrounds .slide-background {\n  -webkit-transition-duration: 400ms;\n          transition-duration: 400ms; }\n\n.reveal[data-transition-speed=\"slow\"] > .backgrounds .slide-background {\n  -webkit-transition-duration: 1200ms;\n          transition-duration: 1200ms; }\n\n/*********************************************\n * OVERVIEW\n *********************************************/\n.reveal.overview {\n  -webkit-perspective-origin: 50% 50%;\n          perspective-origin: 50% 50%;\n  -webkit-perspective: 700px;\n          perspective: 700px; }\n  .reveal.overview .slides section {\n    height: 100%;\n    top: 0 !important;\n    opacity: 1 !important;\n    overflow: hidden;\n    visibility: visible !important;\n    cursor: pointer;\n    box-sizing: border-box; }\n  .reveal.overview .slides section:hover,\n  .reveal.overview .slides section.present {\n    outline: 10px solid rgba(150, 150, 150, 0.4);\n    outline-offset: 10px; }\n  .reveal.overview .slides section .fragment {\n    opacity: 1;\n    -webkit-transition: none;\n            transition: none; }\n  .reveal.overview .slides section:after,\n  .reveal.overview .slides section:before {\n    display: none !important; }\n  .reveal.overview .slides > section.stack {\n    padding: 0;\n    top: 0 !important;\n    background: none;\n    outline: none;\n    overflow: visible; }\n  .reveal.overview .backgrounds {\n    -webkit-perspective: inherit;\n            perspective: inherit; }\n  .reveal.overview .backgrounds .slide-background {\n    opacity: 1;\n    visibility: visible;\n    outline: 10px solid rgba(150, 150, 150, 0.1);\n    outline-offset: 10px; }\n\n.reveal.overview .slides section,\n.reveal.overview-deactivating .slides section {\n  -webkit-transition: none;\n          transition: none; }\n\n.reveal.overview .backgrounds .slide-background,\n.reveal.overview-deactivating .backgrounds .slide-background {\n  -webkit-transition: none;\n          transition: none; }\n\n.reveal.overview-animated .slides {\n  -webkit-transition: -webkit-transform 0.4s ease;\n          transition: transform 0.4s ease; }\n\n/*********************************************\n * RTL SUPPORT\n *********************************************/\n.reveal.rtl .slides,\n.reveal.rtl .slides h1,\n.reveal.rtl .slides h2,\n.reveal.rtl .slides h3,\n.reveal.rtl .slides h4,\n.reveal.rtl .slides h5,\n.reveal.rtl .slides h6 {\n  direction: rtl;\n  font-family: sans-serif; }\n\n.reveal.rtl pre,\n.reveal.rtl code {\n  direction: ltr; }\n\n.reveal.rtl ol,\n.reveal.rtl ul {\n  text-align: right; }\n\n.reveal.rtl .progress span {\n  float: right; }\n\n/*********************************************\n * PARALLAX BACKGROUND\n *********************************************/\n.reveal.has-parallax-background .backgrounds {\n  -webkit-transition: all 0.8s ease;\n          transition: all 0.8s ease; }\n\n/* Global transition speed settings */\n.reveal.has-parallax-background[data-transition-speed=\"fast\"] .backgrounds {\n  -webkit-transition-duration: 400ms;\n          transition-duration: 400ms; }\n\n.reveal.has-parallax-background[data-transition-speed=\"slow\"] .backgrounds {\n  -webkit-transition-duration: 1200ms;\n          transition-duration: 1200ms; }\n\n/*********************************************\n * LINK PREVIEW OVERLAY\n *********************************************/\n.reveal .overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  background: rgba(0, 0, 0, 0.9);\n  opacity: 0;\n  visibility: hidden;\n  -webkit-transition: all 0.3s ease;\n          transition: all 0.3s ease; }\n\n.reveal .overlay.visible {\n  opacity: 1;\n  visibility: visible; }\n\n.reveal .overlay .spinner {\n  position: absolute;\n  display: block;\n  top: 50%;\n  left: 50%;\n  width: 32px;\n  height: 32px;\n  margin: -16px 0 0 -16px;\n  z-index: 10;\n  background-image: url(data:image/gif;base64,R0lGODlhIAAgAPMAAJmZmf%2F%2F%2F6%2Bvr8nJybW1tcDAwOjo6Nvb26ioqKOjo7Ozs%2FLy8vz8%2FAAAAAAAAAAAACH%2FC05FVFNDQVBFMi4wAwEAAAAh%2FhpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh%2BQQJCgAAACwAAAAAIAAgAAAE5xDISWlhperN52JLhSSdRgwVo1ICQZRUsiwHpTJT4iowNS8vyW2icCF6k8HMMBkCEDskxTBDAZwuAkkqIfxIQyhBQBFvAQSDITM5VDW6XNE4KagNh6Bgwe60smQUB3d4Rz1ZBApnFASDd0hihh12BkE9kjAJVlycXIg7CQIFA6SlnJ87paqbSKiKoqusnbMdmDC2tXQlkUhziYtyWTxIfy6BE8WJt5YJvpJivxNaGmLHT0VnOgSYf0dZXS7APdpB309RnHOG5gDqXGLDaC457D1zZ%2FV%2FnmOM82XiHRLYKhKP1oZmADdEAAAh%2BQQJCgAAACwAAAAAIAAgAAAE6hDISWlZpOrNp1lGNRSdRpDUolIGw5RUYhhHukqFu8DsrEyqnWThGvAmhVlteBvojpTDDBUEIFwMFBRAmBkSgOrBFZogCASwBDEY%2FCZSg7GSE0gSCjQBMVG023xWBhklAnoEdhQEfyNqMIcKjhRsjEdnezB%2BA4k8gTwJhFuiW4dokXiloUepBAp5qaKpp6%2BHo7aWW54wl7obvEe0kRuoplCGepwSx2jJvqHEmGt6whJpGpfJCHmOoNHKaHx61WiSR92E4lbFoq%2BB6QDtuetcaBPnW6%2BO7wDHpIiK9SaVK5GgV543tzjgGcghAgAh%2BQQJCgAAACwAAAAAIAAgAAAE7hDISSkxpOrN5zFHNWRdhSiVoVLHspRUMoyUakyEe8PTPCATW9A14E0UvuAKMNAZKYUZCiBMuBakSQKG8G2FzUWox2AUtAQFcBKlVQoLgQReZhQlCIJesQXI5B0CBnUMOxMCenoCfTCEWBsJColTMANldx15BGs8B5wlCZ9Po6OJkwmRpnqkqnuSrayqfKmqpLajoiW5HJq7FL1Gr2mMMcKUMIiJgIemy7xZtJsTmsM4xHiKv5KMCXqfyUCJEonXPN2rAOIAmsfB3uPoAK%2B%2BG%2Bw48edZPK%2BM6hLJpQg484enXIdQFSS1u6UhksENEQAAIfkECQoAAAAsAAAAACAAIAAABOcQyEmpGKLqzWcZRVUQnZYg1aBSh2GUVEIQ2aQOE%2BG%2BcD4ntpWkZQj1JIiZIogDFFyHI0UxQwFugMSOFIPJftfVAEoZLBbcLEFhlQiqGp1Vd140AUklUN3eCA51C1EWMzMCezCBBmkxVIVHBWd3HHl9JQOIJSdSnJ0TDKChCwUJjoWMPaGqDKannasMo6WnM562R5YluZRwur0wpgqZE7NKUm%2BFNRPIhjBJxKZteWuIBMN4zRMIVIhffcgojwCF117i4nlLnY5ztRLsnOk%2BaV%2BoJY7V7m76PdkS4trKcdg0Zc0tTcKkRAAAIfkECQoAAAAsAAAAACAAIAAABO4QyEkpKqjqzScpRaVkXZWQEximw1BSCUEIlDohrft6cpKCk5xid5MNJTaAIkekKGQkWyKHkvhKsR7ARmitkAYDYRIbUQRQjWBwJRzChi9CRlBcY1UN4g0%2FVNB0AlcvcAYHRyZPdEQFYV8ccwR5HWxEJ02YmRMLnJ1xCYp0Y5idpQuhopmmC2KgojKasUQDk5BNAwwMOh2RtRq5uQuPZKGIJQIGwAwGf6I0JXMpC8C7kXWDBINFMxS4DKMAWVWAGYsAdNqW5uaRxkSKJOZKaU3tPOBZ4DuK2LATgJhkPJMgTwKCdFjyPHEnKxFCDhEAACH5BAkKAAAALAAAAAAgACAAAATzEMhJaVKp6s2nIkolIJ2WkBShpkVRWqqQrhLSEu9MZJKK9y1ZrqYK9WiClmvoUaF8gIQSNeF1Er4MNFn4SRSDARWroAIETg1iVwuHjYB1kYc1mwruwXKC9gmsJXliGxc%2BXiUCby9ydh1sOSdMkpMTBpaXBzsfhoc5l58Gm5yToAaZhaOUqjkDgCWNHAULCwOLaTmzswadEqggQwgHuQsHIoZCHQMMQgQGubVEcxOPFAcMDAYUA85eWARmfSRQCdcMe0zeP1AAygwLlJtPNAAL19DARdPzBOWSm1brJBi45soRAWQAAkrQIykShQ9wVhHCwCQCACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiRMDjI0Fd30%2FiI2UA5GSS5UDj2l6NoqgOgN4gksEBgYFf0FDqKgHnyZ9OX8HrgYHdHpcHQULXAS2qKpENRg7eAMLC7kTBaixUYFkKAzWAAnLC7FLVxLWDBLKCwaKTULgEwbLA4hJtOkSBNqITT3xEgfLpBtzE%2FjiuL04RGEBgwWhShRgQExHBAAh%2BQQJCgAAACwAAAAAIAAgAAAE7xDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfZiCqGk5dTESJeaOAlClzsJsqwiJwiqnFrb2nS9kmIcgEsjQydLiIlHehhpejaIjzh9eomSjZR%2BipslWIRLAgMDOR2DOqKogTB9pCUJBagDBXR6XB0EBkIIsaRsGGMMAxoDBgYHTKJiUYEGDAzHC9EACcUGkIgFzgwZ0QsSBcXHiQvOwgDdEwfFs0sDzt4S6BK4xYjkDOzn0unFeBzOBijIm1Dgmg5YFQwsCMjp1oJ8LyIAACH5BAkKAAAALAAAAAAgACAAAATwEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GGl6NoiPOH16iZKNlH6KmyWFOggHhEEvAwwMA0N9GBsEC6amhnVcEwavDAazGwIDaH1ipaYLBUTCGgQDA8NdHz0FpqgTBwsLqAbWAAnIA4FWKdMLGdYGEgraigbT0OITBcg5QwPT4xLrROZL6AuQAPUS7bxLpoWidY0JtxLHKhwwMJBTHgPKdEQAACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GAULDJCRiXo1CpGXDJOUjY%2BYip9DhToJA4RBLwMLCwVDfRgbBAaqqoZ1XBMHswsHtxtFaH1iqaoGNgAIxRpbFAgfPQSqpbgGBqUD1wBXeCYp1AYZ19JJOYgH1KwA4UBvQwXUBxPqVD9L3sbp2BNk2xvvFPJd%2BMFCN6HAAIKgNggY0KtEBAAh%2BQQJCgAAACwAAAAAIAAgAAAE6BDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfYIDMaAFdTESJeaEDAIMxYFqrOUaNW4E4ObYcCXaiBVEgULe0NJaxxtYksjh2NLkZISgDgJhHthkpU4mW6blRiYmZOlh4JWkDqILwUGBnE6TYEbCgevr0N1gH4At7gHiRpFaLNrrq8HNgAJA70AWxQIH1%2BvsYMDAzZQPC9VCNkDWUhGkuE5PxJNwiUK4UfLzOlD4WvzAHaoG9nxPi5d%2BjYUqfAhhykOFwJWiAAAIfkECQoAAAAsAAAAACAAIAAABPAQyElpUqnqzaciSoVkXVUMFaFSwlpOCcMYlErAavhOMnNLNo8KsZsMZItJEIDIFSkLGQoQTNhIsFehRww2CQLKF0tYGKYSg%2BygsZIuNqJksKgbfgIGepNo2cIUB3V1B3IvNiBYNQaDSTtfhhx0CwVPI0UJe0%2Bbm4g5VgcGoqOcnjmjqDSdnhgEoamcsZuXO1aWQy8KAwOAuTYYGwi7w5h%2BKr0SJ8MFihpNbx%2B4Erq7BYBuzsdiH1jCAzoSfl0rVirNbRXlBBlLX%2BBP0XJLAPGzTkAuAOqb0WT5AH7OcdCm5B8TgRwSRKIHQtaLCwg1RAAAOwAAAAAAAAAAAA%3D%3D);\n  visibility: visible;\n  opacity: 0.6;\n  -webkit-transition: all 0.3s ease;\n          transition: all 0.3s ease; }\n\n.reveal .overlay header {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 40px;\n  z-index: 2;\n  border-bottom: 1px solid #222; }\n\n.reveal .overlay header a {\n  display: inline-block;\n  width: 40px;\n  height: 40px;\n  padding: 0 10px;\n  float: right;\n  opacity: 0.6;\n  box-sizing: border-box; }\n\n.reveal .overlay header a:hover {\n  opacity: 1; }\n\n.reveal .overlay header a .icon {\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  background-position: 50% 50%;\n  background-size: 100%;\n  background-repeat: no-repeat; }\n\n.reveal .overlay header a.close .icon {\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABkklEQVRYR8WX4VHDMAxG6wnoJrABZQPYBCaBTWAD2g1gE5gg6OOsXuxIlr40d81dfrSJ9V4c2VLK7spHuTJ/5wpM07QXuXc5X0opX2tEJcadjHuV80li/FgxTIEK/5QBCICBD6xEhSMGHgQPgBgLiYVAB1dpSqKDawxTohFw4JSEA3clzgIBPCURwE2JucBR7rhPJJv5OpJwDX+SfDjgx1wACQeJG1aChP9K/IMmdZ8DtESV1WyP3Bt4MwM6sj4NMxMYiqUWHQu4KYA/SYkIjOsm3BXYWMKFDwU2khjCQ4ELJUJ4SmClRArOCmSXGuKma0fYD5CbzHxFpCSGAhfAVSSUGDUk2BWZaff2g6GE15BsBQ9nwmpIGDiyHQddwNTMKkbZaf9fajXQca1EX44puJZUsnY0ObGmITE3GVLCbEhQUjGVt146j6oasWN+49Vph2w1pZ5EansNZqKBm1txbU57iRRcZ86RWMDdWtBJUHBHwoQPi1GV+JCbntmvok7iTX4/Up9mgyTc/FJYDTcndgH/AA5A/CHsyEkVAAAAAElFTkSuQmCC); }\n\n.reveal .overlay header a.external .icon {\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAcElEQVRYR+2WSQoAIQwEzf8f7XiOMkUQxUPlGkM3hVmiQfQR9GYnH1SsAQlI4DiBqkCMoNb9y2e90IAEJPAcgdznU9+engMaeJ7Azh5Y1U67gAho4DqBqmB1buAf0MB1AlVBek83ZPkmJMGc1wAR+AAqod/B97TRpQAAAABJRU5ErkJggg==); }\n\n.reveal .overlay .viewport {\n  position: absolute;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  top: 40px;\n  right: 0;\n  bottom: 0;\n  left: 0; }\n\n.reveal .overlay.overlay-preview .viewport iframe {\n  width: 100%;\n  height: 100%;\n  max-width: 100%;\n  max-height: 100%;\n  border: 0;\n  opacity: 0;\n  visibility: hidden;\n  -webkit-transition: all 0.3s ease;\n          transition: all 0.3s ease; }\n\n.reveal .overlay.overlay-preview.loaded .viewport iframe {\n  opacity: 1;\n  visibility: visible; }\n\n.reveal .overlay.overlay-preview.loaded .spinner {\n  opacity: 0;\n  visibility: hidden;\n  -webkit-transform: scale(0.2);\n          transform: scale(0.2); }\n\n.reveal .overlay.overlay-help .viewport {\n  overflow: auto;\n  color: #fff; }\n\n.reveal .overlay.overlay-help .viewport .viewport-inner {\n  width: 600px;\n  margin: auto;\n  padding: 20px 20px 80px 20px;\n  text-align: center;\n  letter-spacing: normal; }\n\n.reveal .overlay.overlay-help .viewport .viewport-inner .title {\n  font-size: 20px; }\n\n.reveal .overlay.overlay-help .viewport .viewport-inner table {\n  border: 1px solid #fff;\n  border-collapse: collapse;\n  font-size: 16px; }\n\n.reveal .overlay.overlay-help .viewport .viewport-inner table th,\n.reveal .overlay.overlay-help .viewport .viewport-inner table td {\n  width: 200px;\n  padding: 14px;\n  border: 1px solid #fff;\n  vertical-align: middle; }\n\n.reveal .overlay.overlay-help .viewport .viewport-inner table th {\n  padding-top: 20px;\n  padding-bottom: 20px; }\n\n/*********************************************\n * PLAYBACK COMPONENT\n *********************************************/\n.reveal .playback {\n  position: fixed;\n  left: 15px;\n  bottom: 20px;\n  z-index: 30;\n  cursor: pointer;\n  -webkit-transition: all 400ms ease;\n          transition: all 400ms ease; }\n\n.reveal.overview .playback {\n  opacity: 0;\n  visibility: hidden; }\n\n/*********************************************\n * ROLLING LINKS\n *********************************************/\n.reveal .roll {\n  display: inline-block;\n  line-height: 1.2;\n  overflow: hidden;\n  vertical-align: top;\n  -webkit-perspective: 400px;\n          perspective: 400px;\n  -webkit-perspective-origin: 50% 50%;\n          perspective-origin: 50% 50%; }\n\n.reveal .roll:hover {\n  background: none;\n  text-shadow: none; }\n\n.reveal .roll span {\n  display: block;\n  position: relative;\n  padding: 0 2px;\n  pointer-events: none;\n  -webkit-transition: all 400ms ease;\n          transition: all 400ms ease;\n  -webkit-transform-origin: 50% 0%;\n          transform-origin: 50% 0%;\n  -webkit-transform-style: preserve-3d;\n          transform-style: preserve-3d;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n\n.reveal .roll:hover span {\n  background: rgba(0, 0, 0, 0.5);\n  -webkit-transform: translate3d(0px, 0px, -45px) rotateX(90deg);\n          transform: translate3d(0px, 0px, -45px) rotateX(90deg); }\n\n.reveal .roll span:after {\n  content: attr(data-title);\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0;\n  padding: 0 2px;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  -webkit-transform-origin: 50% 0%;\n          transform-origin: 50% 0%;\n  -webkit-transform: translate3d(0px, 110%, 0px) rotateX(-90deg);\n          transform: translate3d(0px, 110%, 0px) rotateX(-90deg); }\n\n/*********************************************\n * SPEAKER NOTES\n *********************************************/\n.reveal aside.notes {\n  display: none; }\n\n.reveal .speaker-notes {\n  display: none;\n  position: absolute;\n  width: 70%;\n  max-height: 15%;\n  left: 15%;\n  bottom: 26px;\n  padding: 10px;\n  z-index: 1;\n  font-size: 18px;\n  line-height: 1.4;\n  color: #fff;\n  background-color: rgba(0, 0, 0, 0.5);\n  overflow: auto;\n  box-sizing: border-box;\n  text-align: left;\n  font-family: Helvetica, sans-serif;\n  -webkit-overflow-scrolling: touch; }\n\n.reveal .speaker-notes.visible:not(:empty) {\n  display: block; }\n\n@media screen and (max-width: 1024px) {\n  .reveal .speaker-notes {\n    font-size: 14px; } }\n\n@media screen and (max-width: 600px) {\n  .reveal .speaker-notes {\n    width: 90%;\n    left: 5%; } }\n\n/*********************************************\n * ZOOM PLUGIN\n *********************************************/\n.zoomed .reveal *,\n.zoomed .reveal *:before,\n.zoomed .reveal *:after {\n  -webkit-backface-visibility: visible !important;\n          backface-visibility: visible !important; }\n\n.zoomed .reveal .progress,\n.zoomed .reveal .controls {\n  opacity: 0; }\n\n.zoomed .reveal .roll span {\n  background: none; }\n\n.zoomed .reveal .roll span:after {\n  visibility: hidden; }\n", ""]);
 
 	// exports
 
@@ -421,8 +434,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../css-loader/index.js!./default.css", function() {
-				var newContent = require("!!./../../css-loader/index.js!./default.css");
+			module.hot.accept("!!./../../../css-loader/index.js!./league.css", function() {
+				var newContent = require("!!./../../../css-loader/index.js!./league.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -437,10 +450,11 @@
 
 	exports = module.exports = __webpack_require__(3)();
 	// imports
+	exports.i(__webpack_require__(7), "");
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);", ""]);
 
 	// module
-	exports.push([module.id, "/**\n * Default theme for reveal.js.\n *\n * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se\n */\n@font-face {\n  font-family: 'League Gothic';\n  src: url(" + __webpack_require__(7) + ");\n  src: url(" + __webpack_require__(7) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(8) + ") format(\"woff\"), url(" + __webpack_require__(9) + ") format(\"truetype\"), url(" + __webpack_require__(10) + "#LeagueGothicRegular) format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n/*********************************************\n * GLOBAL STYLES\n *********************************************/\nbody {\n  background: #1c1e20;\n  background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #555a5f), color-stop(100%, #1c1e20));\n  background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background: -o-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background: -ms-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background: radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background-color: #2b2b2b; }\n\n.reveal {\n  font-family: \"Lato\", sans-serif;\n  font-size: 36px;\n  font-weight: normal;\n  letter-spacing: -0.02em;\n  color: #eeeeee; }\n\n::selection {\n  color: white;\n  background: #ff5e99;\n  text-shadow: none; }\n\n/*********************************************\n * HEADERS\n *********************************************/\n.reveal h1,\n.reveal h2,\n.reveal h3,\n.reveal h4,\n.reveal h5,\n.reveal h6 {\n  margin: 0 0 20px 0;\n  color: #eeeeee;\n  font-family: \"League Gothic\", Impact, sans-serif;\n  line-height: 0.9em;\n  letter-spacing: 0.02em;\n  text-transform: uppercase;\n  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); }\n\n.reveal h1 {\n  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15); }\n\n/*********************************************\n * LINKS\n *********************************************/\n.reveal a:not(.image) {\n  color: #13daec;\n  text-decoration: none;\n  -webkit-transition: color .15s ease;\n  -moz-transition: color .15s ease;\n  -ms-transition: color .15s ease;\n  -o-transition: color .15s ease;\n  transition: color .15s ease; }\n\n.reveal a:not(.image):hover {\n  color: #71e9f4;\n  text-shadow: none;\n  border: none; }\n\n.reveal .roll span:after {\n  color: #fff;\n  background: #0d99a5; }\n\n/*********************************************\n * IMAGES\n *********************************************/\n.reveal section img {\n  margin: 15px 0px;\n  background: rgba(255, 255, 255, 0.12);\n  border: 4px solid #eeeeee;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);\n  -webkit-transition: all .2s linear;\n  -moz-transition: all .2s linear;\n  -ms-transition: all .2s linear;\n  -o-transition: all .2s linear;\n  transition: all .2s linear; }\n\n.reveal a:hover img {\n  background: rgba(255, 255, 255, 0.2);\n  border-color: #13daec;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }\n\n/*********************************************\n * NAVIGATION CONTROLS\n *********************************************/\n.reveal .controls div.navigate-left,\n.reveal .controls div.navigate-left.enabled {\n  border-right-color: #13daec; }\n\n.reveal .controls div.navigate-right,\n.reveal .controls div.navigate-right.enabled {\n  border-left-color: #13daec; }\n\n.reveal .controls div.navigate-up,\n.reveal .controls div.navigate-up.enabled {\n  border-bottom-color: #13daec; }\n\n.reveal .controls div.navigate-down,\n.reveal .controls div.navigate-down.enabled {\n  border-top-color: #13daec; }\n\n.reveal .controls div.navigate-left.enabled:hover {\n  border-right-color: #71e9f4; }\n\n.reveal .controls div.navigate-right.enabled:hover {\n  border-left-color: #71e9f4; }\n\n.reveal .controls div.navigate-up.enabled:hover {\n  border-bottom-color: #71e9f4; }\n\n.reveal .controls div.navigate-down.enabled:hover {\n  border-top-color: #71e9f4; }\n\n/*********************************************\n * PROGRESS BAR\n *********************************************/\n.reveal .progress {\n  background: rgba(0, 0, 0, 0.2); }\n\n.reveal .progress span {\n  background: #13daec;\n  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }\n\n/*********************************************\n * SLIDE NUMBER\n *********************************************/\n.reveal .slide-number {\n  color: #13daec; }\n", ""]);
+	exports.push([module.id, "/**\n * League theme for reveal.js.\n *\n * This was the default theme pre-3.0.0.\n *\n * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se\n */\n/*********************************************\n * GLOBAL STYLES\n *********************************************/\nbody {\n  background: #1c1e20;\n  background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #555a5f), color-stop(100%, #1c1e20));\n  background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background: -o-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background: -ms-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background: radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);\n  background-color: #2b2b2b; }\n\n.reveal {\n  font-family: \"Lato\", sans-serif;\n  font-size: 36px;\n  font-weight: normal;\n  color: #eee; }\n\n::selection {\n  color: #fff;\n  background: #FF5E99;\n  text-shadow: none; }\n\n.reveal .slides > section,\n.reveal .slides > section > section {\n  line-height: 1.3;\n  font-weight: inherit; }\n\n/*********************************************\n * HEADERS\n *********************************************/\n.reveal h1,\n.reveal h2,\n.reveal h3,\n.reveal h4,\n.reveal h5,\n.reveal h6 {\n  margin: 0 0 20px 0;\n  color: #eee;\n  font-family: \"League Gothic\", Impact, sans-serif;\n  font-weight: normal;\n  line-height: 1.2;\n  letter-spacing: normal;\n  text-transform: uppercase;\n  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);\n  word-wrap: break-word; }\n\n.reveal h1 {\n  font-size: 3.77em; }\n\n.reveal h2 {\n  font-size: 2.11em; }\n\n.reveal h3 {\n  font-size: 1.55em; }\n\n.reveal h4 {\n  font-size: 1em; }\n\n.reveal h1 {\n  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15); }\n\n/*********************************************\n * OTHER\n *********************************************/\n.reveal p {\n  margin: 20px 0;\n  line-height: 1.3; }\n\n/* Ensure certain elements are never larger than the slide itself */\n.reveal img,\n.reveal video,\n.reveal iframe {\n  max-width: 95%;\n  max-height: 95%; }\n\n.reveal strong,\n.reveal b {\n  font-weight: bold; }\n\n.reveal em {\n  font-style: italic; }\n\n.reveal ol,\n.reveal dl,\n.reveal ul {\n  display: inline-block;\n  text-align: left;\n  margin: 0 0 0 1em; }\n\n.reveal ol {\n  list-style-type: decimal; }\n\n.reveal ul {\n  list-style-type: disc; }\n\n.reveal ul ul {\n  list-style-type: square; }\n\n.reveal ul ul ul {\n  list-style-type: circle; }\n\n.reveal ul ul,\n.reveal ul ol,\n.reveal ol ol,\n.reveal ol ul {\n  display: block;\n  margin-left: 40px; }\n\n.reveal dt {\n  font-weight: bold; }\n\n.reveal dd {\n  margin-left: 40px; }\n\n.reveal q,\n.reveal blockquote {\n  quotes: none; }\n\n.reveal blockquote {\n  display: block;\n  position: relative;\n  width: 70%;\n  margin: 20px auto;\n  padding: 5px;\n  font-style: italic;\n  background: rgba(255, 255, 255, 0.05);\n  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }\n\n.reveal blockquote p:first-child,\n.reveal blockquote p:last-child {\n  display: inline-block; }\n\n.reveal q {\n  font-style: italic; }\n\n.reveal pre {\n  display: block;\n  position: relative;\n  width: 90%;\n  margin: 20px auto;\n  text-align: left;\n  font-size: 0.55em;\n  font-family: monospace;\n  line-height: 1.2em;\n  word-wrap: break-word;\n  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }\n\n.reveal code {\n  font-family: monospace; }\n\n.reveal pre code {\n  display: block;\n  padding: 5px;\n  overflow: auto;\n  max-height: 400px;\n  word-wrap: normal; }\n\n.reveal table {\n  margin: auto;\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.reveal table th {\n  font-weight: bold; }\n\n.reveal table th,\n.reveal table td {\n  text-align: left;\n  padding: 0.2em 0.5em 0.2em 0.5em;\n  border-bottom: 1px solid; }\n\n.reveal table th[align=\"center\"],\n.reveal table td[align=\"center\"] {\n  text-align: center; }\n\n.reveal table th[align=\"right\"],\n.reveal table td[align=\"right\"] {\n  text-align: right; }\n\n.reveal table tbody tr:last-child th,\n.reveal table tbody tr:last-child td {\n  border-bottom: none; }\n\n.reveal sup {\n  vertical-align: super; }\n\n.reveal sub {\n  vertical-align: sub; }\n\n.reveal small {\n  display: inline-block;\n  font-size: 0.6em;\n  line-height: 1.2em;\n  vertical-align: top; }\n\n.reveal small * {\n  vertical-align: top; }\n\n/*********************************************\n * LINKS\n *********************************************/\n.reveal a {\n  color: #13DAEC;\n  text-decoration: none;\n  -webkit-transition: color .15s ease;\n  -moz-transition: color .15s ease;\n  transition: color .15s ease; }\n\n.reveal a:hover {\n  color: #71e9f4;\n  text-shadow: none;\n  border: none; }\n\n.reveal .roll span:after {\n  color: #fff;\n  background: #0d99a5; }\n\n/*********************************************\n * IMAGES\n *********************************************/\n.reveal section img {\n  margin: 15px 0px;\n  background: rgba(255, 255, 255, 0.12);\n  border: 4px solid #eee;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }\n\n.reveal section img.plain {\n  border: 0;\n  box-shadow: none; }\n\n.reveal a img {\n  -webkit-transition: all .15s linear;\n  -moz-transition: all .15s linear;\n  transition: all .15s linear; }\n\n.reveal a:hover img {\n  background: rgba(255, 255, 255, 0.2);\n  border-color: #13DAEC;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }\n\n/*********************************************\n * NAVIGATION CONTROLS\n *********************************************/\n.reveal .controls .navigate-left,\n.reveal .controls .navigate-left.enabled {\n  border-right-color: #13DAEC; }\n\n.reveal .controls .navigate-right,\n.reveal .controls .navigate-right.enabled {\n  border-left-color: #13DAEC; }\n\n.reveal .controls .navigate-up,\n.reveal .controls .navigate-up.enabled {\n  border-bottom-color: #13DAEC; }\n\n.reveal .controls .navigate-down,\n.reveal .controls .navigate-down.enabled {\n  border-top-color: #13DAEC; }\n\n.reveal .controls .navigate-left.enabled:hover {\n  border-right-color: #71e9f4; }\n\n.reveal .controls .navigate-right.enabled:hover {\n  border-left-color: #71e9f4; }\n\n.reveal .controls .navigate-up.enabled:hover {\n  border-bottom-color: #71e9f4; }\n\n.reveal .controls .navigate-down.enabled:hover {\n  border-top-color: #71e9f4; }\n\n/*********************************************\n * PROGRESS BAR\n *********************************************/\n.reveal .progress {\n  background: rgba(0, 0, 0, 0.2); }\n\n.reveal .progress span {\n  background: #13DAEC;\n  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }\n", ""]);
 
 	// exports
 
@@ -449,47 +463,75 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "7c45e80a47dd1698cbf946705d809ee0.eot";
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "@font-face {\n    font-family: 'League Gothic';\n    src: url(" + __webpack_require__(8) + ");\n    src: url(" + __webpack_require__(8) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(9) + ") format('woff'),\n         url(" + __webpack_require__(10) + ") format('truetype');\n\n    font-weight: normal;\n    font-style: normal;\n}", ""]);
+
+	// exports
+
 
 /***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "be4f8744ed8cc89b8ee15acd51188379.woff";
+	module.exports = __webpack_require__.p + "9900a4643cc63c5d8f969d2196f72572.eot";
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "582c7d09d5227d06492ef8bcd0ca6ba4.ttf";
+	module.exports = __webpack_require__.p + "cd382dc8a9d6317864b5810a320effc5.woff";
 
 /***/ },
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "fe0b97f78d0e6a8ab4b10c7d0814bead.svg";
+	module.exports = __webpack_require__.p + "91295fa87df918411b49b7531da5d558.ttf";
 
 /***/ },
 /* 11 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	/*!
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	 * reveal.js
 	 * http://lab.hakim.se/reveal-js
 	 * MIT licensed
 	 *
-	 * Copyright (C) 2013 Hakim El Hattab, http://hakim.se
+	 * Copyright (C) 2016 Hakim El Hattab, http://hakim.se
 	 */
-	var Reveal = (function(){
+	(function( root, factory ) {
+		if( true ) {
+			// AMD. Register as an anonymous module.
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
+				root.Reveal = factory();
+				return root.Reveal;
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if( typeof exports === 'object' ) {
+			// Node. Does not work with strict CommonJS.
+			module.exports = factory();
+		} else {
+			// Browser globals.
+			root.Reveal = factory();
+		}
+	}( this, function() {
 
 		'use strict';
 
-		var SLIDES_SELECTOR = '.reveal .slides section',
-			HORIZONTAL_SLIDES_SELECTOR = '.reveal .slides>section',
-			VERTICAL_SLIDES_SELECTOR = '.reveal .slides>section.present>section',
-			HOME_SLIDE_SELECTOR = '.reveal .slides>section:first-of-type',
+		var Reveal;
 
-			// Configurations defaults, can be overridden at initialization time
+		// The reveal.js version
+		var VERSION = '3.3.0';
+
+		var SLIDES_SELECTOR = '.slides section',
+			HORIZONTAL_SLIDES_SELECTOR = '.slides>section',
+			VERTICAL_SLIDES_SELECTOR = '.slides>section.present>section',
+			HOME_SLIDE_SELECTOR = '.slides>section:first-of-type',
+			UA = navigator.userAgent,
+
+			// Configuration defaults, can be overridden at initialization time
 			config = {
 
 				// The "normal" size of the presentation, aspect ratio will be preserved
@@ -502,7 +544,7 @@
 
 				// Bounds for smallest/largest possible scale to apply to content
 				minScale: 0.2,
-				maxScale: 1.0,
+				maxScale: 1.5,
 
 				// Display controls in the bottom right corner
 				controls: true,
@@ -519,6 +561,9 @@
 				// Enable keyboard shortcuts for navigation
 				keyboard: true,
 
+				// Optional function that blocks keyboard events when retuning false
+				keyboardCondition: null,
+
 				// Enable the slide overview mode
 				overview: true,
 
@@ -534,12 +579,25 @@
 				// Change the presentation direction to be RTL
 				rtl: false,
 
+				// Randomizes the order of slides each time the presentation loads
+				shuffle: false,
+
 				// Turns fragments on and off globally
 				fragments: true,
 
 				// Flags if the presentation is running in an embedded mode,
 				// i.e. contained within a limited portion of the screen
 				embedded: false,
+
+				// Flags if we should show a help overlay when the questionmark
+				// key is pressed
+				help: true,
+
+				// Flags if it should be possible to pause the presentation (blackout)
+				pause: true,
+
+				// Flags if speaker notes should be visible to all viewers
+				showNotes: false,
 
 				// Number of milliseconds between automatically proceeding to the
 				// next slide, disabled when set to 0, this value can be overwritten
@@ -548,6 +606,9 @@
 
 				// Stop auto-sliding after user input
 				autoSlideStoppable: true,
+
+				// Use this method for navigation when auto-sliding (defaults to navigateNext)
+				autoSlideMethod: null,
 
 				// Enable slide navigation via mouse wheel
 				mouseWheel: false,
@@ -561,26 +622,33 @@
 				// Opens links in an iframe preview overlay
 				previewLinks: false,
 
-				// Focuses body when page changes visiblity to ensure keyboard shortcuts work
-				focusBodyOnPageVisiblityChange: true,
+				// Exposes the reveal.js API through window.postMessage
+				postMessage: true,
 
-				// Theme (see /css/theme)
-				theme: null,
+				// Dispatches all reveal.js events to the parent window through postMessage
+				postMessageEvents: false,
+
+				// Focuses body when page changes visiblity to ensure keyboard shortcuts work
+				focusBodyOnPageVisibilityChange: true,
 
 				// Transition style
-				transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 				// Transition speed
 				transitionSpeed: 'default', // default/fast/slow
 
 				// Transition style for full page slide backgrounds
-				backgroundTransition: 'default', // default/linear/none
+				backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
 
 				// Parallax background image
 				parallaxBackgroundImage: '', // CSS syntax, e.g. "a.jpg"
 
 				// Parallax background size
 				parallaxBackgroundSize: '', // CSS syntax, e.g. "3000px 2000px"
+
+				// Amount of pixels to move the parallax background per slide step
+				parallaxBackgroundHorizontal: null,
+				parallaxBackgroundVertical: null,
 
 				// Number of slides away from the current that are visible
 				viewDistance: 3,
@@ -592,6 +660,13 @@
 
 			// Flags if reveal.js is loaded (has dispatched the 'ready' event)
 			loaded = false,
+
+			// Flags if the overview mode is currently active
+			overview = false,
+
+			// Holds the dimensions of our overview slides, including margins
+			overviewSlideWidth = null,
+			overviewSlideHeight = null,
 
 			// The horizontal and vertical index of the currently active slide
 			indexh,
@@ -611,6 +686,10 @@
 			// The current scale of the presentation (see width/height config)
 			scale = 1,
 
+			// CSS transform that is currently applied to the slides container,
+			// split into two groups
+			slidesTransform = { layout: '', overview: '' },
+
 			// Cached references to DOM elements
 			dom = {},
 
@@ -620,17 +699,14 @@
 			// Client is a mobile device, see #checkCapabilities()
 			isMobileDevice,
 
+			// Client is a desktop Chrome, see #checkCapabilities()
+			isChrome,
+
 			// Throttles mouse wheel navigation
 			lastMouseWheelStep = 0,
 
 			// Delays updates to the URL due to a Chrome thumbnailer bug
 			writeURLTimeout = 0,
-
-			// A delay used to activate the overview mode
-			activateOverviewTimeout = 0,
-
-			// A delay used to deactivate the overview mode
-			deactivateOverviewTimeout = 0,
 
 			// Flags if the interaction event listeners are bound
 			eventsAreBound = false,
@@ -652,6 +728,21 @@
 				startCount: 0,
 				captured: false,
 				threshold: 40
+			},
+
+			// Holds information about the keyboard shortcuts
+			keyboardShortcuts = {
+				'N  ,  SPACE':			'Next slide',
+				'P':					'Previous slide',
+				'&#8592;  ,  H':		'Navigate left',
+				'&#8594;  ,  L':		'Navigate right',
+				'&#8593;  ,  K':		'Navigate up',
+				'&#8595;  ,  J':		'Navigate down',
+				'Home':					'First slide',
+				'End':					'Last slide',
+				'B  ,  .':				'Pause',
+				'F':					'Fullscreen',
+				'ESC, O':				'Slide overview'
 			};
 
 		/**
@@ -664,10 +755,29 @@
 			if( !features.transforms2d && !features.transforms3d ) {
 				document.body.setAttribute( 'class', 'no-transforms' );
 
+				// Since JS won't be running any further, we load all lazy
+				// loading elements upfront
+				var images = toArray( document.getElementsByTagName( 'img' ) ),
+					iframes = toArray( document.getElementsByTagName( 'iframe' ) );
+
+				var lazyLoadable = images.concat( iframes );
+
+				for( var i = 0, len = lazyLoadable.length; i < len; i++ ) {
+					var element = lazyLoadable[i];
+					if( element.getAttribute( 'data-src' ) ) {
+						element.setAttribute( 'src', element.getAttribute( 'data-src' ) );
+						element.removeAttribute( 'data-src' );
+					}
+				}
+
 				// If the browser doesn't support core features we won't be
 				// using JavaScript to control the presentation
 				return;
 			}
+
+			// Cache references to key DOM elements
+			dom.wrapper = document.querySelector( '.reveal' );
+			dom.slides = document.querySelector( '.reveal .slides' );
 
 			// Force a layout when the whole page, incl fonts, has loaded
 			window.addEventListener( 'load', layout, false );
@@ -696,27 +806,39 @@
 		 */
 		function checkCapabilities() {
 
-			features.transforms3d = 'WebkitPerspective' in document.body.style ||
-									'MozPerspective' in document.body.style ||
-									'msPerspective' in document.body.style ||
-									'OPerspective' in document.body.style ||
-									'perspective' in document.body.style;
+			isMobileDevice = /(iphone|ipod|ipad|android)/gi.test( UA );
+			isChrome = /chrome/i.test( UA ) && !/edge/i.test( UA );
 
-			features.transforms2d = 'WebkitTransform' in document.body.style ||
-									'MozTransform' in document.body.style ||
-									'msTransform' in document.body.style ||
-									'OTransform' in document.body.style ||
-									'transform' in document.body.style;
+			var testElement = document.createElement( 'div' );
+
+			features.transforms3d = 'WebkitPerspective' in testElement.style ||
+									'MozPerspective' in testElement.style ||
+									'msPerspective' in testElement.style ||
+									'OPerspective' in testElement.style ||
+									'perspective' in testElement.style;
+
+			features.transforms2d = 'WebkitTransform' in testElement.style ||
+									'MozTransform' in testElement.style ||
+									'msTransform' in testElement.style ||
+									'OTransform' in testElement.style ||
+									'transform' in testElement.style;
 
 			features.requestAnimationFrameMethod = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
 			features.requestAnimationFrame = typeof features.requestAnimationFrameMethod === 'function';
 
 			features.canvas = !!document.createElement( 'canvas' ).getContext;
 
-			isMobileDevice = navigator.userAgent.match( /(iphone|ipod|android)/gi );
+			// Transitions in the overview are disabled in desktop and
+			// Safari due to lag
+			features.overviewTransitions = !/Version\/[\d\.]+.*Safari/.test( UA );
+
+			// Flags if we should use zoom instead of transform to scale
+			// up slides. Zoom produces crisper results but has a lot of
+			// xbrowser quirks so we only use it in whitelsited browsers.
+			features.zoom = 'zoom' in testElement.style && !isMobileDevice &&
+							( isChrome || /Version\/[\d\.]+.*Safari/.test( UA ) );
 
 		}
-
 
 	    /**
 	     * Loads the dependencies of reveal.js. Dependencies are
@@ -791,6 +913,12 @@
 			// Make sure we've got all the DOM elements we need
 			setupDOM();
 
+			// Listen to messages posted to this window
+			setupPostMessage();
+
+			// Prevent the slides from being scrolled out of view
+			setupScrollPrevention();
+
 			// Resets all vertical slides so that only the first is visible
 			resetVerticalSlides();
 
@@ -818,6 +946,20 @@
 				} );
 			}, 1 );
 
+			// Special setup and config is required when printing to PDF
+			if( isPrintingPDF() ) {
+				removeEventListeners();
+
+				// The document needs to have loaded for the PDF layout
+				// measurements to be accurate
+				if( document.readyState === 'complete' ) {
+					setupPDF();
+				}
+				else {
+					window.addEventListener( 'load', setupPDF );
+				}
+			}
+
 		}
 
 		/**
@@ -826,11 +968,6 @@
 		 * not found, it is created.
 		 */
 		function setupDOM() {
-
-			// Cache references to key DOM elements
-			dom.theme = document.querySelector( '#theme' );
-			dom.wrapper = document.querySelector( '.reveal' );
-			dom.slides = document.querySelector( '.reveal .slides' );
 
 			// Prevent transitions while we're loading
 			dom.slides.classList.add( 'no-transition' );
@@ -844,22 +981,26 @@
 
 			// Arrow controls
 			createSingletonNode( dom.wrapper, 'aside', 'controls',
-				'<div class="navigate-left"></div>' +
-				'<div class="navigate-right"></div>' +
-				'<div class="navigate-up"></div>' +
-				'<div class="navigate-down"></div>' );
+				'<button class="navigate-left" aria-label="previous slide"></button>' +
+				'<button class="navigate-right" aria-label="next slide"></button>' +
+				'<button class="navigate-up" aria-label="above slide"></button>' +
+				'<button class="navigate-down" aria-label="below slide"></button>' );
 
 			// Slide number
 			dom.slideNumber = createSingletonNode( dom.wrapper, 'div', 'slide-number', '' );
 
-			// State background element [DEPRECATED]
-			createSingletonNode( dom.wrapper, 'div', 'state-background', null );
+			// Element containing notes that are visible to the audience
+			dom.speakerNotes = createSingletonNode( dom.wrapper, 'div', 'speaker-notes', null );
+			dom.speakerNotes.setAttribute( 'data-prevent-swipe', '' );
 
 			// Overlay graphic which is displayed during the paused mode
 			createSingletonNode( dom.wrapper, 'div', 'pause-overlay', null );
 
 			// Cache references to elements
 			dom.controls = document.querySelector( '.reveal .controls' );
+			dom.theme = document.querySelector( '#theme' );
+
+			dom.wrapper.setAttribute( 'role', 'application' );
 
 			// There can be multiple instances of controls throughout the page
 			dom.controlsLeft = toArray( document.querySelectorAll( '.navigate-left' ) );
@@ -868,6 +1009,161 @@
 			dom.controlsDown = toArray( document.querySelectorAll( '.navigate-down' ) );
 			dom.controlsPrev = toArray( document.querySelectorAll( '.navigate-prev' ) );
 			dom.controlsNext = toArray( document.querySelectorAll( '.navigate-next' ) );
+
+			dom.statusDiv = createStatusDiv();
+		}
+
+		/**
+		 * Creates a hidden div with role aria-live to announce the
+		 * current slide content. Hide the div off-screen to make it
+		 * available only to Assistive Technologies.
+		 */
+		function createStatusDiv() {
+
+			var statusDiv = document.getElementById( 'aria-status-div' );
+			if( !statusDiv ) {
+				statusDiv = document.createElement( 'div' );
+				statusDiv.style.position = 'absolute';
+				statusDiv.style.height = '1px';
+				statusDiv.style.width = '1px';
+				statusDiv.style.overflow ='hidden';
+				statusDiv.style.clip = 'rect( 1px, 1px, 1px, 1px )';
+				statusDiv.setAttribute( 'id', 'aria-status-div' );
+				statusDiv.setAttribute( 'aria-live', 'polite' );
+				statusDiv.setAttribute( 'aria-atomic','true' );
+				dom.wrapper.appendChild( statusDiv );
+			}
+			return statusDiv;
+
+		}
+
+		/**
+		 * Configures the presentation for printing to a static
+		 * PDF.
+		 */
+		function setupPDF() {
+
+			var slideSize = getComputedSlideSize( window.innerWidth, window.innerHeight );
+
+			// Dimensions of the PDF pages
+			var pageWidth = Math.floor( slideSize.width * ( 1 + config.margin ) ),
+				pageHeight = Math.floor( slideSize.height * ( 1 + config.margin  ) );
+
+			// Dimensions of slides within the pages
+			var slideWidth = slideSize.width,
+				slideHeight = slideSize.height;
+
+			// Let the browser know what page size we want to print
+			injectStyleSheet( '@page{size:'+ pageWidth +'px '+ pageHeight +'px; margin: 0;}' );
+
+			// Limit the size of certain elements to the dimensions of the slide
+			injectStyleSheet( '.reveal section>img, .reveal section>video, .reveal section>iframe{max-width: '+ slideWidth +'px; max-height:'+ slideHeight +'px}' );
+
+			document.body.classList.add( 'print-pdf' );
+			document.body.style.width = pageWidth + 'px';
+			document.body.style.height = pageHeight + 'px';
+
+			// Add each slide's index as attributes on itself, we need these
+			// indices to generate slide numbers below
+			toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ).forEach( function( hslide, h ) {
+				hslide.setAttribute( 'data-index-h', h );
+
+				if( hslide.classList.contains( 'stack' ) ) {
+					toArray( hslide.querySelectorAll( 'section' ) ).forEach( function( vslide, v ) {
+						vslide.setAttribute( 'data-index-h', h );
+						vslide.setAttribute( 'data-index-v', v );
+					} );
+				}
+			} );
+
+			// Slide and slide background layout
+			toArray( dom.wrapper.querySelectorAll( SLIDES_SELECTOR ) ).forEach( function( slide ) {
+
+				// Vertical stacks are not centred since their section
+				// children will be
+				if( slide.classList.contains( 'stack' ) === false ) {
+					// Center the slide inside of the page, giving the slide some margin
+					var left = ( pageWidth - slideWidth ) / 2,
+						top = ( pageHeight - slideHeight ) / 2;
+
+					var contentHeight = getAbsoluteHeight( slide );
+					var numberOfPages = Math.max( Math.ceil( contentHeight / pageHeight ), 1 );
+
+					// Center slides vertically
+					if( numberOfPages === 1 && config.center || slide.classList.contains( 'center' ) ) {
+						top = Math.max( ( pageHeight - contentHeight ) / 2, 0 );
+					}
+
+					// Position the slide inside of the page
+					slide.style.left = left + 'px';
+					slide.style.top = top + 'px';
+					slide.style.width = slideWidth + 'px';
+
+					// TODO Backgrounds need to be multiplied when the slide
+					// stretches over multiple pages
+					var background = slide.querySelector( '.slide-background' );
+					if( background ) {
+						background.style.width = pageWidth + 'px';
+						background.style.height = ( pageHeight * numberOfPages ) + 'px';
+						background.style.top = -top + 'px';
+						background.style.left = -left + 'px';
+					}
+
+					// Inject notes if `showNotes` is enabled
+					if( config.showNotes ) {
+						var notes = getSlideNotes( slide );
+						if( notes ) {
+							var notesSpacing = 8;
+							var notesElement = document.createElement( 'div' );
+							notesElement.classList.add( 'speaker-notes' );
+							notesElement.classList.add( 'speaker-notes-pdf' );
+							notesElement.innerHTML = notes;
+							notesElement.style.left = ( notesSpacing - left ) + 'px';
+							notesElement.style.bottom = ( notesSpacing - top ) + 'px';
+							notesElement.style.width = ( pageWidth - notesSpacing*2 ) + 'px';
+							slide.appendChild( notesElement );
+						}
+					}
+
+					// Inject slide numbers if `slideNumbers` are enabled
+					if( config.slideNumber ) {
+						var slideNumberH = parseInt( slide.getAttribute( 'data-index-h' ), 10 ) + 1,
+							slideNumberV = parseInt( slide.getAttribute( 'data-index-v' ), 10 ) + 1;
+
+						var numberElement = document.createElement( 'div' );
+						numberElement.classList.add( 'slide-number' );
+						numberElement.classList.add( 'slide-number-pdf' );
+						numberElement.innerHTML = formatSlideNumber( slideNumberH, '.', slideNumberV );
+						background.appendChild( numberElement );
+					}
+				}
+
+			} );
+
+			// Show all fragments
+			toArray( dom.wrapper.querySelectorAll( SLIDES_SELECTOR + ' .fragment' ) ).forEach( function( fragment ) {
+				fragment.classList.add( 'visible' );
+			} );
+
+		}
+
+		/**
+		 * This is an unfortunate necessity. Some actions – such as
+		 * an input field being focused in an iframe or using the
+		 * keyboard to expand text selection beyond the bounds of
+		 * a slide – can trigger our content to be pushed out of view.
+		 * This scrolling can not be prevented by hiding overflow in
+		 * CSS (we already do) so we have to resort to repeatedly
+		 * checking if the slides have been offset :(
+		 */
+		function setupScrollPrevention() {
+
+			setInterval( function() {
+				if( dom.wrapper.scrollTop !== 0 || dom.wrapper.scrollLeft !== 0 ) {
+					dom.wrapper.scrollTop = 0;
+					dom.wrapper.scrollLeft = 0;
+				}
+			}, 1000 );
 
 		}
 
@@ -878,15 +1174,26 @@
 		 */
 		function createSingletonNode( container, tagname, classname, innerHTML ) {
 
-			var node = container.querySelector( '.' + classname );
-			if( !node ) {
-				node = document.createElement( tagname );
-				node.classList.add( classname );
-				if( innerHTML !== null ) {
-					node.innerHTML = innerHTML;
+			// Find all nodes matching the description
+			var nodes = container.querySelectorAll( '.' + classname );
+
+			// Check all matches to find one which is a direct child of
+			// the specified container
+			for( var i = 0; i < nodes.length; i++ ) {
+				var testNode = nodes[i];
+				if( testNode.parentNode === container ) {
+					return testNode;
 				}
-				container.appendChild( node );
 			}
+
+			// If no node was found, create it now
+			var node = document.createElement( tagname );
+			node.classList.add( classname );
+			if( typeof innerHTML === 'string' ) {
+				node.innerHTML = innerHTML;
+			}
+			container.appendChild( node );
+
 			return node;
 
 		}
@@ -898,80 +1205,35 @@
 		 */
 		function createBackgrounds() {
 
-			if( isPrintingPDF() ) {
-				document.body.classList.add( 'print-pdf' );
-			}
+			var printMode = isPrintingPDF();
 
 			// Clear prior backgrounds
 			dom.background.innerHTML = '';
 			dom.background.classList.add( 'no-transition' );
 
-			// Helper method for creating a background element for the
-			// given slide
-			function _createBackground( slide, container ) {
-
-				var data = {
-					background: slide.getAttribute( 'data-background' ),
-					backgroundSize: slide.getAttribute( 'data-background-size' ),
-					backgroundImage: slide.getAttribute( 'data-background-image' ),
-					backgroundColor: slide.getAttribute( 'data-background-color' ),
-					backgroundRepeat: slide.getAttribute( 'data-background-repeat' ),
-					backgroundPosition: slide.getAttribute( 'data-background-position' ),
-					backgroundTransition: slide.getAttribute( 'data-background-transition' )
-				};
-
-				var element = document.createElement( 'div' );
-				element.className = 'slide-background';
-
-				if( data.background ) {
-					// Auto-wrap image urls in url(...)
-					if( /^(http|file|\/\/)/gi.test( data.background ) || /\.(svg|png|jpg|jpeg|gif|bmp)$/gi.test( data.background ) ) {
-						element.style.backgroundImage = 'url('+ data.background +')';
-					}
-					else {
-						element.style.background = data.background;
-					}
-				}
-
-				if( data.background || data.backgroundColor || data.backgroundImage ) {
-					element.setAttribute( 'data-background-hash', data.background + data.backgroundSize + data.backgroundImage + data.backgroundColor + data.backgroundRepeat + data.backgroundPosition + data.backgroundTransition );
-				}
-
-				// Additional and optional background properties
-				if( data.backgroundSize ) element.style.backgroundSize = data.backgroundSize;
-				if( data.backgroundImage ) element.style.backgroundImage = 'url("' + data.backgroundImage + '")';
-				if( data.backgroundColor ) element.style.backgroundColor = data.backgroundColor;
-				if( data.backgroundRepeat ) element.style.backgroundRepeat = data.backgroundRepeat;
-				if( data.backgroundPosition ) element.style.backgroundPosition = data.backgroundPosition;
-				if( data.backgroundTransition ) element.setAttribute( 'data-background-transition', data.backgroundTransition );
-
-				container.appendChild( element );
-
-				return element;
-
-			}
-
 			// Iterate over all horizontal slides
-			toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ).forEach( function( slideh ) {
+			toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ).forEach( function( slideh ) {
 
 				var backgroundStack;
 
-				if( isPrintingPDF() ) {
-					backgroundStack = _createBackground( slideh, slideh );
+				if( printMode ) {
+					backgroundStack = createBackground( slideh, slideh );
 				}
 				else {
-					backgroundStack = _createBackground( slideh, dom.background );
+					backgroundStack = createBackground( slideh, dom.background );
 				}
 
 				// Iterate over all vertical slides
 				toArray( slideh.querySelectorAll( 'section' ) ).forEach( function( slidev ) {
 
-					if( isPrintingPDF() ) {
-						_createBackground( slidev, slidev );
+					if( printMode ) {
+						createBackground( slidev, slidev );
 					}
 					else {
-						_createBackground( slidev, backgroundStack );
+						createBackground( slidev, backgroundStack );
 					}
+
+					backgroundStack.classList.add( 'stack' );
 
 				} );
 
@@ -1002,12 +1264,130 @@
 		}
 
 		/**
+		 * Creates a background for the given slide.
+		 *
+		 * @param {HTMLElement} slide
+		 * @param {HTMLElement} container The element that the background
+		 * should be appended to
+		 */
+		function createBackground( slide, container ) {
+
+			var data = {
+				background: slide.getAttribute( 'data-background' ),
+				backgroundSize: slide.getAttribute( 'data-background-size' ),
+				backgroundImage: slide.getAttribute( 'data-background-image' ),
+				backgroundVideo: slide.getAttribute( 'data-background-video' ),
+				backgroundIframe: slide.getAttribute( 'data-background-iframe' ),
+				backgroundColor: slide.getAttribute( 'data-background-color' ),
+				backgroundRepeat: slide.getAttribute( 'data-background-repeat' ),
+				backgroundPosition: slide.getAttribute( 'data-background-position' ),
+				backgroundTransition: slide.getAttribute( 'data-background-transition' )
+			};
+
+			var element = document.createElement( 'div' );
+
+			// Carry over custom classes from the slide to the background
+			element.className = 'slide-background ' + slide.className.replace( /present|past|future/, '' );
+
+			if( data.background ) {
+				// Auto-wrap image urls in url(...)
+				if( /^(http|file|\/\/)/gi.test( data.background ) || /\.(svg|png|jpg|jpeg|gif|bmp)$/gi.test( data.background ) ) {
+					slide.setAttribute( 'data-background-image', data.background );
+				}
+				else {
+					element.style.background = data.background;
+				}
+			}
+
+			// Create a hash for this combination of background settings.
+			// This is used to determine when two slide backgrounds are
+			// the same.
+			if( data.background || data.backgroundColor || data.backgroundImage || data.backgroundVideo || data.backgroundIframe ) {
+				element.setAttribute( 'data-background-hash', data.background +
+																data.backgroundSize +
+																data.backgroundImage +
+																data.backgroundVideo +
+																data.backgroundIframe +
+																data.backgroundColor +
+																data.backgroundRepeat +
+																data.backgroundPosition +
+																data.backgroundTransition );
+			}
+
+			// Additional and optional background properties
+			if( data.backgroundSize ) element.style.backgroundSize = data.backgroundSize;
+			if( data.backgroundColor ) element.style.backgroundColor = data.backgroundColor;
+			if( data.backgroundRepeat ) element.style.backgroundRepeat = data.backgroundRepeat;
+			if( data.backgroundPosition ) element.style.backgroundPosition = data.backgroundPosition;
+			if( data.backgroundTransition ) element.setAttribute( 'data-background-transition', data.backgroundTransition );
+
+			container.appendChild( element );
+
+			// If backgrounds are being recreated, clear old classes
+			slide.classList.remove( 'has-dark-background' );
+			slide.classList.remove( 'has-light-background' );
+
+			// If this slide has a background color, add a class that
+			// signals if it is light or dark. If the slide has no background
+			// color, no class will be set
+			var computedBackgroundColor = window.getComputedStyle( element ).backgroundColor;
+			if( computedBackgroundColor ) {
+				var rgb = colorToRgb( computedBackgroundColor );
+
+				// Ignore fully transparent backgrounds. Some browsers return
+				// rgba(0,0,0,0) when reading the computed background color of
+				// an element with no background
+				if( rgb && rgb.a !== 0 ) {
+					if( colorBrightness( computedBackgroundColor ) < 128 ) {
+						slide.classList.add( 'has-dark-background' );
+					}
+					else {
+						slide.classList.add( 'has-light-background' );
+					}
+				}
+			}
+
+			return element;
+
+		}
+
+		/**
+		 * Registers a listener to postMessage events, this makes it
+		 * possible to call all reveal.js API methods from another
+		 * window. For example:
+		 *
+		 * revealWindow.postMessage( JSON.stringify({
+		 *   method: 'slide',
+		 *   args: [ 2 ]
+		 * }), '*' );
+		 */
+		function setupPostMessage() {
+
+			if( config.postMessage ) {
+				window.addEventListener( 'message', function ( event ) {
+					var data = event.data;
+
+					// Make sure we're dealing with JSON
+					if( typeof data === 'string' && data.charAt( 0 ) === '{' && data.charAt( data.length - 1 ) === '}' ) {
+						data = JSON.parse( data );
+
+						// Check if the requested method can be found
+						if( data.method && typeof Reveal[data.method] === 'function' ) {
+							Reveal[data.method].apply( Reveal, data.args );
+						}
+					}
+				}, false );
+			}
+
+		}
+
+		/**
 		 * Applies the configuration settings from the config
 		 * object. May be called multiple times.
 		 */
 		function configure( options ) {
 
-			var numberOfSlides = document.querySelectorAll( SLIDES_SELECTOR ).length;
+			var numberOfSlides = dom.wrapper.querySelectorAll( SLIDES_SELECTOR ).length;
 
 			dom.wrapper.classList.remove( config.transition );
 
@@ -1025,6 +1405,11 @@
 
 			dom.controls.style.display = config.controls ? 'block' : 'none';
 			dom.progress.style.display = config.progress ? 'block' : 'none';
+			dom.slideNumber.style.display = config.slideNumber && !isPrintingPDF() ? 'block' : 'none';
+
+			if( config.shuffle ) {
+				shuffle();
+			}
 
 			if( config.rtl ) {
 				dom.wrapper.classList.add( 'rtl' );
@@ -1038,6 +1423,18 @@
 			}
 			else {
 				dom.wrapper.classList.remove( 'center' );
+			}
+
+			// Exit the paused mode if it was configured off
+			if( config.pause === false ) {
+				resume();
+			}
+
+			if( config.showNotes ) {
+				dom.speakerNotes.classList.add( 'visible' );
+			}
+			else {
+				dom.speakerNotes.classList.remove( 'visible' );
 			}
 
 			if( config.mouseWheel ) {
@@ -1066,7 +1463,13 @@
 				enablePreviewLinks( '[data-preview-link]' );
 			}
 
-			// Auto-slide playback controls
+			// Remove existing auto-slide controls
+			if( autoSlidePlayer ) {
+				autoSlidePlayer.destroy();
+				autoSlidePlayer = null;
+			}
+
+			// Generate auto-slide controls if needed
 			if( numberOfSlides > 1 && config.autoSlide && config.autoSlideStoppable && features.canvas && features.requestAnimationFrame ) {
 				autoSlidePlayer = new Playback( dom.wrapper, function() {
 					return Math.min( Math.max( ( Date.now() - autoSlideStartTime ) / autoSlide, 0 ), 1 );
@@ -1075,21 +1478,13 @@
 				autoSlidePlayer.on( 'click', onAutoSlidePlayerClick );
 				autoSlidePaused = false;
 			}
-			else if( autoSlidePlayer ) {
-				autoSlidePlayer.destroy();
-				autoSlidePlayer = null;
-			}
 
-			// Load the theme in the config, if it's not already loaded
-			if( config.theme && dom.theme ) {
-				var themeURL = dom.theme.getAttribute( 'href' );
-				var themeFinder = /[^\/]*?(?=\.css)/;
-				var themeName = themeURL.match(themeFinder)[0];
-
-				if(  config.theme !== themeName ) {
-					themeURL = themeURL.replace(themeFinder, config.theme);
-					dom.theme.setAttribute( 'href', themeURL );
-				}
+			// When fragments are turned off they should be visible
+			if( config.fragments === false ) {
+				toArray( dom.slides.querySelectorAll( '.fragment' ) ).forEach( function( element ) {
+					element.classList.add( 'visible' );
+					element.classList.remove( 'current-fragment' );
+				} );
 			}
 
 			sync();
@@ -1112,7 +1507,14 @@
 				dom.wrapper.addEventListener( 'touchend', onTouchEnd, false );
 
 				// Support pointer-style touch interaction as well
-				if( window.navigator.msPointerEnabled ) {
+				if( window.navigator.pointerEnabled ) {
+					// IE 11 uses un-prefixed version of pointer events
+					dom.wrapper.addEventListener( 'pointerdown', onPointerDown, false );
+					dom.wrapper.addEventListener( 'pointermove', onPointerMove, false );
+					dom.wrapper.addEventListener( 'pointerup', onPointerUp, false );
+				}
+				else if( window.navigator.msPointerEnabled ) {
+					// IE 10 uses prefixed version of pointer events
 					dom.wrapper.addEventListener( 'MSPointerDown', onPointerDown, false );
 					dom.wrapper.addEventListener( 'MSPointerMove', onPointerMove, false );
 					dom.wrapper.addEventListener( 'MSPointerUp', onPointerUp, false );
@@ -1121,13 +1523,14 @@
 
 			if( config.keyboard ) {
 				document.addEventListener( 'keydown', onDocumentKeyDown, false );
+				document.addEventListener( 'keypress', onDocumentKeyPress, false );
 			}
 
 			if( config.progress && dom.progress ) {
 				dom.progress.addEventListener( 'click', onProgressClicked, false );
 			}
 
-			if( config.focusBodyOnPageVisiblityChange ) {
+			if( config.focusBodyOnPageVisibilityChange ) {
 				var visibilityChange;
 
 				if( 'hidden' in document ) {
@@ -1145,7 +1548,17 @@
 				}
 			}
 
-			[ 'touchstart', 'click' ].forEach( function( eventName ) {
+			// Listen to both touch and click events, in case the device
+			// supports both
+			var pointerEvents = [ 'touchstart', 'click' ];
+
+			// Only support touch for Android, fixes double navigations in
+			// stock browser
+			if( UA.match( /android/gi ) ) {
+				pointerEvents = [ 'touchstart' ];
+			}
+
+			pointerEvents.forEach( function( eventName ) {
 				dom.controlsLeft.forEach( function( el ) { el.addEventListener( eventName, onNavigateLeftClicked, false ); } );
 				dom.controlsRight.forEach( function( el ) { el.addEventListener( eventName, onNavigateRightClicked, false ); } );
 				dom.controlsUp.forEach( function( el ) { el.addEventListener( eventName, onNavigateUpClicked, false ); } );
@@ -1164,6 +1577,7 @@
 			eventsAreBound = false;
 
 			document.removeEventListener( 'keydown', onDocumentKeyDown, false );
+			document.removeEventListener( 'keypress', onDocumentKeyPress, false );
 			window.removeEventListener( 'hashchange', onWindowHashChange, false );
 			window.removeEventListener( 'resize', onWindowResize, false );
 
@@ -1171,7 +1585,14 @@
 			dom.wrapper.removeEventListener( 'touchmove', onTouchMove, false );
 			dom.wrapper.removeEventListener( 'touchend', onTouchEnd, false );
 
-			if( window.navigator.msPointerEnabled ) {
+			// IE11
+			if( window.navigator.pointerEnabled ) {
+				dom.wrapper.removeEventListener( 'pointerdown', onPointerDown, false );
+				dom.wrapper.removeEventListener( 'pointermove', onPointerMove, false );
+				dom.wrapper.removeEventListener( 'pointerup', onPointerUp, false );
+			}
+			// IE10
+			else if( window.navigator.msPointerEnabled ) {
 				dom.wrapper.removeEventListener( 'MSPointerDown', onPointerDown, false );
 				dom.wrapper.removeEventListener( 'MSPointerMove', onPointerMove, false );
 				dom.wrapper.removeEventListener( 'MSPointerUp', onPointerUp, false );
@@ -1214,6 +1635,22 @@
 		}
 
 		/**
+		 * Utility for deserializing a value.
+		 */
+		function deserialize( value ) {
+
+			if( typeof value === 'string' ) {
+				if( value === 'null' ) return null;
+				else if( value === 'true' ) return true;
+				else if( value === 'false' ) return false;
+				else if( value.match( /^\d+$/ ) ) return parseFloat( value );
+			}
+
+			return value;
+
+		}
+
+		/**
 		 * Measures the distance in pixels between point a
 		 * and point b.
 		 *
@@ -1237,8 +1674,116 @@
 			element.style.WebkitTransform = transform;
 			element.style.MozTransform = transform;
 			element.style.msTransform = transform;
-			element.style.OTransform = transform;
 			element.style.transform = transform;
+
+		}
+
+		/**
+		 * Applies CSS transforms to the slides container. The container
+		 * is transformed from two separate sources: layout and the overview
+		 * mode.
+		 */
+		function transformSlides( transforms ) {
+
+			// Pick up new transforms from arguments
+			if( typeof transforms.layout === 'string' ) slidesTransform.layout = transforms.layout;
+			if( typeof transforms.overview === 'string' ) slidesTransform.overview = transforms.overview;
+
+			// Apply the transforms to the slides container
+			if( slidesTransform.layout ) {
+				transformElement( dom.slides, slidesTransform.layout + ' ' + slidesTransform.overview );
+			}
+			else {
+				transformElement( dom.slides, slidesTransform.overview );
+			}
+
+		}
+
+		/**
+		 * Injects the given CSS styles into the DOM.
+		 */
+		function injectStyleSheet( value ) {
+
+			var tag = document.createElement( 'style' );
+			tag.type = 'text/css';
+			if( tag.styleSheet ) {
+				tag.styleSheet.cssText = value;
+			}
+			else {
+				tag.appendChild( document.createTextNode( value ) );
+			}
+			document.getElementsByTagName( 'head' )[0].appendChild( tag );
+
+		}
+
+		/**
+		 * Converts various color input formats to an {r:0,g:0,b:0} object.
+		 *
+		 * @param {String} color The string representation of a color,
+		 * the following formats are supported:
+		 * - #000
+		 * - #000000
+		 * - rgb(0,0,0)
+		 */
+		function colorToRgb( color ) {
+
+			var hex3 = color.match( /^#([0-9a-f]{3})$/i );
+			if( hex3 && hex3[1] ) {
+				hex3 = hex3[1];
+				return {
+					r: parseInt( hex3.charAt( 0 ), 16 ) * 0x11,
+					g: parseInt( hex3.charAt( 1 ), 16 ) * 0x11,
+					b: parseInt( hex3.charAt( 2 ), 16 ) * 0x11
+				};
+			}
+
+			var hex6 = color.match( /^#([0-9a-f]{6})$/i );
+			if( hex6 && hex6[1] ) {
+				hex6 = hex6[1];
+				return {
+					r: parseInt( hex6.substr( 0, 2 ), 16 ),
+					g: parseInt( hex6.substr( 2, 2 ), 16 ),
+					b: parseInt( hex6.substr( 4, 2 ), 16 )
+				};
+			}
+
+			var rgb = color.match( /^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/i );
+			if( rgb ) {
+				return {
+					r: parseInt( rgb[1], 10 ),
+					g: parseInt( rgb[2], 10 ),
+					b: parseInt( rgb[3], 10 )
+				};
+			}
+
+			var rgba = color.match( /^rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\,\s*([\d]+|[\d]*.[\d]+)\s*\)$/i );
+			if( rgba ) {
+				return {
+					r: parseInt( rgba[1], 10 ),
+					g: parseInt( rgba[2], 10 ),
+					b: parseInt( rgba[3], 10 ),
+					a: parseFloat( rgba[4] )
+				};
+			}
+
+			return null;
+
+		}
+
+		/**
+		 * Calculates brightness on a scale of 0-255.
+		 *
+		 * @param color See colorStringToRgb for supported formats.
+		 */
+		function colorBrightness( color ) {
+
+			if( typeof color === 'string' ) color = colorToRgb( color );
+
+			if( color ) {
+				return ( color.r * 299 + color.g * 587 + color.b * 114 ) / 1000;
+			}
+
+			return null;
 
 		}
 
@@ -1257,7 +1802,7 @@
 
 					if( typeof child.offsetTop === 'number' && child.style ) {
 						// Count # of abs children
-						if( child.style.position === 'absolute' ) {
+						if( window.getComputedStyle( child ).position === 'absolute' ) {
 							absoluteChildren += 1;
 						}
 
@@ -1279,40 +1824,26 @@
 
 		/**
 		 * Returns the remaining height within the parent of the
-		 * target element after subtracting the height of all
-		 * siblings.
+		 * target element.
 		 *
-		 * remaining height = [parent height] - [ siblings height]
+		 * remaining height = [ configured parent height ] - [ current parent height ]
 		 */
 		function getRemainingHeight( element, height ) {
 
 			height = height || 0;
 
 			if( element ) {
-				var parent = element.parentNode;
-				var siblings = parent.childNodes;
+				var newHeight, oldHeight = element.style.height;
 
-				// Subtract the height of each sibling
-				toArray( siblings ).forEach( function( sibling ) {
+				// Change the .stretch element height to 0 in order find the height of all
+				// the other elements
+				element.style.height = '0px';
+				newHeight = height - element.parentNode.offsetHeight;
 
-					if( typeof sibling.offsetHeight === 'number' && sibling !== element ) {
+				// Restore the old height, just in case
+				element.style.height = oldHeight + 'px';
 
-						var styles = window.getComputedStyle( sibling ),
-							marginTop = parseInt( styles.marginTop, 10 ),
-							marginBottom = parseInt( styles.marginBottom, 10 );
-
-						height -= sibling.offsetHeight + marginTop + marginBottom;
-
-					}
-
-				} );
-
-				var elementStyles = window.getComputedStyle( element );
-
-				// Subtract the margins of the target element
-				height -= parseInt( elementStyles.marginTop, 10 ) +
-							parseInt( elementStyles.marginBottom, 10 );
-
+				return newHeight;
 			}
 
 			return height;
@@ -1357,12 +1888,18 @@
 		 * Dispatches an event of the specified type from the
 		 * reveal DOM element.
 		 */
-		function dispatchEvent( type, properties ) {
+		function dispatchEvent( type, args ) {
 
-			var event = document.createEvent( "HTMLEvents", 1, 2 );
+			var event = document.createEvent( 'HTMLEvents', 1, 2 );
 			event.initEvent( type, true, true );
-			extend( event, properties );
+			extend( event, args );
 			dom.wrapper.dispatchEvent( event );
+
+			// If we're in an iframe, post each reveal.js event to the
+			// parent window. Used by the notes plugin
+			if( config.postMessageEvents && window.parent !== window.self ) {
+				window.parent.postMessage( JSON.stringify({ namespace: 'reveal', eventName: type, state: getState() }), '*' );
+			}
 
 		}
 
@@ -1372,7 +1909,7 @@
 		function enableRollingLinks() {
 
 			if( features.transforms3d && !( 'msPerspective' in document.body.style ) ) {
-				var anchors = document.querySelectorAll( SLIDES_SELECTOR + ' a:not(.image)' );
+				var anchors = dom.wrapper.querySelectorAll( SLIDES_SELECTOR + ' a' );
 
 				for( var i = 0, len = anchors.length; i < len; i++ ) {
 					var anchor = anchors[i];
@@ -1396,7 +1933,7 @@
 		 */
 		function disableRollingLinks() {
 
-			var anchors = document.querySelectorAll( SLIDES_SELECTOR + ' a.roll' );
+			var anchors = dom.wrapper.querySelectorAll( SLIDES_SELECTOR + ' a.roll' );
 
 			for( var i = 0, len = anchors.length; i < len; i++ ) {
 				var anchor = anchors[i];
@@ -1443,15 +1980,16 @@
 		/**
 		 * Opens a preview window for the target URL.
 		 */
-		function openPreview( url ) {
+		function showPreview( url ) {
 
-			closePreview();
+			closeOverlay();
 
-			dom.preview = document.createElement( 'div' );
-			dom.preview.classList.add( 'preview-link-overlay' );
-			dom.wrapper.appendChild( dom.preview );
+			dom.overlay = document.createElement( 'div' );
+			dom.overlay.classList.add( 'overlay' );
+			dom.overlay.classList.add( 'overlay-preview' );
+			dom.wrapper.appendChild( dom.overlay );
 
-			dom.preview.innerHTML = [
+			dom.overlay.innerHTML = [
 				'<header>',
 					'<a class="close" href="#"><span class="icon"></span></a>',
 					'<a class="external" href="'+ url +'" target="_blank"><span class="icon"></span></a>',
@@ -1462,34 +2000,78 @@
 				'</div>'
 			].join('');
 
-			dom.preview.querySelector( 'iframe' ).addEventListener( 'load', function( event ) {
-				dom.preview.classList.add( 'loaded' );
+			dom.overlay.querySelector( 'iframe' ).addEventListener( 'load', function( event ) {
+				dom.overlay.classList.add( 'loaded' );
 			}, false );
 
-			dom.preview.querySelector( '.close' ).addEventListener( 'click', function( event ) {
-				closePreview();
+			dom.overlay.querySelector( '.close' ).addEventListener( 'click', function( event ) {
+				closeOverlay();
 				event.preventDefault();
 			}, false );
 
-			dom.preview.querySelector( '.external' ).addEventListener( 'click', function( event ) {
-				closePreview();
+			dom.overlay.querySelector( '.external' ).addEventListener( 'click', function( event ) {
+				closeOverlay();
 			}, false );
 
 			setTimeout( function() {
-				dom.preview.classList.add( 'visible' );
+				dom.overlay.classList.add( 'visible' );
 			}, 1 );
 
 		}
 
 		/**
-		 * Closes the iframe preview window.
+		 * Opens a overlay window with help material.
 		 */
-		function closePreview() {
+		function showHelp() {
 
-			if( dom.preview ) {
-				dom.preview.setAttribute( 'src', '' );
-				dom.preview.parentNode.removeChild( dom.preview );
-				dom.preview = null;
+			if( config.help ) {
+
+				closeOverlay();
+
+				dom.overlay = document.createElement( 'div' );
+				dom.overlay.classList.add( 'overlay' );
+				dom.overlay.classList.add( 'overlay-help' );
+				dom.wrapper.appendChild( dom.overlay );
+
+				var html = '<p class="title">Keyboard Shortcuts</p><br/>';
+
+				html += '<table><th>KEY</th><th>ACTION</th>';
+				for( var key in keyboardShortcuts ) {
+					html += '<tr><td>' + key + '</td><td>' + keyboardShortcuts[ key ] + '</td></tr>';
+				}
+
+				html += '</table>';
+
+				dom.overlay.innerHTML = [
+					'<header>',
+						'<a class="close" href="#"><span class="icon"></span></a>',
+					'</header>',
+					'<div class="viewport">',
+						'<div class="viewport-inner">'+ html +'</div>',
+					'</div>'
+				].join('');
+
+				dom.overlay.querySelector( '.close' ).addEventListener( 'click', function( event ) {
+					closeOverlay();
+					event.preventDefault();
+				}, false );
+
+				setTimeout( function() {
+					dom.overlay.classList.add( 'visible' );
+				}, 1 );
+
+			}
+
+		}
+
+		/**
+		 * Closes any currently open overlay.
+		 */
+		function closeOverlay() {
+
+			if( dom.overlay ) {
+				dom.overlay.parentNode.removeChild( dom.overlay );
+				dom.overlay = null;
 			}
 
 		}
@@ -1502,54 +2084,57 @@
 
 			if( dom.wrapper && !isPrintingPDF() ) {
 
-				// Available space to scale within
-				var availableWidth = dom.wrapper.offsetWidth,
-					availableHeight = dom.wrapper.offsetHeight;
+				var size = getComputedSlideSize();
 
-				// Reduce available space by margin
-				availableWidth -= ( availableHeight * config.margin );
-				availableHeight -= ( availableHeight * config.margin );
-
-				// Dimensions of the content
-				var slideWidth = config.width,
-					slideHeight = config.height,
-					slidePadding = 20; // TODO Dig this out of DOM
+				var slidePadding = 20; // TODO Dig this out of DOM
 
 				// Layout the contents of the slides
 				layoutSlideContents( config.width, config.height, slidePadding );
 
-				// Slide width may be a percentage of available width
-				if( typeof slideWidth === 'string' && /%$/.test( slideWidth ) ) {
-					slideWidth = parseInt( slideWidth, 10 ) / 100 * availableWidth;
-				}
-
-				// Slide height may be a percentage of available height
-				if( typeof slideHeight === 'string' && /%$/.test( slideHeight ) ) {
-					slideHeight = parseInt( slideHeight, 10 ) / 100 * availableHeight;
-				}
-
-				dom.slides.style.width = slideWidth + 'px';
-				dom.slides.style.height = slideHeight + 'px';
+				dom.slides.style.width = size.width + 'px';
+				dom.slides.style.height = size.height + 'px';
 
 				// Determine scale of content to fit within available space
-				scale = Math.min( availableWidth / slideWidth, availableHeight / slideHeight );
+				scale = Math.min( size.presentationWidth / size.width, size.presentationHeight / size.height );
 
 				// Respect max/min scale settings
 				scale = Math.max( scale, config.minScale );
 				scale = Math.min( scale, config.maxScale );
 
-				// Prefer applying scale via zoom since Chrome blurs scaled content
-				// with nested transforms
-				if( typeof dom.slides.style.zoom !== 'undefined' && !navigator.userAgent.match( /(iphone|ipod|ipad|android)/gi ) ) {
-					dom.slides.style.zoom = scale;
+				// Don't apply any scaling styles if scale is 1
+				if( scale === 1 ) {
+					dom.slides.style.zoom = '';
+					dom.slides.style.left = '';
+					dom.slides.style.top = '';
+					dom.slides.style.bottom = '';
+					dom.slides.style.right = '';
+					transformSlides( { layout: '' } );
 				}
-				// Apply scale transform as a fallback
 				else {
-					transformElement( dom.slides, 'translate(-50%, -50%) scale('+ scale +') translate(50%, 50%)' );
+					// Prefer zoom for scaling up so that content remains crisp.
+					// Don't use zoom to scale down since that can lead to shifts
+					// in text layout/line breaks.
+					if( scale > 1 && features.zoom ) {
+						dom.slides.style.zoom = scale;
+						dom.slides.style.left = '';
+						dom.slides.style.top = '';
+						dom.slides.style.bottom = '';
+						dom.slides.style.right = '';
+						transformSlides( { layout: '' } );
+					}
+					// Apply scale transform as a fallback
+					else {
+						dom.slides.style.zoom = '';
+						dom.slides.style.left = '50%';
+						dom.slides.style.top = '50%';
+						dom.slides.style.bottom = 'auto';
+						dom.slides.style.right = 'auto';
+						transformSlides( { layout: 'translate(-50%, -50%) scale('+ scale +')' } );
+					}
 				}
 
 				// Select all slides, vertical and horizontal
-				var slides = toArray( document.querySelectorAll( SLIDES_SELECTOR ) );
+				var slides = toArray( dom.wrapper.querySelectorAll( SLIDES_SELECTOR ) );
 
 				for( var i = 0, len = slides.length; i < len; i++ ) {
 					var slide = slides[ i ];
@@ -1566,7 +2151,7 @@
 							slide.style.top = 0;
 						}
 						else {
-							slide.style.top = Math.max( - ( getAbsoluteHeight( slide ) / 2 ) - slidePadding, -slideHeight / 2 ) + 'px';
+							slide.style.top = Math.max( ( ( size.height - getAbsoluteHeight( slide ) ) / 2 ) - slidePadding, 0 ) + 'px';
 						}
 					}
 					else {
@@ -1592,7 +2177,7 @@
 			toArray( dom.slides.querySelectorAll( 'section > .stretch' ) ).forEach( function( element ) {
 
 				// Determine how much vertical space we can use
-				var remainingHeight = getRemainingHeight( element, ( height - ( padding * 2 ) ) );
+				var remainingHeight = getRemainingHeight( element, height );
 
 				// Consider the aspect ratio of media elements
 				if( /(img|video)/gi.test( element.nodeName ) ) {
@@ -1611,6 +2196,41 @@
 				}
 
 			} );
+
+		}
+
+		/**
+		 * Calculates the computed pixel size of our slides. These
+		 * values are based on the width and height configuration
+		 * options.
+		 */
+		function getComputedSlideSize( presentationWidth, presentationHeight ) {
+
+			var size = {
+				// Slide size
+				width: config.width,
+				height: config.height,
+
+				// Presentation size
+				presentationWidth: presentationWidth || dom.wrapper.offsetWidth,
+				presentationHeight: presentationHeight || dom.wrapper.offsetHeight
+			};
+
+			// Reduce available space by margin
+			size.presentationWidth -= ( size.presentationWidth * config.margin );
+			size.presentationHeight -= ( size.presentationHeight * config.margin );
+
+			// Slide width may be a percentage of available width
+			if( typeof size.width === 'string' && /%$/.test( size.width ) ) {
+				size.width = parseInt( size.width, 10 ) / 100 * size.presentationWidth;
+			}
+
+			// Slide height may be a percentage of available height
+			if( typeof size.height === 'string' && /%$/.test( size.height ) ) {
+				size.height = parseInt( size.height, 10 ) / 100 * size.presentationHeight;
+			}
+
+			return size;
 
 		}
 
@@ -1651,91 +2271,114 @@
 		}
 
 		/**
-		 * Displays the overview of slides (quick nav) by
-		 * scaling down and arranging all slide elements.
-		 *
-		 * Experimental feature, might be dropped if perf
-		 * can't be improved.
+		 * Displays the overview of slides (quick nav) by scaling
+		 * down and arranging all slide elements.
 		 */
 		function activateOverview() {
 
 			// Only proceed if enabled in config
-			if( config.overview ) {
+			if( config.overview && !isOverview() ) {
 
-				// Don't auto-slide while in overview mode
-				cancelAutoSlide();
-
-				var wasActive = dom.wrapper.classList.contains( 'overview' );
-
-				// Vary the depth of the overview based on screen size
-				var depth = window.innerWidth < 400 ? 1000 : 2500;
+				overview = true;
 
 				dom.wrapper.classList.add( 'overview' );
 				dom.wrapper.classList.remove( 'overview-deactivating' );
 
-				clearTimeout( activateOverviewTimeout );
-				clearTimeout( deactivateOverviewTimeout );
+				if( features.overviewTransitions ) {
+					setTimeout( function() {
+						dom.wrapper.classList.add( 'overview-animated' );
+					}, 1 );
+				}
 
-				// Not the pretties solution, but need to let the overview
-				// class apply first so that slides are measured accurately
-				// before we can position them
-				activateOverviewTimeout = setTimeout( function() {
+				// Don't auto-slide while in overview mode
+				cancelAutoSlide();
 
-					var horizontalSlides = document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR );
+				// Move the backgrounds element into the slide container to
+				// that the same scaling is applied
+				dom.slides.appendChild( dom.background );
 
-					for( var i = 0, len1 = horizontalSlides.length; i < len1; i++ ) {
-						var hslide = horizontalSlides[i],
-							hoffset = config.rtl ? -105 : 105;
-
-						hslide.setAttribute( 'data-index-h', i );
-
-						// Apply CSS transform
-						transformElement( hslide, 'translateZ(-'+ depth +'px) translate(' + ( ( i - indexh ) * hoffset ) + '%, 0%)' );
-
-						if( hslide.classList.contains( 'stack' ) ) {
-
-							var verticalSlides = hslide.querySelectorAll( 'section' );
-
-							for( var j = 0, len2 = verticalSlides.length; j < len2; j++ ) {
-								var verticalIndex = i === indexh ? indexv : getPreviousVerticalIndex( hslide );
-
-								var vslide = verticalSlides[j];
-
-								vslide.setAttribute( 'data-index-h', i );
-								vslide.setAttribute( 'data-index-v', j );
-
-								// Apply CSS transform
-								transformElement( vslide, 'translate(0%, ' + ( ( j - verticalIndex ) * 105 ) + '%)' );
-
-								// Navigate to this slide on click
-								vslide.addEventListener( 'click', onOverviewSlideClicked, true );
-							}
-
-						}
-						else {
-
-							// Navigate to this slide on click
-							hslide.addEventListener( 'click', onOverviewSlideClicked, true );
-
-						}
+				// Clicking on an overview slide navigates to it
+				toArray( dom.wrapper.querySelectorAll( SLIDES_SELECTOR ) ).forEach( function( slide ) {
+					if( !slide.classList.contains( 'stack' ) ) {
+						slide.addEventListener( 'click', onOverviewSlideClicked, true );
 					}
+				} );
 
-					updateSlidesVisibility();
+				// Calculate slide sizes
+				var margin = 70;
+				var slideSize = getComputedSlideSize();
+				overviewSlideWidth = slideSize.width + margin;
+				overviewSlideHeight = slideSize.height + margin;
 
-					layout();
+				// Reverse in RTL mode
+				if( config.rtl ) {
+					overviewSlideWidth = -overviewSlideWidth;
+				}
 
-					if( !wasActive ) {
-						// Notify observers of the overview showing
-						dispatchEvent( 'overviewshown', {
-							'indexh': indexh,
-							'indexv': indexv,
-							'currentSlide': currentSlide
-						} );
-					}
+				updateSlidesVisibility();
+				layoutOverview();
+				updateOverview();
 
-				}, 10 );
+				layout();
+
+				// Notify observers of the overview showing
+				dispatchEvent( 'overviewshown', {
+					'indexh': indexh,
+					'indexv': indexv,
+					'currentSlide': currentSlide
+				} );
 
 			}
+
+		}
+
+		/**
+		 * Uses CSS transforms to position all slides in a grid for
+		 * display inside of the overview mode.
+		 */
+		function layoutOverview() {
+
+			// Layout slides
+			toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ).forEach( function( hslide, h ) {
+				hslide.setAttribute( 'data-index-h', h );
+				transformElement( hslide, 'translate3d(' + ( h * overviewSlideWidth ) + 'px, 0, 0)' );
+
+				if( hslide.classList.contains( 'stack' ) ) {
+
+					toArray( hslide.querySelectorAll( 'section' ) ).forEach( function( vslide, v ) {
+						vslide.setAttribute( 'data-index-h', h );
+						vslide.setAttribute( 'data-index-v', v );
+
+						transformElement( vslide, 'translate3d(0, ' + ( v * overviewSlideHeight ) + 'px, 0)' );
+					} );
+
+				}
+			} );
+
+			// Layout slide backgrounds
+			toArray( dom.background.childNodes ).forEach( function( hbackground, h ) {
+				transformElement( hbackground, 'translate3d(' + ( h * overviewSlideWidth ) + 'px, 0, 0)' );
+
+				toArray( hbackground.querySelectorAll( '.slide-background' ) ).forEach( function( vbackground, v ) {
+					transformElement( vbackground, 'translate3d(0, ' + ( v * overviewSlideHeight ) + 'px, 0)' );
+				} );
+			} );
+
+		}
+
+		/**
+		 * Moves the overview viewport to the current slides.
+		 * Called each time the current slide changes.
+		 */
+		function updateOverview() {
+
+			transformSlides( {
+				overview: [
+					'translateX('+ ( -indexh * overviewSlideWidth ) +'px)',
+					'translateY('+ ( -indexv * overviewSlideHeight ) +'px)',
+					'translateZ('+ ( window.innerWidth < 400 ? -1000 : -2500 ) +'px)'
+				].join( ' ' )
+			} );
 
 		}
 
@@ -1748,29 +2391,40 @@
 			// Only proceed if enabled in config
 			if( config.overview ) {
 
-				clearTimeout( activateOverviewTimeout );
-				clearTimeout( deactivateOverviewTimeout );
+				overview = false;
 
 				dom.wrapper.classList.remove( 'overview' );
+				dom.wrapper.classList.remove( 'overview-animated' );
 
 				// Temporarily add a class so that transitions can do different things
 				// depending on whether they are exiting/entering overview, or just
 				// moving from slide to slide
 				dom.wrapper.classList.add( 'overview-deactivating' );
 
-				deactivateOverviewTimeout = setTimeout( function () {
+				setTimeout( function () {
 					dom.wrapper.classList.remove( 'overview-deactivating' );
 				}, 1 );
 
-				// Select all slides
-				toArray( document.querySelectorAll( SLIDES_SELECTOR ) ).forEach( function( slide ) {
-					// Resets all transforms to use the external styles
+				// Move the background element back out
+				dom.wrapper.appendChild( dom.background );
+
+				// Clean up changes made to slides
+				toArray( dom.wrapper.querySelectorAll( SLIDES_SELECTOR ) ).forEach( function( slide ) {
 					transformElement( slide, '' );
 
 					slide.removeEventListener( 'click', onOverviewSlideClicked, true );
 				} );
 
+				// Clean up changes made to backgrounds
+				toArray( dom.background.querySelectorAll( '.slide-background' ) ).forEach( function( background ) {
+					transformElement( background, '' );
+				} );
+
+				transformSlides( { overview: '' } );
+
 				slide( indexh, indexv );
+
+				layout();
 
 				cueAutoSlide();
 
@@ -1810,7 +2464,7 @@
 		 */
 		function isOverview() {
 
-			return dom.wrapper.classList.contains( 'overview' );
+			return overview;
 
 		}
 
@@ -1838,14 +2492,14 @@
 		 */
 		function enterFullscreen() {
 
-			var element = document.body;
+			var element = document.documentElement;
 
 			// Check which implementation is available
-			var requestMethod = element.requestFullScreen ||
+			var requestMethod = element.requestFullscreen ||
 								element.webkitRequestFullscreen ||
 								element.webkitRequestFullScreen ||
 								element.mozRequestFullScreen ||
-								element.msRequestFullScreen;
+								element.msRequestFullscreen;
 
 			if( requestMethod ) {
 				requestMethod.apply( element );
@@ -1859,13 +2513,15 @@
 		 */
 		function pause() {
 
-			var wasPaused = dom.wrapper.classList.contains( 'paused' );
+			if( config.pause ) {
+				var wasPaused = dom.wrapper.classList.contains( 'paused' );
 
-			cancelAutoSlide();
-			dom.wrapper.classList.add( 'paused' );
+				cancelAutoSlide();
+				dom.wrapper.classList.add( 'paused' );
 
-			if( wasPaused === false ) {
-				dispatchEvent( 'paused' );
+				if( wasPaused === false ) {
+					dispatchEvent( 'paused' );
+				}
 			}
 
 		}
@@ -1889,13 +2545,13 @@
 		/**
 		 * Toggles the paused mode on and off.
 		 */
-		function togglePause() {
+		function togglePause( override ) {
 
-			if( isPaused() ) {
-				resume();
+			if( typeof override === 'boolean' ) {
+				override ? pause() : resume();
 			}
 			else {
-				pause();
+				isPaused() ? resume() : pause();
 			}
 
 		}
@@ -1906,6 +2562,34 @@
 		function isPaused() {
 
 			return dom.wrapper.classList.contains( 'paused' );
+
+		}
+
+		/**
+		 * Toggles the auto slide mode on and off.
+		 *
+		 * @param {Boolean} override Optional flag which sets the desired state.
+		 * True means autoplay starts, false means it stops.
+		 */
+
+		function toggleAutoSlide( override ) {
+
+			if( typeof override === 'boolean' ) {
+				override ? resumeAutoSlide() : pauseAutoSlide();
+			}
+
+			else {
+				autoSlidePaused ? resumeAutoSlide() : pauseAutoSlide();
+			}
+
+		}
+
+		/**
+		 * Checks if the auto slide mode is currently on.
+		 */
+		function isAutoSliding() {
+
+			return !!( autoSlide && !autoSlidePaused );
 
 		}
 
@@ -1926,11 +2610,11 @@
 			previousSlide = currentSlide;
 
 			// Query all horizontal slides in the deck
-			var horizontalSlides = document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR );
+			var horizontalSlides = dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR );
 
 			// If no vertical index is specified and the upcoming slide is a
 			// stack, resume at its previous vertical index
-			if( v === undefined ) {
+			if( v === undefined && !isOverview() ) {
 				v = getPreviousVerticalIndex( horizontalSlides[ h ] );
 			}
 
@@ -1980,9 +2664,9 @@
 				document.documentElement.classList.remove( stateBefore.pop() );
 			}
 
-			// If the overview is active, re-activate it to update positions
+			// Update the overview if it's currently active
 			if( isOverview() ) {
-				activateOverview();
+				updateOverview();
 			}
 
 			// Find the current horizontal slide and any possible vertical slides
@@ -2019,13 +2703,14 @@
 			// stacks
 			if( previousSlide ) {
 				previousSlide.classList.remove( 'present' );
+				previousSlide.setAttribute( 'aria-hidden', 'true' );
 
 				// Reset all slides upon navigate to home
 				// Issue: #285
-				if ( document.querySelector( HOME_SLIDE_SELECTOR ).classList.contains( 'present' ) ) {
+				if ( dom.wrapper.querySelector( HOME_SLIDE_SELECTOR ).classList.contains( 'present' ) ) {
 					// Launch async task
 					setTimeout( function () {
-						var slides = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR + '.stack') ), i;
+						var slides = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR + '.stack') ), i;
 						for( i in slides ) {
 							if( slides[i] ) {
 								// Reset stack
@@ -2037,16 +2722,20 @@
 			}
 
 			// Handle embedded content
-			if( slideChanged ) {
+			if( slideChanged || !previousSlide ) {
 				stopEmbeddedContent( previousSlide );
 				startEmbeddedContent( currentSlide );
 			}
+
+			// Announce the current slide contents, for screen readers
+			dom.statusDiv.textContent = currentSlide.textContent;
 
 			updateControls();
 			updateProgress();
 			updateBackground();
 			updateParallax();
 			updateSlideNumber();
+			updateNotes();
 
 			// Update the URL hash
 			writeURL();
@@ -2078,12 +2767,24 @@
 			// Re-create the slide backgrounds
 			createBackgrounds();
 
+			// Write the current hash to the URL
+			writeURL();
+
 			sortAllFragments();
 
 			updateControls();
 			updateProgress();
 			updateBackground( true );
 			updateSlideNumber();
+			updateSlidesVisibility();
+			updateNotes();
+
+			formatEmbeddedContent();
+			startEmbeddedContent( currentSlide );
+
+			if( isOverview() ) {
+				layoutOverview();
+			}
 
 		}
 
@@ -2093,7 +2794,7 @@
 		 */
 		function resetVerticalSlides() {
 
-			var horizontalSlides = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
+			var horizontalSlides = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
 			horizontalSlides.forEach( function( horizontalSlide ) {
 
 				var verticalSlides = toArray( horizontalSlide.querySelectorAll( 'section' ) );
@@ -2103,6 +2804,7 @@
 						verticalSlide.classList.remove( 'present' );
 						verticalSlide.classList.remove( 'past' );
 						verticalSlide.classList.add( 'future' );
+						verticalSlide.setAttribute( 'aria-hidden', 'true' );
 					}
 
 				} );
@@ -2117,7 +2819,7 @@
 		 */
 		function sortAllFragments() {
 
-			var horizontalSlides = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
+			var horizontalSlides = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
 			horizontalSlides.forEach( function( horizontalSlide ) {
 
 				var verticalSlides = toArray( horizontalSlide.querySelectorAll( 'section' ) );
@@ -2128,6 +2830,23 @@
 				} );
 
 				if( verticalSlides.length === 0 ) sortFragments( horizontalSlide.querySelectorAll( '.fragment' ) );
+
+			} );
+
+		}
+
+		/**
+		 * Randomly shuffles all slides in the deck.
+		 */
+		function shuffle() {
+
+			var slides = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
+
+			slides.forEach( function( slide ) {
+
+				// Insert this slide next to another random slide. This may
+				// cause the slide to insert before itself but that's fine.
+				dom.slides.insertBefore( slide, slides[ Math.floor( Math.random() * slides.length ) ] );
 
 			} );
 
@@ -2150,8 +2869,10 @@
 
 			// Select all slides and convert the NodeList result to
 			// an array
-			var slides = toArray( document.querySelectorAll( selector ) ),
+			var slides = toArray( dom.wrapper.querySelectorAll( selector ) ),
 				slidesLength = slides.length;
+
+			var printMode = isPrintingPDF();
 
 			if( slidesLength ) {
 
@@ -2178,43 +2899,55 @@
 
 					// http://www.w3.org/html/wg/drafts/html/master/editing.html#the-hidden-attribute
 					element.setAttribute( 'hidden', '' );
+					element.setAttribute( 'aria-hidden', 'true' );
+
+					// If this element contains vertical slides
+					if( element.querySelector( 'section' ) ) {
+						element.classList.add( 'stack' );
+					}
+
+					// If we're printing static slides, all slides are "present"
+					if( printMode ) {
+						element.classList.add( 'present' );
+						continue;
+					}
 
 					if( i < index ) {
 						// Any element previous to index is given the 'past' class
 						element.classList.add( reverse ? 'future' : 'past' );
 
-						var pastFragments = toArray( element.querySelectorAll( '.fragment' ) );
+						if( config.fragments ) {
+							var pastFragments = toArray( element.querySelectorAll( '.fragment' ) );
 
-						// Show all fragments on prior slides
-						while( pastFragments.length ) {
-							var pastFragment = pastFragments.pop();
-							pastFragment.classList.add( 'visible' );
-							pastFragment.classList.remove( 'current-fragment' );
+							// Show all fragments on prior slides
+							while( pastFragments.length ) {
+								var pastFragment = pastFragments.pop();
+								pastFragment.classList.add( 'visible' );
+								pastFragment.classList.remove( 'current-fragment' );
+							}
 						}
 					}
 					else if( i > index ) {
 						// Any element subsequent to index is given the 'future' class
 						element.classList.add( reverse ? 'past' : 'future' );
 
-						var futureFragments = toArray( element.querySelectorAll( '.fragment.visible' ) );
+						if( config.fragments ) {
+							var futureFragments = toArray( element.querySelectorAll( '.fragment.visible' ) );
 
-						// No fragments in future slides should be visible ahead of time
-						while( futureFragments.length ) {
-							var futureFragment = futureFragments.pop();
-							futureFragment.classList.remove( 'visible' );
-							futureFragment.classList.remove( 'current-fragment' );
+							// No fragments in future slides should be visible ahead of time
+							while( futureFragments.length ) {
+								var futureFragment = futureFragments.pop();
+								futureFragment.classList.remove( 'visible' );
+								futureFragment.classList.remove( 'current-fragment' );
+							}
 						}
-					}
-
-					// If this element contains vertical slides
-					if( element.querySelector( 'section' ) ) {
-						element.classList.add( 'stack' );
 					}
 				}
 
 				// Mark the current slide as present
 				slides[index].classList.add( 'present' );
 				slides[index].removeAttribute( 'hidden' );
+				slides[index].removeAttribute( 'aria-hidden' );
 
 				// If this slide has a state associated with it, add it
 				// onto the current state of the deck
@@ -2242,12 +2975,12 @@
 
 			// Select all slides and convert the NodeList result to
 			// an array
-			var horizontalSlides = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ),
+			var horizontalSlides = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ),
 				horizontalSlidesLength = horizontalSlides.length,
 				distanceX,
 				distanceY;
 
-			if( horizontalSlidesLength ) {
+			if( horizontalSlidesLength && typeof indexh !== 'undefined' ) {
 
 				// The number of steps away from the present slide that will
 				// be visible
@@ -2255,7 +2988,12 @@
 
 				// Limit view distance on weaker devices
 				if( isMobileDevice ) {
-					viewDistance = isOverview() ? 6 : 1;
+					viewDistance = isOverview() ? 6 : 2;
+				}
+
+				// All slides need to be visible when exporting to PDF
+				if( isPrintingPDF() ) {
+					viewDistance = Number.MAX_VALUE;
 				}
 
 				for( var x = 0; x < horizontalSlidesLength; x++ ) {
@@ -2264,11 +3002,22 @@
 					var verticalSlides = toArray( horizontalSlide.querySelectorAll( 'section' ) ),
 						verticalSlidesLength = verticalSlides.length;
 
-					// Loops so that it measures 1 between the first and last slides
-					distanceX = Math.abs( ( indexh - x ) % ( horizontalSlidesLength - viewDistance ) ) || 0;
+					// Determine how far away this slide is from the present
+					distanceX = Math.abs( ( indexh || 0 ) - x ) || 0;
+
+					// If the presentation is looped, distance should measure
+					// 1 between the first and last slides
+					if( config.loop ) {
+						distanceX = Math.abs( ( ( indexh || 0 ) - x ) % ( horizontalSlidesLength - viewDistance ) ) || 0;
+					}
 
 					// Show the horizontal slide if it's within the view distance
-					horizontalSlide.style.display = distanceX > viewDistance ? 'none' : 'block';
+					if( distanceX < viewDistance ) {
+						showSlide( horizontalSlide );
+					}
+					else {
+						hideSlide( horizontalSlide );
+					}
 
 					if( verticalSlidesLength ) {
 
@@ -2277,13 +3026,34 @@
 						for( var y = 0; y < verticalSlidesLength; y++ ) {
 							var verticalSlide = verticalSlides[y];
 
-							distanceY = x === indexh ? Math.abs( indexv - y ) : Math.abs( y - oy );
+							distanceY = x === ( indexh || 0 ) ? Math.abs( ( indexv || 0 ) - y ) : Math.abs( y - oy );
 
-							verticalSlide.style.display = ( distanceX + distanceY ) > viewDistance ? 'none' : 'block';
+							if( distanceX + distanceY < viewDistance ) {
+								showSlide( verticalSlide );
+							}
+							else {
+								hideSlide( verticalSlide );
+							}
 						}
 
 					}
 				}
+
+			}
+
+		}
+
+		/**
+		 * Pick up notes from the current slide and display tham
+		 * to the viewer.
+		 *
+		 * @see `showNotes` config value
+		 */
+		function updateNotes() {
+
+			if( config.showNotes && dom.speakerNotes && currentSlide && !isPrintingPDF() ) {
+
+				dom.speakerNotes.innerHTML = getSlideNotes() || '';
 
 			}
 
@@ -2295,44 +3065,9 @@
 		function updateProgress() {
 
 			// Update progress if enabled
-			if( config.progress && dom.progress ) {
+			if( config.progress && dom.progressbar ) {
 
-				var horizontalSlides = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
-
-				// The number of past and total slides
-				var totalCount = document.querySelectorAll( SLIDES_SELECTOR + ':not(.stack)' ).length;
-				var pastCount = 0;
-
-				// Step through all slides and count the past ones
-				mainLoop: for( var i = 0; i < horizontalSlides.length; i++ ) {
-
-					var horizontalSlide = horizontalSlides[i];
-					var verticalSlides = toArray( horizontalSlide.querySelectorAll( 'section' ) );
-
-					for( var j = 0; j < verticalSlides.length; j++ ) {
-
-						// Stop as soon as we arrive at the present
-						if( verticalSlides[j].classList.contains( 'present' ) ) {
-							break mainLoop;
-						}
-
-						pastCount++;
-
-					}
-
-					// Stop as soon as we arrive at the present
-					if( horizontalSlide.classList.contains( 'present' ) ) {
-						break;
-					}
-
-					// Don't count the wrapping section for vertical slides
-					if( horizontalSlide.classList.contains( 'stack' ) === false ) {
-						pastCount++;
-					}
-
-				}
-
-				dom.progressbar.style.width = ( pastCount / ( totalCount - 1 ) ) * window.innerWidth + 'px';
+				dom.progressbar.style.width = getProgress() * dom.wrapper.offsetWidth + 'px';
 
 			}
 
@@ -2340,19 +3075,60 @@
 
 		/**
 		 * Updates the slide number div to reflect the current slide.
+		 *
+		 * The following slide number formats are available:
+		 *  "h.v": 	horizontal . vertical slide number (default)
+		 *  "h/v": 	horizontal / vertical slide number
+		 *    "c": 	flattened slide number
+		 *  "c/t": 	flattened slide number / total slides
 		 */
 		function updateSlideNumber() {
 
 			// Update slide number if enabled
-			if( config.slideNumber && dom.slideNumber) {
+			if( config.slideNumber && dom.slideNumber ) {
 
-				// Display the number of the page using 'indexh - indexv' format
-				var indexString = indexh;
-				if( indexv > 0 ) {
-					indexString += ' - ' + indexv;
+				var value = [];
+				var format = 'h.v';
+
+				// Check if a custom number format is available
+				if( typeof config.slideNumber === 'string' ) {
+					format = config.slideNumber;
 				}
 
-				dom.slideNumber.innerHTML = indexString;
+				switch( format ) {
+					case 'c':
+						value.push( getSlidePastCount() + 1 );
+						break;
+					case 'c/t':
+						value.push( getSlidePastCount() + 1, '/', getTotalSlides() );
+						break;
+					case 'h/v':
+						value.push( indexh + 1 );
+						if( isVerticalSlide() ) value.push( '/', indexv + 1 );
+						break;
+					default:
+						value.push( indexh + 1 );
+						if( isVerticalSlide() ) value.push( '.', indexv + 1 );
+				}
+
+				dom.slideNumber.innerHTML = formatSlideNumber( value[0], value[1], value[2] );
+			}
+
+		}
+
+		/**
+		 * Applies HTML formatting to a slide number before it's
+		 * written to the DOM.
+		 */
+		function formatSlideNumber( a, delimiter, b ) {
+
+			if( typeof b === 'number' && !isNaN( b ) ) {
+				return  '<span class="slide-number-a">'+ a +'</span>' +
+						'<span class="slide-number-delimiter">'+ delimiter +'</span>' +
+						'<span class="slide-number-b">'+ b +'</span>';
+			}
+			else {
+				return '<span class="slide-number-a">'+ a +'</span>';
 			}
 
 		}
@@ -2426,30 +3202,38 @@
 			// states of their slides (past/present/future)
 			toArray( dom.background.childNodes ).forEach( function( backgroundh, h ) {
 
+				backgroundh.classList.remove( 'past' );
+				backgroundh.classList.remove( 'present' );
+				backgroundh.classList.remove( 'future' );
+
 				if( h < indexh ) {
-					backgroundh.className = 'slide-background ' + horizontalPast;
+					backgroundh.classList.add( horizontalPast );
 				}
 				else if ( h > indexh ) {
-					backgroundh.className = 'slide-background ' + horizontalFuture;
+					backgroundh.classList.add( horizontalFuture );
 				}
 				else {
-					backgroundh.className = 'slide-background present';
+					backgroundh.classList.add( 'present' );
 
 					// Store a reference to the current background element
 					currentBackground = backgroundh;
 				}
 
 				if( includeAll || h === indexh ) {
-					toArray( backgroundh.childNodes ).forEach( function( backgroundv, v ) {
+					toArray( backgroundh.querySelectorAll( '.slide-background' ) ).forEach( function( backgroundv, v ) {
+
+						backgroundv.classList.remove( 'past' );
+						backgroundv.classList.remove( 'present' );
+						backgroundv.classList.remove( 'future' );
 
 						if( v < indexv ) {
-							backgroundv.className = 'slide-background past';
+							backgroundv.classList.add( 'past' );
 						}
 						else if ( v > indexv ) {
-							backgroundv.className = 'slide-background future';
+							backgroundv.classList.add( 'future' );
 						}
 						else {
-							backgroundv.className = 'slide-background present';
+							backgroundv.classList.add( 'present' );
 
 							// Only if this is the present horizontal and vertical slide
 							if( h === indexh ) currentBackground = backgroundv;
@@ -2460,9 +3244,46 @@
 
 			} );
 
-			// Don't transition between identical backgrounds. This
-			// prevents unwanted flicker.
+			// Stop any currently playing video background
+			if( previousBackground ) {
+
+				var previousVideo = previousBackground.querySelector( 'video' );
+				if( previousVideo ) previousVideo.pause();
+
+			}
+
 			if( currentBackground ) {
+
+				// Start video playback
+				var currentVideo = currentBackground.querySelector( 'video' );
+				if( currentVideo ) {
+
+					var startVideo = function() {
+						currentVideo.currentTime = 0;
+						currentVideo.play();
+						currentVideo.removeEventListener( 'loadeddata', startVideo );
+					};
+
+					if( currentVideo.readyState > 1 ) {
+						startVideo();
+					}
+					else {
+						currentVideo.addEventListener( 'loadeddata', startVideo );
+					}
+
+				}
+
+				var backgroundImageURL = currentBackground.style.backgroundImage || '';
+
+				// Restart GIFs (doesn't work in Firefox)
+				if( /\.gif/i.test( backgroundImageURL ) ) {
+					currentBackground.style.backgroundImage = '';
+					window.getComputedStyle( currentBackground ).opacity;
+					currentBackground.style.backgroundImage = backgroundImageURL;
+				}
+
+				// Don't transition between identical backgrounds. This
+				// prevents unwanted flicker.
 				var previousBackgroundHash = previousBackground ? previousBackground.getAttribute( 'data-background-hash' ) : null;
 				var currentBackgroundHash = currentBackground.getAttribute( 'data-background-hash' );
 				if( currentBackgroundHash && currentBackgroundHash === previousBackgroundHash && currentBackground !== previousBackground ) {
@@ -2470,6 +3291,20 @@
 				}
 
 				previousBackground = currentBackground;
+
+			}
+
+			// If there's a background brightness flag for this slide,
+			// bubble it to the .reveal container
+			if( currentSlide ) {
+				[ 'has-light-background', 'has-dark-background' ].forEach( function( classToBubble ) {
+					if( currentSlide.classList.contains( classToBubble ) ) {
+						dom.wrapper.classList.add( classToBubble );
+					}
+					else {
+						dom.wrapper.classList.remove( classToBubble );
+					}
+				} );
 			}
 
 			// Allow the first background to apply without transition
@@ -2487,8 +3322,8 @@
 
 			if( config.parallaxBackgroundImage ) {
 
-				var horizontalSlides = document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ),
-					verticalSlides = document.querySelectorAll( VERTICAL_SLIDES_SELECTOR );
+				var horizontalSlides = dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ),
+					verticalSlides = dom.wrapper.querySelectorAll( VERTICAL_SLIDES_SELECTOR );
 
 				var backgroundSize = dom.background.style.backgroundSize.split( ' ' ),
 					backgroundWidth, backgroundHeight;
@@ -2501,16 +3336,143 @@
 					backgroundHeight = parseInt( backgroundSize[1], 10 );
 				}
 
-				var slideWidth = dom.background.offsetWidth;
-				var horizontalSlideCount = horizontalSlides.length;
-				var horizontalOffset = -( backgroundWidth - slideWidth ) / ( horizontalSlideCount-1 ) * indexh;
+				var slideWidth = dom.background.offsetWidth,
+					horizontalSlideCount = horizontalSlides.length,
+					horizontalOffsetMultiplier,
+					horizontalOffset;
 
-				var slideHeight = dom.background.offsetHeight;
-				var verticalSlideCount = verticalSlides.length;
-				var verticalOffset = verticalSlideCount > 0 ? -( backgroundHeight - slideHeight ) / ( verticalSlideCount-1 ) * indexv : 0;
+				if( typeof config.parallaxBackgroundHorizontal === 'number' ) {
+					horizontalOffsetMultiplier = config.parallaxBackgroundHorizontal;
+				}
+				else {
+					horizontalOffsetMultiplier = horizontalSlideCount > 1 ? ( backgroundWidth - slideWidth ) / ( horizontalSlideCount-1 ) : 0;
+				}
 
-				dom.background.style.backgroundPosition = horizontalOffset + 'px ' + verticalOffset + 'px';
+				horizontalOffset = horizontalOffsetMultiplier * indexh * -1;
 
+				var slideHeight = dom.background.offsetHeight,
+					verticalSlideCount = verticalSlides.length,
+					verticalOffsetMultiplier,
+					verticalOffset;
+
+				if( typeof config.parallaxBackgroundVertical === 'number' ) {
+					verticalOffsetMultiplier = config.parallaxBackgroundVertical;
+				}
+				else {
+					verticalOffsetMultiplier = ( backgroundHeight - slideHeight ) / ( verticalSlideCount-1 );
+				}
+
+				verticalOffset = verticalSlideCount > 0 ?  verticalOffsetMultiplier * indexv * 1 : 0;
+
+				dom.background.style.backgroundPosition = horizontalOffset + 'px ' + -verticalOffset + 'px';
+
+			}
+
+		}
+
+		/**
+		 * Called when the given slide is within the configured view
+		 * distance. Shows the slide element and loads any content
+		 * that is set to load lazily (data-src).
+		 */
+		function showSlide( slide ) {
+
+			// Show the slide element
+			slide.style.display = 'block';
+
+			// Media elements with data-src attributes
+			toArray( slide.querySelectorAll( 'img[data-src], video[data-src], audio[data-src]' ) ).forEach( function( element ) {
+				element.setAttribute( 'src', element.getAttribute( 'data-src' ) );
+				element.removeAttribute( 'data-src' );
+			} );
+
+			// Media elements with <source> children
+			toArray( slide.querySelectorAll( 'video, audio' ) ).forEach( function( media ) {
+				var sources = 0;
+
+				toArray( media.querySelectorAll( 'source[data-src]' ) ).forEach( function( source ) {
+					source.setAttribute( 'src', source.getAttribute( 'data-src' ) );
+					source.removeAttribute( 'data-src' );
+					sources += 1;
+				} );
+
+				// If we rewrote sources for this video/audio element, we need
+				// to manually tell it to load from its new origin
+				if( sources > 0 ) {
+					media.load();
+				}
+			} );
+
+
+			// Show the corresponding background element
+			var indices = getIndices( slide );
+			var background = getSlideBackground( indices.h, indices.v );
+			if( background ) {
+				background.style.display = 'block';
+
+				// If the background contains media, load it
+				if( background.hasAttribute( 'data-loaded' ) === false ) {
+					background.setAttribute( 'data-loaded', 'true' );
+
+					var backgroundImage = slide.getAttribute( 'data-background-image' ),
+						backgroundVideo = slide.getAttribute( 'data-background-video' ),
+						backgroundVideoLoop = slide.hasAttribute( 'data-background-video-loop' ),
+						backgroundVideoMuted = slide.hasAttribute( 'data-background-video-muted' ),
+						backgroundIframe = slide.getAttribute( 'data-background-iframe' );
+
+					// Images
+					if( backgroundImage ) {
+						background.style.backgroundImage = 'url('+ backgroundImage +')';
+					}
+					// Videos
+					else if ( backgroundVideo && !isSpeakerNotes() ) {
+						var video = document.createElement( 'video' );
+
+						if( backgroundVideoLoop ) {
+							video.setAttribute( 'loop', '' );
+						}
+
+						if( backgroundVideoMuted ) {
+							video.muted = true;
+						}
+
+						// Support comma separated lists of video sources
+						backgroundVideo.split( ',' ).forEach( function( source ) {
+							video.innerHTML += '<source src="'+ source +'">';
+						} );
+
+						background.appendChild( video );
+					}
+					// Iframes
+					else if( backgroundIframe ) {
+						var iframe = document.createElement( 'iframe' );
+							iframe.setAttribute( 'src', backgroundIframe );
+							iframe.style.width  = '100%';
+							iframe.style.height = '100%';
+							iframe.style.maxHeight = '100%';
+							iframe.style.maxWidth = '100%';
+
+						background.appendChild( iframe );
+					}
+				}
+			}
+
+		}
+
+		/**
+		 * Called when the given slide is moved outside of the
+		 * configured view distance.
+		 */
+		function hideSlide( slide ) {
+
+			// Hide the slide element
+			slide.style.display = 'none';
+
+			// Hide the corresponding background element
+			var indices = getIndices( slide );
+			var background = getSlideBackground( indices.h, indices.v );
+			if( background ) {
+				background.style.display = 'none';
 			}
 
 		}
@@ -2522,8 +3484,8 @@
 		 */
 		function availableRoutes() {
 
-			var horizontalSlides = document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ),
-				verticalSlides = document.querySelectorAll( VERTICAL_SLIDES_SELECTOR );
+			var horizontalSlides = dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ),
+				verticalSlides = dom.wrapper.querySelectorAll( VERTICAL_SLIDES_SELECTOR );
 
 			var routes = {
 				left: indexh > 0 || config.loop,
@@ -2567,30 +3529,86 @@
 		}
 
 		/**
+		 * Enforces origin-specific format rules for embedded media.
+		 */
+		function formatEmbeddedContent() {
+
+			var _appendParamToIframeSource = function( sourceAttribute, sourceURL, param ) {
+				toArray( dom.slides.querySelectorAll( 'iframe['+ sourceAttribute +'*="'+ sourceURL +'"]' ) ).forEach( function( el ) {
+					var src = el.getAttribute( sourceAttribute );
+					if( src && src.indexOf( param ) === -1 ) {
+						el.setAttribute( sourceAttribute, src + ( !/\?/.test( src ) ? '?' : '&' ) + param );
+					}
+				});
+			};
+
+			// YouTube frames must include "?enablejsapi=1"
+			_appendParamToIframeSource( 'src', 'youtube.com/embed/', 'enablejsapi=1' );
+			_appendParamToIframeSource( 'data-src', 'youtube.com/embed/', 'enablejsapi=1' );
+
+			// Vimeo frames must include "?api=1"
+			_appendParamToIframeSource( 'src', 'player.vimeo.com/', 'api=1' );
+			_appendParamToIframeSource( 'data-src', 'player.vimeo.com/', 'api=1' );
+
+		}
+
+		/**
 		 * Start playback of any embedded content inside of
 		 * the targeted slide.
 		 */
 		function startEmbeddedContent( slide ) {
 
 			if( slide && !isSpeakerNotes() ) {
+				// Restart GIFs
+				toArray( slide.querySelectorAll( 'img[src$=".gif"]' ) ).forEach( function( el ) {
+					// Setting the same unchanged source like this was confirmed
+					// to work in Chrome, FF & Safari
+					el.setAttribute( 'src', el.getAttribute( 'src' ) );
+				} );
+
 				// HTML5 media elements
 				toArray( slide.querySelectorAll( 'video, audio' ) ).forEach( function( el ) {
-					if( el.hasAttribute( 'data-autoplay' ) ) {
+					if( el.hasAttribute( 'data-autoplay' ) && typeof el.play === 'function' ) {
 						el.play();
 					}
 				} );
 
-				// iframe embeds
-				toArray( slide.querySelectorAll( 'iframe' ) ).forEach( function( el ) {
-					el.contentWindow.postMessage( 'slide:start', '*' );
-				});
+				// Normal iframes
+				toArray( slide.querySelectorAll( 'iframe[src]' ) ).forEach( function( el ) {
+					startEmbeddedIframe( { target: el } );
+				} );
 
-				// YouTube embeds
-				toArray( slide.querySelectorAll( 'iframe[src*="youtube.com/embed/"]' ) ).forEach( function( el ) {
-					if( el.hasAttribute( 'data-autoplay' ) ) {
-						el.contentWindow.postMessage( '{"event":"command","func":"playVideo","args":""}', '*' );
+				// Lazy loading iframes
+				toArray( slide.querySelectorAll( 'iframe[data-src]' ) ).forEach( function( el ) {
+					if( el.getAttribute( 'src' ) !== el.getAttribute( 'data-src' ) ) {
+						el.removeEventListener( 'load', startEmbeddedIframe ); // remove first to avoid dupes
+						el.addEventListener( 'load', startEmbeddedIframe );
+						el.setAttribute( 'src', el.getAttribute( 'data-src' ) );
 					}
-				});
+				} );
+			}
+
+		}
+
+		/**
+		 * "Starts" the content of an embedded iframe using the
+		 * postmessage API.
+		 */
+		function startEmbeddedIframe( event ) {
+
+			var iframe = event.target;
+
+			// YouTube postMessage API
+			if( /youtube\.com\/embed\//.test( iframe.getAttribute( 'src' ) ) && iframe.hasAttribute( 'data-autoplay' ) ) {
+				iframe.contentWindow.postMessage( '{"event":"command","func":"playVideo","args":""}', '*' );
+			}
+			// Vimeo postMessage API
+			else if( /player\.vimeo\.com\//.test( iframe.getAttribute( 'src' ) ) && iframe.hasAttribute( 'data-autoplay' ) ) {
+				iframe.contentWindow.postMessage( '{"method":"play"}', '*' );
+			}
+			// Generic postMessage API
+			else {
+				iframe.contentWindow.postMessage( 'slide:start', '*' );
 			}
 
 		}
@@ -2601,26 +3619,119 @@
 		 */
 		function stopEmbeddedContent( slide ) {
 
-			if( slide ) {
+			if( slide && slide.parentNode ) {
 				// HTML5 media elements
 				toArray( slide.querySelectorAll( 'video, audio' ) ).forEach( function( el ) {
-					if( !el.hasAttribute( 'data-ignore' ) ) {
+					if( !el.hasAttribute( 'data-ignore' ) && typeof el.pause === 'function' ) {
 						el.pause();
 					}
 				} );
 
-				// iframe embeds
+				// Generic postMessage API for non-lazy loaded iframes
 				toArray( slide.querySelectorAll( 'iframe' ) ).forEach( function( el ) {
 					el.contentWindow.postMessage( 'slide:stop', '*' );
+					el.removeEventListener( 'load', startEmbeddedIframe );
 				});
 
-				// YouTube embeds
+				// YouTube postMessage API
 				toArray( slide.querySelectorAll( 'iframe[src*="youtube.com/embed/"]' ) ).forEach( function( el ) {
 					if( !el.hasAttribute( 'data-ignore' ) && typeof el.contentWindow.postMessage === 'function' ) {
 						el.contentWindow.postMessage( '{"event":"command","func":"pauseVideo","args":""}', '*' );
 					}
 				});
+
+				// Vimeo postMessage API
+				toArray( slide.querySelectorAll( 'iframe[src*="player.vimeo.com/"]' ) ).forEach( function( el ) {
+					if( !el.hasAttribute( 'data-ignore' ) && typeof el.contentWindow.postMessage === 'function' ) {
+						el.contentWindow.postMessage( '{"method":"pause"}', '*' );
+					}
+				});
+
+				// Lazy loading iframes
+				toArray( slide.querySelectorAll( 'iframe[data-src]' ) ).forEach( function( el ) {
+					// Only removing the src doesn't actually unload the frame
+					// in all browsers (Firefox) so we set it to blank first
+					el.setAttribute( 'src', 'about:blank' );
+					el.removeAttribute( 'src' );
+				} );
 			}
+
+		}
+
+		/**
+		 * Returns the number of past slides. This can be used as a global
+		 * flattened index for slides.
+		 */
+		function getSlidePastCount() {
+
+			var horizontalSlides = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
+
+			// The number of past slides
+			var pastCount = 0;
+
+			// Step through all slides and count the past ones
+			mainLoop: for( var i = 0; i < horizontalSlides.length; i++ ) {
+
+				var horizontalSlide = horizontalSlides[i];
+				var verticalSlides = toArray( horizontalSlide.querySelectorAll( 'section' ) );
+
+				for( var j = 0; j < verticalSlides.length; j++ ) {
+
+					// Stop as soon as we arrive at the present
+					if( verticalSlides[j].classList.contains( 'present' ) ) {
+						break mainLoop;
+					}
+
+					pastCount++;
+
+				}
+
+				// Stop as soon as we arrive at the present
+				if( horizontalSlide.classList.contains( 'present' ) ) {
+					break;
+				}
+
+				// Don't count the wrapping section for vertical slides
+				if( horizontalSlide.classList.contains( 'stack' ) === false ) {
+					pastCount++;
+				}
+
+			}
+
+			return pastCount;
+
+		}
+
+		/**
+		 * Returns a value ranging from 0-1 that represents
+		 * how far into the presentation we have navigated.
+		 */
+		function getProgress() {
+
+			// The number of past and total slides
+			var totalCount = getTotalSlides();
+			var pastCount = getSlidePastCount();
+
+			if( currentSlide ) {
+
+				var allFragments = currentSlide.querySelectorAll( '.fragment' );
+
+				// If there are fragments in the current slide those should be
+				// accounted for in the progress.
+				if( allFragments.length > 0 ) {
+					var visibleFragments = currentSlide.querySelectorAll( '.fragment.visible' );
+
+					// This value represents how big a portion of the slide progress
+					// that is made up by its fragments (0-1)
+					var fragmentWeight = 0.9;
+
+					// Add fragment progress to the past slide count
+					pastCount += ( visibleFragments.length / allFragments.length ) * fragmentWeight;
+				}
+
+			}
+
+			return pastCount / ( totalCount - 1 );
 
 		}
 
@@ -2648,8 +3759,13 @@
 			// If the first bit is invalid and there is a name we can
 			// assume that this is a named link
 			if( isNaN( parseInt( bits[0], 10 ) ) && name.length ) {
-				// Find the slide with the specified name
-				var element = document.querySelector( '#' + name );
+				var element;
+
+				// Ensure the named link is a valid HTML ID attribute
+				if( /^[a-zA-Z][\w:.-]*$/.test( name ) ) {
+					// Find the slide with the specified ID
+					element = document.getElementById( name );
+				}
 
 				if( element ) {
 					// Find the position of the named slide and navigate to it
@@ -2691,12 +3807,18 @@
 				if( typeof delay === 'number' ) {
 					writeURLTimeout = setTimeout( writeURL, delay );
 				}
-				else {
+				else if( currentSlide ) {
 					var url = '/';
 
+					// Attempt to create a named link based on the slide's ID
+					var id = currentSlide.getAttribute( 'id' );
+					if( id ) {
+						id = id.replace( /[^a-zA-Z0-9\-\_\:\.]/g, '' );
+					}
+
 					// If the current slide has an ID, use that as a named link
-					if( currentSlide && typeof currentSlide.getAttribute( 'id' ) === 'string' ) {
-						url = '/' + currentSlide.getAttribute( 'id' );
+					if( typeof id === 'string' && id.length ) {
+						url = '/' + id;
 					}
 					// Otherwise use the /h/v index
 					else {
@@ -2733,10 +3855,13 @@
 				var slideh = isVertical ? slide.parentNode : slide;
 
 				// Select all horizontal slides
-				var horizontalSlides = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
+				var horizontalSlides = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
 
 				// Now that we know which the horizontal slide is, get its index
 				h = Math.max( horizontalSlides.indexOf( slideh ), 0 );
+
+				// Assume we're not vertical
+				v = undefined;
 
 				// If this is a vertical slide, grab the vertical index
 				if( isVertical ) {
@@ -2747,12 +3872,144 @@
 			if( !slide && currentSlide ) {
 				var hasFragments = currentSlide.querySelectorAll( '.fragment' ).length > 0;
 				if( hasFragments ) {
-					var visibleFragments = currentSlide.querySelectorAll( '.fragment.visible' );
-					f = visibleFragments.length - 1;
+					var currentFragment = currentSlide.querySelector( '.current-fragment' );
+					if( currentFragment && currentFragment.hasAttribute( 'data-fragment-index' ) ) {
+						f = parseInt( currentFragment.getAttribute( 'data-fragment-index' ), 10 );
+					}
+					else {
+						f = currentSlide.querySelectorAll( '.fragment.visible' ).length - 1;
+					}
 				}
 			}
 
 			return { h: h, v: v, f: f };
+
+		}
+
+		/**
+		 * Retrieves the total number of slides in this presentation.
+		 */
+		function getTotalSlides() {
+
+			return dom.wrapper.querySelectorAll( SLIDES_SELECTOR + ':not(.stack)' ).length;
+
+		}
+
+		/**
+		 * Returns the slide element matching the specified index.
+		 */
+		function getSlide( x, y ) {
+
+			var horizontalSlide = dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR )[ x ];
+			var verticalSlides = horizontalSlide && horizontalSlide.querySelectorAll( 'section' );
+
+			if( verticalSlides && verticalSlides.length && typeof y === 'number' ) {
+				return verticalSlides ? verticalSlides[ y ] : undefined;
+			}
+
+			return horizontalSlide;
+
+		}
+
+		/**
+		 * Returns the background element for the given slide.
+		 * All slides, even the ones with no background properties
+		 * defined, have a background element so as long as the
+		 * index is valid an element will be returned.
+		 */
+		function getSlideBackground( x, y ) {
+
+			// When printing to PDF the slide backgrounds are nested
+			// inside of the slides
+			if( isPrintingPDF() ) {
+				var slide = getSlide( x, y );
+				if( slide ) {
+					var background = slide.querySelector( '.slide-background' );
+					if( background && background.parentNode === slide ) {
+						return background;
+					}
+				}
+
+				return undefined;
+			}
+
+			var horizontalBackground = dom.wrapper.querySelectorAll( '.backgrounds>.slide-background' )[ x ];
+			var verticalBackgrounds = horizontalBackground && horizontalBackground.querySelectorAll( '.slide-background' );
+
+			if( verticalBackgrounds && verticalBackgrounds.length && typeof y === 'number' ) {
+				return verticalBackgrounds ? verticalBackgrounds[ y ] : undefined;
+			}
+
+			return horizontalBackground;
+
+		}
+
+		/**
+		 * Retrieves the speaker notes from a slide. Notes can be
+		 * defined in two ways:
+		 * 1. As a data-notes attribute on the slide <section>
+		 * 2. As an <aside class="notes"> inside of the slide
+		 */
+		function getSlideNotes( slide ) {
+
+			// Default to the current slide
+			slide = slide || currentSlide;
+
+			// Notes can be specified via the data-notes attribute...
+			if( slide.hasAttribute( 'data-notes' ) ) {
+				return slide.getAttribute( 'data-notes' );
+			}
+
+			// ... or using an <aside class="notes"> element
+			var notesElement = slide.querySelector( 'aside.notes' );
+			if( notesElement ) {
+				return notesElement.innerHTML;
+			}
+
+			return null;
+
+		}
+
+		/**
+		 * Retrieves the current state of the presentation as
+		 * an object. This state can then be restored at any
+		 * time.
+		 */
+		function getState() {
+
+			var indices = getIndices();
+
+			return {
+				indexh: indices.h,
+				indexv: indices.v,
+				indexf: indices.f,
+				paused: isPaused(),
+				overview: isOverview()
+			};
+
+		}
+
+		/**
+		 * Restores the presentation to the given state.
+		 *
+		 * @param {Object} state As generated by getState()
+		 */
+		function setState( state ) {
+
+			if( typeof state === 'object' ) {
+				slide( deserialize( state.indexh ), deserialize( state.indexv ), deserialize( state.indexf ) );
+
+				var pausedFlag = deserialize( state.paused ),
+					overviewFlag = deserialize( state.overview );
+
+				if( typeof pausedFlag === 'boolean' && pausedFlag !== isPaused() ) {
+					togglePause( pausedFlag );
+				}
+
+				if( typeof overviewFlag === 'boolean' && overviewFlag !== isOverview() ) {
+					toggleOverview( overviewFlag );
+				}
+			}
 
 		}
 
@@ -2867,6 +4124,9 @@
 							element.classList.add( 'visible' );
 							element.classList.remove( 'current-fragment' );
 
+							// Announce the fragments one by one to the Screen Reader
+							dom.statusDiv.textContent = element.textContent;
+
 							if( i === index ) {
 								element.classList.add( 'current-fragment' );
 							}
@@ -2890,6 +4150,7 @@
 					}
 
 					updateControls();
+					updateProgress();
 
 					return !!( fragmentsShown.length || fragmentsHidden.length );
 
@@ -2934,14 +4195,21 @@
 
 			if( currentSlide ) {
 
+				var currentFragment = currentSlide.querySelector( '.current-fragment' );
+
+				var fragmentAutoSlide = currentFragment ? currentFragment.getAttribute( 'data-autoslide' ) : null;
 				var parentAutoSlide = currentSlide.parentNode ? currentSlide.parentNode.getAttribute( 'data-autoslide' ) : null;
 				var slideAutoSlide = currentSlide.getAttribute( 'data-autoslide' );
 
 				// Pick value in the following priority order:
-				// 1. Current slide's data-autoslide
-				// 2. Parent slide's data-autoslide
-				// 3. Global autoSlide setting
-				if( slideAutoSlide ) {
+				// 1. Current fragment's data-autoslide
+				// 2. Current slide's data-autoslide
+				// 3. Parent slide's data-autoslide
+				// 4. Global autoSlide setting
+				if( fragmentAutoSlide ) {
+					autoSlide = parseInt( fragmentAutoSlide, 10 );
+				}
+				else if( slideAutoSlide ) {
 					autoSlide = parseInt( slideAutoSlide, 10 );
 				}
 				else if( parentAutoSlide ) {
@@ -2953,14 +4221,17 @@
 
 				// If there are media elements with data-autoplay,
 				// automatically set the autoSlide duration to the
-				// length of that media
-				toArray( currentSlide.querySelectorAll( 'video, audio' ) ).forEach( function( el ) {
-					if( el.hasAttribute( 'data-autoplay' ) ) {
-						if( autoSlide && el.duration * 1000 > autoSlide ) {
-							autoSlide = ( el.duration * 1000 ) + 1000;
+				// length of that media. Not applicable if the slide
+				// is divided up into fragments.
+				if( currentSlide.querySelectorAll( '.fragment' ).length === 0 ) {
+					toArray( currentSlide.querySelectorAll( 'video, audio' ) ).forEach( function( el ) {
+						if( el.hasAttribute( 'data-autoplay' ) ) {
+							if( autoSlide && el.duration * 1000 > autoSlide ) {
+								autoSlide = ( el.duration * 1000 ) + 1000;
+							}
 						}
-					}
-				} );
+					} );
+				}
 
 				// Cue the next auto-slide if:
 				// - There is an autoSlide value
@@ -2968,8 +4239,11 @@
 				// - The presentation isn't paused
 				// - The overview isn't active
 				// - The presentation isn't over
-				if( autoSlide && !autoSlidePaused && !isPaused() && !isOverview() && ( !Reveal.isLastSlide() || config.loop === true ) ) {
-					autoSlideTimeout = setTimeout( navigateNext, autoSlide );
+				if( autoSlide && !autoSlidePaused && !isPaused() && !isOverview() && ( !Reveal.isLastSlide() || availableFragments().next || config.loop === true ) ) {
+					autoSlideTimeout = setTimeout( function() {
+						typeof config.autoSlideMethod === 'function' ? config.autoSlideMethod() : navigateNext();
+						cueAutoSlide();
+					}, autoSlide );
 					autoSlideStartTime = Date.now();
 				}
 
@@ -2993,19 +4267,25 @@
 
 		function pauseAutoSlide() {
 
-			autoSlidePaused = true;
-			clearTimeout( autoSlideTimeout );
+			if( autoSlide && !autoSlidePaused ) {
+				autoSlidePaused = true;
+				dispatchEvent( 'autoslidepaused' );
+				clearTimeout( autoSlideTimeout );
 
-			if( autoSlidePlayer ) {
-				autoSlidePlayer.setPlaying( false );
+				if( autoSlidePlayer ) {
+					autoSlidePlayer.setPlaying( false );
+				}
 			}
 
 		}
 
 		function resumeAutoSlide() {
 
-			autoSlidePaused = false;
-			cueAutoSlide();
+			if( autoSlide && autoSlidePaused ) {
+				autoSlidePaused = false;
+				dispatchEvent( 'autoslideresumed' );
+				cueAutoSlide();
+			}
 
 		}
 
@@ -3072,7 +4352,14 @@
 				}
 				else {
 					// Fetch the previous horizontal slide, if there is one
-					var previousSlide = document.querySelector( HORIZONTAL_SLIDES_SELECTOR + '.past:nth-child(' + indexh + ')' );
+					var previousSlide;
+
+					if( config.rtl ) {
+						previousSlide = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR + '.future' ) ).pop();
+					}
+					else {
+						previousSlide = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR + '.past' ) ).pop();
+					}
 
 					if( previousSlide ) {
 						var v = ( previousSlide.querySelectorAll( 'section' ).length - 1 ) || undefined;
@@ -3085,18 +4372,37 @@
 		}
 
 		/**
-		 * Same as #navigatePrev() but navigates forwards.
+		 * The reverse of #navigatePrev().
 		 */
 		function navigateNext() {
 
 			// Prioritize revealing fragments
 			if( nextFragment() === false ) {
-				availableRoutes().down ? navigateDown() : navigateRight();
+				if( availableRoutes().down ) {
+					navigateDown();
+				}
+				else if( config.rtl ) {
+					navigateLeft();
+				}
+				else {
+					navigateRight();
+				}
 			}
 
-			// If auto-sliding is enabled we need to cue up
-			// another timeout
-			cueAutoSlide();
+		}
+
+		/**
+		 * Checks if the target element prevents the triggering of
+		 * swipe navigation.
+		 */
+		function isSwipePrevented( target ) {
+
+			while( target && typeof target.hasAttribute === 'function' ) {
+				if( target.hasAttribute( 'data-prevent-swipe' ) ) return true;
+				target = target.parentNode;
+			}
+
+			return false;
 
 		}
 
@@ -3118,23 +4424,61 @@
 		}
 
 		/**
+		 * Handler for the document level 'keypress' event.
+		 */
+		function onDocumentKeyPress( event ) {
+
+			// Check if the pressed key is question mark
+			if( event.shiftKey && event.charCode === 63 ) {
+				if( dom.overlay ) {
+					closeOverlay();
+				}
+				else {
+					showHelp( true );
+				}
+			}
+
+		}
+
+		/**
 		 * Handler for the document level 'keydown' event.
 		 */
 		function onDocumentKeyDown( event ) {
+
+			// If there's a condition specified and it returns false,
+			// ignore this event
+			if( typeof config.keyboardCondition === 'function' && config.keyboardCondition() === false ) {
+				return true;
+			}
+
+			// Remember if auto-sliding was paused so we can toggle it
+			var autoSlideWasPaused = autoSlidePaused;
 
 			onUserInput( event );
 
 			// Check if there's a focused element that could be using
 			// the keyboard
-			var activeElement = document.activeElement;
-			var hasFocus = !!( document.activeElement && ( document.activeElement.type || document.activeElement.href || document.activeElement.contentEditable !== 'inherit' ) );
+			var activeElementIsCE = document.activeElement && document.activeElement.contentEditable !== 'inherit';
+			var activeElementIsInput = document.activeElement && document.activeElement.tagName && /input|textarea/i.test( document.activeElement.tagName );
 
 			// Disregard the event if there's a focused element or a
 			// keyboard modifier key is present
-			if( hasFocus || (event.shiftKey && event.keyCode !== 32) || event.altKey || event.ctrlKey || event.metaKey ) return;
+			if( activeElementIsCE || activeElementIsInput || (event.shiftKey && event.keyCode !== 32) || event.altKey || event.ctrlKey || event.metaKey ) return;
 
-			// While paused only allow "unpausing" keyboard events (b and .)
-			if( isPaused() && [66,190,191].indexOf( event.keyCode ) === -1 ) {
+			// While paused only allow resume keyboard events; 'b', '.''
+			var resumeKeyCodes = [66,190,191];
+			var key;
+
+			// Custom key bindings for togglePause should be able to resume
+			if( typeof config.keyboard === 'object' ) {
+				for( key in config.keyboard ) {
+					if( config.keyboard[key] === 'togglePause' ) {
+						resumeKeyCodes.push( parseInt( key, 10 ) );
+					}
+				}
+			}
+
+			if( isPaused() && resumeKeyCodes.indexOf( event.keyCode ) === -1 ) {
 				return false;
 			}
 
@@ -3143,7 +4487,7 @@
 			// 1. User defined key bindings
 			if( typeof config.keyboard === 'object' ) {
 
-				for( var key in config.keyboard ) {
+				for( key in config.keyboard ) {
 
 					// Check if this binding matches the pressed key
 					if( parseInt( key, 10 ) === event.keyCode ) {
@@ -3194,10 +4538,12 @@
 					case 32: isOverview() ? deactivateOverview() : event.shiftKey ? navigatePrev() : navigateNext(); break;
 					// return
 					case 13: isOverview() ? deactivateOverview() : triggered = false; break;
-					// b, period, Logitech presenter tools "black screen" button
-					case 66: case 190: case 191: togglePause(); break;
+					// two-spot, semicolon, b, period, Logitech presenter tools "black screen" button
+					case 58: case 59: case 66: case 190: case 191: togglePause(); break;
 					// f
 					case 70: enterFullscreen(); break;
+					// a
+					case 65: if ( config.autoSlideStoppable ) toggleAutoSlide( autoSlideWasPaused ); break;
 					default:
 						triggered = false;
 				}
@@ -3207,18 +4553,18 @@
 			// If the input resulted in a triggered action we should prevent
 			// the browsers default behavior
 			if( triggered ) {
-				event.preventDefault();
+				event.preventDefault && event.preventDefault();
 			}
 			// ESC or O key
 			else if ( ( event.keyCode === 27 || event.keyCode === 79 ) && features.transforms3d ) {
-				if( dom.preview ) {
-					closePreview();
+				if( dom.overlay ) {
+					closeOverlay();
 				}
 				else {
 					toggleOverview();
 				}
 
-				event.preventDefault();
+				event.preventDefault && event.preventDefault();
 			}
 
 			// If auto-sliding is enabled we need to cue up
@@ -3232,6 +4578,8 @@
 		 * swipe and pinch gestures.
 		 */
 		function onTouchStart( event ) {
+
+			if( isSwipePrevented( event.target ) ) return true;
 
 			touch.startX = event.touches[0].clientX;
 			touch.startY = event.touches[0].clientY;
@@ -3255,6 +4603,8 @@
 		 * Handler for the 'touchmove' event.
 		 */
 		function onTouchMove( event ) {
+
+			if( isSwipePrevented( event.target ) ) return true;
 
 			// Each touch should only trigger one action
 			if( !touch.captured ) {
@@ -3332,7 +4682,7 @@
 			}
 			// There's a bug with swiping on some Android devices unless
 			// the default action is always prevented
-			else if( navigator.userAgent.match( /android/gi ) ) {
+			else if( UA.match( /android/gi ) ) {
 				event.preventDefault();
 			}
 
@@ -3352,7 +4702,7 @@
 		 */
 		function onPointerDown( event ) {
 
-			if( event.pointerType === event.MSPOINTER_TYPE_TOUCH ) {
+			if( event.pointerType === event.MSPOINTER_TYPE_TOUCH || event.pointerType === "touch" ) {
 				event.touches = [{ clientX: event.clientX, clientY: event.clientY }];
 				onTouchStart( event );
 			}
@@ -3364,7 +4714,7 @@
 		 */
 		function onPointerMove( event ) {
 
-			if( event.pointerType === event.MSPOINTER_TYPE_TOUCH ) {
+			if( event.pointerType === event.MSPOINTER_TYPE_TOUCH || event.pointerType === "touch" )  {
 				event.touches = [{ clientX: event.clientX, clientY: event.clientY }];
 				onTouchMove( event );
 			}
@@ -3376,7 +4726,7 @@
 		 */
 		function onPointerUp( event ) {
 
-			if( event.pointerType === event.MSPOINTER_TYPE_TOUCH ) {
+			if( event.pointerType === event.MSPOINTER_TYPE_TOUCH || event.pointerType === "touch" )  {
 				event.touches = [{ clientX: event.clientX, clientY: event.clientY }];
 				onTouchEnd( event );
 			}
@@ -3417,8 +4767,12 @@
 
 			event.preventDefault();
 
-			var slidesTotal = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ).length;
+			var slidesTotal = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ).length;
 			var slideIndex = Math.floor( ( event.clientX / dom.wrapper.offsetWidth ) * slidesTotal );
+
+			if( config.rtl ) {
+				slideIndex = slidesTotal - slideIndex;
+			}
 
 			slide( slideIndex );
 
@@ -3464,7 +4818,10 @@
 			// If, after clicking a link or similar and we're coming back,
 			// focus the document.body to ensure we can use keyboard shortcuts
 			if( isHidden === false && document.activeElement !== document.body ) {
-				document.activeElement.blur();
+				// Not all elements support .blur() - SVGs among them.
+				if( typeof document.activeElement.blur === 'function' ) {
+					document.activeElement.blur();
+				}
 				document.body.focus();
 			}
 
@@ -3508,10 +4865,12 @@
 		 */
 		function onPreviewLinkClicked( event ) {
 
-			var url = event.target.getAttribute( 'href' );
-			if( url ) {
-				openPreview( url );
-				event.preventDefault();
+			if( event.currentTarget && event.currentTarget.hasAttribute( 'href' ) ) {
+				var url = event.currentTarget.getAttribute( 'href' );
+				if( url ) {
+					showPreview( url );
+					event.preventDefault();
+				}
 			}
 
 		}
@@ -3556,8 +4915,9 @@
 		function Playback( container, progressCheck ) {
 
 			// Cosmetics
-			this.diameter = 50;
-			this.thickness = 3;
+			this.diameter = 100;
+			this.diameter2 = this.diameter/2;
+			this.thickness = 6;
 
 			// Flags if we are currently playing
 			this.playing = false;
@@ -3575,6 +4935,8 @@
 			this.canvas.className = 'playback';
 			this.canvas.width = this.diameter;
 			this.canvas.height = this.diameter;
+			this.canvas.style.width = this.diameter2 + 'px';
+			this.canvas.style.height = this.diameter2 + 'px';
 			this.context = this.canvas.getContext( '2d' );
 
 			this.container.appendChild( this.canvas );
@@ -3625,10 +4987,10 @@
 		Playback.prototype.render = function() {
 
 			var progress = this.playing ? this.progress : 0,
-				radius = ( this.diameter / 2 ) - this.thickness,
-				x = this.diameter / 2,
-				y = this.diameter / 2,
-				iconSize = 14;
+				radius = ( this.diameter2 ) - this.thickness,
+				x = this.diameter2,
+				y = this.diameter2,
+				iconSize = 28;
 
 			// Ease towards 1
 			this.progressOffset += ( 1 - this.progressOffset ) * 0.1;
@@ -3641,7 +5003,7 @@
 
 			// Solid background color
 			this.context.beginPath();
-			this.context.arc( x, y, radius + 2, 0, Math.PI * 2, false );
+			this.context.arc( x, y, radius + 4, 0, Math.PI * 2, false );
 			this.context.fillStyle = 'rgba( 0, 0, 0, 0.4 )';
 			this.context.fill();
 
@@ -3666,14 +5028,14 @@
 			// Draw play/pause icons
 			if( this.playing ) {
 				this.context.fillStyle = '#fff';
-				this.context.fillRect( 0, 0, iconSize / 2 - 2, iconSize );
-				this.context.fillRect( iconSize / 2 + 2, 0, iconSize / 2 - 2, iconSize );
+				this.context.fillRect( 0, 0, iconSize / 2 - 4, iconSize );
+				this.context.fillRect( iconSize / 2 + 4, 0, iconSize / 2 - 4, iconSize );
 			}
 			else {
 				this.context.beginPath();
-				this.context.translate( 2, 0 );
+				this.context.translate( 4, 0 );
 				this.context.moveTo( 0, 0 );
-				this.context.lineTo( iconSize - 2, iconSize / 2 );
+				this.context.lineTo( iconSize - 4, iconSize / 2 );
 				this.context.lineTo( 0, iconSize );
 				this.context.fillStyle = '#fff';
 				this.context.fill();
@@ -3707,7 +5069,9 @@
 		// --------------------------------------------------------------------//
 
 
-		return {
+		Reveal = {
+			VERSION: VERSION,
+
 			initialize: initialize,
 			configure: configure,
 			sync: sync,
@@ -3738,6 +5102,9 @@
 			// Forces an update in slide layout
 			layout: layout,
 
+			// Randomizes the order of slides
+			shuffle: shuffle,
+
 			// Returns an object with the available routes as booleans (left/right/top/bottom)
 			availableRoutes: availableRoutes,
 
@@ -3750,28 +5117,38 @@
 			// Toggles the "black screen" mode on/off
 			togglePause: togglePause,
 
+			// Toggles the auto slide mode on/off
+			toggleAutoSlide: toggleAutoSlide,
+
 			// State checks
 			isOverview: isOverview,
 			isPaused: isPaused,
+			isAutoSliding: isAutoSliding,
 
 			// Adds or removes all internal event listeners (such as keyboard)
 			addEventListeners: addEventListeners,
 			removeEventListeners: removeEventListeners,
 
+			// Facility for persisting and restoring the presentation state
+			getState: getState,
+			setState: setState,
+
+			// Presentation progress on range of 0-1
+			getProgress: getProgress,
+
 			// Returns the indices of the current, or specified, slide
 			getIndices: getIndices,
 
-			// Returns the slide at the specified index, y is optional
-			getSlide: function( x, y ) {
-				var horizontalSlide = document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR )[ x ];
-				var verticalSlides = horizontalSlide && horizontalSlide.querySelectorAll( 'section' );
+			getTotalSlides: getTotalSlides,
 
-				if( typeof y !== 'undefined' ) {
-					return verticalSlides ? verticalSlides[ y ] : undefined;
-				}
+			// Returns the slide element at the specified index
+			getSlide: getSlide,
 
-				return horizontalSlide;
-			},
+			// Returns the slide background element at the specified index
+			getSlideBackground: getSlideBackground,
+
+			// Returns the speaker notes string for a slide, or null
+			getSlideNotes: getSlideNotes,
 
 			// Returns the previous slide element, may be null
 			getPreviousSlide: function() {
@@ -3805,12 +5182,7 @@
 				for( var i in query ) {
 					var value = query[ i ];
 
-					query[ i ] = unescape( value );
-
-					if( value === 'null' ) query[ i ] = null;
-					else if( value === 'true' ) query[ i ] = true;
-					else if( value === 'false' ) query[ i ] = false;
-					else if( value.match( /^\d+$/ ) ) query[ i ] = parseFloat( value );
+					query[ i ] = deserialize( unescape( value ) );
 				}
 
 				return query;
@@ -3818,7 +5190,7 @@
 
 			// Returns true if we're currently on the first slide
 			isFirstSlide: function() {
-				return document.querySelector( SLIDES_SELECTOR + '.past' ) == null ? true : false;
+				return ( indexh === 0 && indexv === 0 );
 			},
 
 			// Returns true if we're currently on the last slide
@@ -3851,12 +5223,446 @@
 				if( 'addEventListener' in window ) {
 					( dom.wrapper || document.querySelector( '.reveal' ) ).removeEventListener( type, listener, useCapture );
 				}
+			},
+
+			// Programatically triggers a keyboard event
+			triggerKey: function( keyCode ) {
+				onDocumentKeyDown( { keyCode: keyCode } );
+			},
+
+			// Registers a new shortcut to include in the help overlay
+			registerKeyboardShortcut: function( key, value ) {
+				keyboardShortcuts[key] = value;
 			}
 		};
 
-	})();
+		return Reveal;
 
-	module.exports = Reveal;
+	}));
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * marked - a markdown parser
+	 * Copyright (c) 2011-2014, Christopher Jeffrey. (MIT Licensed)
+	 * https://github.com/chjj/marked
+	 */
+	(function(){function e(e){this.tokens=[],this.tokens.links={},this.options=e||a.defaults,this.rules=p.normal,this.options.gfm&&(this.rules=this.options.tables?p.tables:p.gfm)}function t(e,t){if(this.options=t||a.defaults,this.links=e,this.rules=u.normal,this.renderer=this.options.renderer||new n,this.renderer.options=this.options,!this.links)throw new Error("Tokens array requires a `links` property.");this.options.gfm?this.rules=this.options.breaks?u.breaks:u.gfm:this.options.pedantic&&(this.rules=u.pedantic)}function n(e){this.options=e||{}}function r(e){this.tokens=[],this.token=null,this.options=e||a.defaults,this.options.renderer=this.options.renderer||new n,this.renderer=this.options.renderer,this.renderer.options=this.options}function s(e,t){return e.replace(t?/&/g:/&(?!#?\w+;)/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}function i(e){return e.replace(/&([#\w]+);/g,function(e,t){return t=t.toLowerCase(),"colon"===t?":":"#"===t.charAt(0)?String.fromCharCode("x"===t.charAt(1)?parseInt(t.substring(2),16):+t.substring(1)):""})}function l(e,t){return e=e.source,t=t||"",function n(r,s){return r?(s=s.source||s,s=s.replace(/(^|[^\[])\^/g,"$1"),e=e.replace(r,s),n):new RegExp(e,t)}}function o(){}function h(e){for(var t,n,r=1;r<arguments.length;r++){t=arguments[r];for(n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e}function a(t,n,i){if(i||"function"==typeof n){i||(i=n,n=null),n=h({},a.defaults,n||{});var l,o,p=n.highlight,u=0;try{l=e.lex(t,n)}catch(c){return i(c)}o=l.length;var g=function(e){if(e)return n.highlight=p,i(e);var t;try{t=r.parse(l,n)}catch(s){e=s}return n.highlight=p,e?i(e):i(null,t)};if(!p||p.length<3)return g();if(delete n.highlight,!o)return g();for(;u<l.length;u++)!function(e){return"code"!==e.type?--o||g():p(e.text,e.lang,function(t,n){return t?g(t):null==n||n===e.text?--o||g():(e.text=n,e.escaped=!0,void(--o||g()))})}(l[u])}else try{return n&&(n=h({},a.defaults,n)),r.parse(e.lex(t,n),n)}catch(c){if(c.message+="\nPlease report this to https://github.com/chjj/marked.",(n||a.defaults).silent)return"<p>An error occured:</p><pre>"+s(c.message+"",!0)+"</pre>";throw c}}var p={newline:/^\n+/,code:/^( {4}[^\n]+\n*)+/,fences:o,hr:/^( *[-*_]){3,} *(?:\n+|$)/,heading:/^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,nptable:o,lheading:/^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,blockquote:/^( *>[^\n]+(\n(?!def)[^\n]+)*\n*)+/,list:/^( *)(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,html:/^ *(?:comment *(?:\n|\s*$)|closed *(?:\n{2,}|\s*$)|closing *(?:\n{2,}|\s*$))/,def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,table:o,paragraph:/^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,text:/^[^\n]+/};p.bullet=/(?:[*+-]|\d+\.)/,p.item=/^( *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)*/,p.item=l(p.item,"gm")(/bull/g,p.bullet)(),p.list=l(p.list)(/bull/g,p.bullet)("hr","\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))")("def","\\n+(?="+p.def.source+")")(),p.blockquote=l(p.blockquote)("def",p.def)(),p._tag="(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|[^\\w\\s@]*@)\\b",p.html=l(p.html)("comment",/<!--[\s\S]*?-->/)("closed",/<(tag)[\s\S]+?<\/\1>/)("closing",/<tag(?:"[^"]*"|'[^']*'|[^'">])*?>/)(/tag/g,p._tag)(),p.paragraph=l(p.paragraph)("hr",p.hr)("heading",p.heading)("lheading",p.lheading)("blockquote",p.blockquote)("tag","<"+p._tag)("def",p.def)(),p.normal=h({},p),p.gfm=h({},p.normal,{fences:/^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/,paragraph:/^/}),p.gfm.paragraph=l(p.paragraph)("(?!","(?!"+p.gfm.fences.source.replace("\\1","\\2")+"|"+p.list.source.replace("\\1","\\3")+"|")(),p.tables=h({},p.gfm,{nptable:/^ *(\S.*\|.*)\n *([-:]+ *\|[-| :]*)\n((?:.*\|.*(?:\n|$))*)\n*/,table:/^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/}),e.rules=p,e.lex=function(t,n){var r=new e(n);return r.lex(t)},e.prototype.lex=function(e){return e=e.replace(/\r\n|\r/g,"\n").replace(/\t/g,"    ").replace(/\u00a0/g," ").replace(/\u2424/g,"\n"),this.token(e,!0)},e.prototype.token=function(e,t,n){for(var r,s,i,l,o,h,a,u,c,e=e.replace(/^ +$/gm,"");e;)if((i=this.rules.newline.exec(e))&&(e=e.substring(i[0].length),i[0].length>1&&this.tokens.push({type:"space"})),i=this.rules.code.exec(e))e=e.substring(i[0].length),i=i[0].replace(/^ {4}/gm,""),this.tokens.push({type:"code",text:this.options.pedantic?i:i.replace(/\n+$/,"")});else if(i=this.rules.fences.exec(e))e=e.substring(i[0].length),this.tokens.push({type:"code",lang:i[2],text:i[3]});else if(i=this.rules.heading.exec(e))e=e.substring(i[0].length),this.tokens.push({type:"heading",depth:i[1].length,text:i[2]});else if(t&&(i=this.rules.nptable.exec(e))){for(e=e.substring(i[0].length),h={type:"table",header:i[1].replace(/^ *| *\| *$/g,"").split(/ *\| */),align:i[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:i[3].replace(/\n$/,"").split("\n")},u=0;u<h.align.length;u++)h.align[u]=/^ *-+: *$/.test(h.align[u])?"right":/^ *:-+: *$/.test(h.align[u])?"center":/^ *:-+ *$/.test(h.align[u])?"left":null;for(u=0;u<h.cells.length;u++)h.cells[u]=h.cells[u].split(/ *\| */);this.tokens.push(h)}else if(i=this.rules.lheading.exec(e))e=e.substring(i[0].length),this.tokens.push({type:"heading",depth:"="===i[2]?1:2,text:i[1]});else if(i=this.rules.hr.exec(e))e=e.substring(i[0].length),this.tokens.push({type:"hr"});else if(i=this.rules.blockquote.exec(e))e=e.substring(i[0].length),this.tokens.push({type:"blockquote_start"}),i=i[0].replace(/^ *> ?/gm,""),this.token(i,t,!0),this.tokens.push({type:"blockquote_end"});else if(i=this.rules.list.exec(e)){for(e=e.substring(i[0].length),l=i[2],this.tokens.push({type:"list_start",ordered:l.length>1}),i=i[0].match(this.rules.item),r=!1,c=i.length,u=0;c>u;u++)h=i[u],a=h.length,h=h.replace(/^ *([*+-]|\d+\.) +/,""),~h.indexOf("\n ")&&(a-=h.length,h=this.options.pedantic?h.replace(/^ {1,4}/gm,""):h.replace(new RegExp("^ {1,"+a+"}","gm"),"")),this.options.smartLists&&u!==c-1&&(o=p.bullet.exec(i[u+1])[0],l===o||l.length>1&&o.length>1||(e=i.slice(u+1).join("\n")+e,u=c-1)),s=r||/\n\n(?!\s*$)/.test(h),u!==c-1&&(r="\n"===h.charAt(h.length-1),s||(s=r)),this.tokens.push({type:s?"loose_item_start":"list_item_start"}),this.token(h,!1,n),this.tokens.push({type:"list_item_end"});this.tokens.push({type:"list_end"})}else if(i=this.rules.html.exec(e))e=e.substring(i[0].length),this.tokens.push({type:this.options.sanitize?"paragraph":"html",pre:"pre"===i[1]||"script"===i[1]||"style"===i[1],text:i[0]});else if(!n&&t&&(i=this.rules.def.exec(e)))e=e.substring(i[0].length),this.tokens.links[i[1].toLowerCase()]={href:i[2],title:i[3]};else if(t&&(i=this.rules.table.exec(e))){for(e=e.substring(i[0].length),h={type:"table",header:i[1].replace(/^ *| *\| *$/g,"").split(/ *\| */),align:i[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:i[3].replace(/(?: *\| *)?\n$/,"").split("\n")},u=0;u<h.align.length;u++)h.align[u]=/^ *-+: *$/.test(h.align[u])?"right":/^ *:-+: *$/.test(h.align[u])?"center":/^ *:-+ *$/.test(h.align[u])?"left":null;for(u=0;u<h.cells.length;u++)h.cells[u]=h.cells[u].replace(/^ *\| *| *\| *$/g,"").split(/ *\| */);this.tokens.push(h)}else if(t&&(i=this.rules.paragraph.exec(e)))e=e.substring(i[0].length),this.tokens.push({type:"paragraph",text:"\n"===i[1].charAt(i[1].length-1)?i[1].slice(0,-1):i[1]});else if(i=this.rules.text.exec(e))e=e.substring(i[0].length),this.tokens.push({type:"text",text:i[0]});else if(e)throw new Error("Infinite loop on byte: "+e.charCodeAt(0));return this.tokens};var u={escape:/^\\([\\`*{}\[\]()#+\-.!_>])/,autolink:/^<([^ >]+(@|:\/)[^ >]+)>/,url:o,tag:/^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,link:/^!?\[(inside)\]\(href\)/,reflink:/^!?\[(inside)\]\s*\[([^\]]*)\]/,nolink:/^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,strong:/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,em:/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,code:/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,br:/^ {2,}\n(?!\s*$)/,del:o,text:/^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/};u._inside=/(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/,u._href=/\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/,u.link=l(u.link)("inside",u._inside)("href",u._href)(),u.reflink=l(u.reflink)("inside",u._inside)(),u.normal=h({},u),u.pedantic=h({},u.normal,{strong:/^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,em:/^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/}),u.gfm=h({},u.normal,{escape:l(u.escape)("])","~|])")(),url:/^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,del:/^~~(?=\S)([\s\S]*?\S)~~/,text:l(u.text)("]|","~]|")("|","|https?://|")()}),u.breaks=h({},u.gfm,{br:l(u.br)("{2,}","*")(),text:l(u.gfm.text)("{2,}","*")()}),t.rules=u,t.output=function(e,n,r){var s=new t(n,r);return s.output(e)},t.prototype.output=function(e){for(var t,n,r,i,l="";e;)if(i=this.rules.escape.exec(e))e=e.substring(i[0].length),l+=i[1];else if(i=this.rules.autolink.exec(e))e=e.substring(i[0].length),"@"===i[2]?(n=this.mangle(":"===i[1].charAt(6)?i[1].substring(7):i[1]),r=this.mangle("mailto:")+n):(n=s(i[1]),r=n),l+=this.renderer.link(r,null,n);else if(this.inLink||!(i=this.rules.url.exec(e))){if(i=this.rules.tag.exec(e))!this.inLink&&/^<a /i.test(i[0])?this.inLink=!0:this.inLink&&/^<\/a>/i.test(i[0])&&(this.inLink=!1),e=e.substring(i[0].length),l+=this.options.sanitize?s(i[0]):i[0];else if(i=this.rules.link.exec(e))e=e.substring(i[0].length),this.inLink=!0,l+=this.outputLink(i,{href:i[2],title:i[3]}),this.inLink=!1;else if((i=this.rules.reflink.exec(e))||(i=this.rules.nolink.exec(e))){if(e=e.substring(i[0].length),t=(i[2]||i[1]).replace(/\s+/g," "),t=this.links[t.toLowerCase()],!t||!t.href){l+=i[0].charAt(0),e=i[0].substring(1)+e;continue}this.inLink=!0,l+=this.outputLink(i,t),this.inLink=!1}else if(i=this.rules.strong.exec(e))e=e.substring(i[0].length),l+=this.renderer.strong(this.output(i[2]||i[1]));else if(i=this.rules.em.exec(e))e=e.substring(i[0].length),l+=this.renderer.em(this.output(i[2]||i[1]));else if(i=this.rules.code.exec(e))e=e.substring(i[0].length),l+=this.renderer.codespan(s(i[2],!0));else if(i=this.rules.br.exec(e))e=e.substring(i[0].length),l+=this.renderer.br();else if(i=this.rules.del.exec(e))e=e.substring(i[0].length),l+=this.renderer.del(this.output(i[1]));else if(i=this.rules.text.exec(e))e=e.substring(i[0].length),l+=s(this.smartypants(i[0]));else if(e)throw new Error("Infinite loop on byte: "+e.charCodeAt(0))}else e=e.substring(i[0].length),n=s(i[1]),r=n,l+=this.renderer.link(r,null,n);return l},t.prototype.outputLink=function(e,t){var n=s(t.href),r=t.title?s(t.title):null;return"!"!==e[0].charAt(0)?this.renderer.link(n,r,this.output(e[1])):this.renderer.image(n,r,s(e[1]))},t.prototype.smartypants=function(e){return this.options.smartypants?e.replace(/--/g,"—").replace(/(^|[-\u2014/(\[{"\s])'/g,"$1‘").replace(/'/g,"’").replace(/(^|[-\u2014/(\[{\u2018\s])"/g,"$1“").replace(/"/g,"”").replace(/\.{3}/g,"…"):e},t.prototype.mangle=function(e){for(var t,n="",r=e.length,s=0;r>s;s++)t=e.charCodeAt(s),Math.random()>.5&&(t="x"+t.toString(16)),n+="&#"+t+";";return n},n.prototype.code=function(e,t,n){if(this.options.highlight){var r=this.options.highlight(e,t);null!=r&&r!==e&&(n=!0,e=r)}return t?'<pre><code class="'+this.options.langPrefix+s(t,!0)+'">'+(n?e:s(e,!0))+"\n</code></pre>\n":"<pre><code>"+(n?e:s(e,!0))+"\n</code></pre>"},n.prototype.blockquote=function(e){return"<blockquote>\n"+e+"</blockquote>\n"},n.prototype.html=function(e){return e},n.prototype.heading=function(e,t,n){return"<h"+t+' id="'+this.options.headerPrefix+n.toLowerCase().replace(/[^\w]+/g,"-")+'">'+e+"</h"+t+">\n"},n.prototype.hr=function(){return this.options.xhtml?"<hr/>\n":"<hr>\n"},n.prototype.list=function(e,t){var n=t?"ol":"ul";return"<"+n+">\n"+e+"</"+n+">\n"},n.prototype.listitem=function(e){return"<li>"+e+"</li>\n"},n.prototype.paragraph=function(e){return"<p>"+e+"</p>\n"},n.prototype.table=function(e,t){return"<table>\n<thead>\n"+e+"</thead>\n<tbody>\n"+t+"</tbody>\n</table>\n"},n.prototype.tablerow=function(e){return"<tr>\n"+e+"</tr>\n"},n.prototype.tablecell=function(e,t){var n=t.header?"th":"td",r=t.align?"<"+n+' style="text-align:'+t.align+'">':"<"+n+">";return r+e+"</"+n+">\n"},n.prototype.strong=function(e){return"<strong>"+e+"</strong>"},n.prototype.em=function(e){return"<em>"+e+"</em>"},n.prototype.codespan=function(e){return"<code>"+e+"</code>"},n.prototype.br=function(){return this.options.xhtml?"<br/>":"<br>"},n.prototype.del=function(e){return"<del>"+e+"</del>"},n.prototype.link=function(e,t,n){if(this.options.sanitize){try{var r=decodeURIComponent(i(e)).replace(/[^\w:]/g,"").toLowerCase()}catch(s){return""}if(0===r.indexOf("javascript:")||0===r.indexOf("vbscript:"))return""}var l='<a href="'+e+'"';return t&&(l+=' title="'+t+'"'),l+=">"+n+"</a>"},n.prototype.image=function(e,t,n){var r='<img src="'+e+'" alt="'+n+'"';return t&&(r+=' title="'+t+'"'),r+=this.options.xhtml?"/>":">"},r.parse=function(e,t,n){var s=new r(t,n);return s.parse(e)},r.prototype.parse=function(e){this.inline=new t(e.links,this.options,this.renderer),this.tokens=e.reverse();for(var n="";this.next();)n+=this.tok();return n},r.prototype.next=function(){return this.token=this.tokens.pop()},r.prototype.peek=function(){return this.tokens[this.tokens.length-1]||0},r.prototype.parseText=function(){for(var e=this.token.text;"text"===this.peek().type;)e+="\n"+this.next().text;return this.inline.output(e)},r.prototype.tok=function(){switch(this.token.type){case"space":return"";case"hr":return this.renderer.hr();case"heading":return this.renderer.heading(this.inline.output(this.token.text),this.token.depth,this.token.text);case"code":return this.renderer.code(this.token.text,this.token.lang,this.token.escaped);case"table":var e,t,n,r,s,i="",l="";for(n="",e=0;e<this.token.header.length;e++)r={header:!0,align:this.token.align[e]},n+=this.renderer.tablecell(this.inline.output(this.token.header[e]),{header:!0,align:this.token.align[e]});for(i+=this.renderer.tablerow(n),e=0;e<this.token.cells.length;e++){for(t=this.token.cells[e],n="",s=0;s<t.length;s++)n+=this.renderer.tablecell(this.inline.output(t[s]),{header:!1,align:this.token.align[s]});l+=this.renderer.tablerow(n)}return this.renderer.table(i,l);case"blockquote_start":for(var l="";"blockquote_end"!==this.next().type;)l+=this.tok();return this.renderer.blockquote(l);case"list_start":for(var l="",o=this.token.ordered;"list_end"!==this.next().type;)l+=this.tok();return this.renderer.list(l,o);case"list_item_start":for(var l="";"list_item_end"!==this.next().type;)l+="text"===this.token.type?this.parseText():this.tok();return this.renderer.listitem(l);case"loose_item_start":for(var l="";"list_item_end"!==this.next().type;)l+=this.tok();return this.renderer.listitem(l);case"html":var h=this.token.pre||this.options.pedantic?this.token.text:this.inline.output(this.token.text);return this.renderer.html(h);case"paragraph":return this.renderer.paragraph(this.inline.output(this.token.text));case"text":return this.renderer.paragraph(this.parseText())}},o.exec=o,a.options=a.setOptions=function(e){return h(a.defaults,e),a},a.defaults={gfm:!0,tables:!0,breaks:!1,pedantic:!1,sanitize:!1,smartLists:!1,silent:!1,highlight:null,langPrefix:"lang-",smartypants:!1,headerPrefix:"",renderer:new n,xhtml:!1},a.Parser=r,a.parser=r.parse,a.Renderer=n,a.Lexer=e,a.lexer=e.lex,a.InlineLexer=t,a.inlineLexer=t.output,a.parse=a, true?module.exports=a:"function"==typeof define&&define.amd?define(function(){return a}):this.marked=a}).call(function(){return this||("undefined"!=typeof window?window:global)}());
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * The reveal.js markdown plugin. Handles parsing of
+	 * markdown inside of presentations as well as loading
+	 * of external markdown documents.
+	 */
+	(function( root, factory ) {
+		if (true) {
+			root.marked = __webpack_require__( 12 );
+			root.RevealMarkdown = factory( root.marked );
+			root.RevealMarkdown.initialize();
+		} else if( typeof exports === 'object' ) {
+			module.exports = factory( require( './marked' ) );
+		} else {
+			// Browser globals (root is window)
+			root.RevealMarkdown = factory( root.marked );
+			root.RevealMarkdown.initialize();
+		}
+	}( this, function( marked ) {
+
+		if( typeof marked === 'undefined' ) {
+			throw 'The reveal.js Markdown plugin requires marked to be loaded';
+		}
+
+		if( typeof hljs !== 'undefined' ) {
+			marked.setOptions({
+				highlight: function( lang, code ) {
+					return hljs.highlightAuto( lang, code ).value;
+				}
+			});
+		}
+
+		var DEFAULT_SLIDE_SEPARATOR = '^\r?\n---\r?\n$',
+			DEFAULT_NOTES_SEPARATOR = 'note:',
+			DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR = '\\\.element\\\s*?(.+?)$',
+			DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR = '\\\.slide:\\\s*?(\\\S.+?)$';
+
+		var SCRIPT_END_PLACEHOLDER = '__SCRIPT_END__';
+
+
+		/**
+		 * Retrieves the markdown contents of a slide section
+		 * element. Normalizes leading tabs/whitespace.
+		 */
+		function getMarkdownFromSlide( section ) {
+
+			var template = section.querySelector( 'script' );
+
+			// strip leading whitespace so it isn't evaluated as code
+			var text = ( template || section ).textContent;
+
+			// restore script end tags
+			text = text.replace( new RegExp( SCRIPT_END_PLACEHOLDER, 'g' ), '</script>' );
+
+			var leadingWs = text.match( /^\n?(\s*)/ )[1].length,
+				leadingTabs = text.match( /^\n?(\t*)/ )[1].length;
+
+			if( leadingTabs > 0 ) {
+				text = text.replace( new RegExp('\\n?\\t{' + leadingTabs + '}','g'), '\n' );
+			}
+			else if( leadingWs > 1 ) {
+				text = text.replace( new RegExp('\\n? {' + leadingWs + '}', 'g'), '\n' );
+			}
+
+			return text;
+
+		}
+
+		/**
+		 * Given a markdown slide section element, this will
+		 * return all arguments that aren't related to markdown
+		 * parsing. Used to forward any other user-defined arguments
+		 * to the output markdown slide.
+		 */
+		function getForwardedAttributes( section ) {
+
+			var attributes = section.attributes;
+			var result = [];
+
+			for( var i = 0, len = attributes.length; i < len; i++ ) {
+				var name = attributes[i].name,
+					value = attributes[i].value;
+
+				// disregard attributes that are used for markdown loading/parsing
+				if( /data\-(markdown|separator|vertical|notes)/gi.test( name ) ) continue;
+
+				if( value ) {
+					result.push( name + '="' + value + '"' );
+				}
+				else {
+					result.push( name );
+				}
+			}
+
+			return result.join( ' ' );
+
+		}
+
+		/**
+		 * Inspects the given options and fills out default
+		 * values for what's not defined.
+		 */
+		function getSlidifyOptions( options ) {
+
+			options = options || {};
+			options.separator = options.separator || DEFAULT_SLIDE_SEPARATOR;
+			options.notesSeparator = options.notesSeparator || DEFAULT_NOTES_SEPARATOR;
+			options.attributes = options.attributes || '';
+
+			return options;
+
+		}
+
+		/**
+		 * Helper function for constructing a markdown slide.
+		 */
+		function createMarkdownSlide( content, options ) {
+
+			options = getSlidifyOptions( options );
+
+			var notesMatch = content.split( new RegExp( options.notesSeparator, 'mgi' ) );
+
+			if( notesMatch.length === 2 ) {
+				content = notesMatch[0] + '<aside class="notes">' + marked(notesMatch[1].trim()) + '</aside>';
+			}
+
+			// prevent script end tags in the content from interfering
+			// with parsing
+			content = content.replace( /<\/script>/g, SCRIPT_END_PLACEHOLDER );
+
+			return '<script type="text/template">' + content + '</script>';
+
+		}
+
+		/**
+		 * Parses a data string into multiple slides based
+		 * on the passed in separator arguments.
+		 */
+		function slidify( markdown, options ) {
+
+			options = getSlidifyOptions( options );
+
+			var separatorRegex = new RegExp( options.separator + ( options.verticalSeparator ? '|' + options.verticalSeparator : '' ), 'mg' ),
+				horizontalSeparatorRegex = new RegExp( options.separator );
+
+			var matches,
+				lastIndex = 0,
+				isHorizontal,
+				wasHorizontal = true,
+				content,
+				sectionStack = [];
+
+			// iterate until all blocks between separators are stacked up
+			while( matches = separatorRegex.exec( markdown ) ) {
+				notes = null;
+
+				// determine direction (horizontal by default)
+				isHorizontal = horizontalSeparatorRegex.test( matches[0] );
+
+				if( !isHorizontal && wasHorizontal ) {
+					// create vertical stack
+					sectionStack.push( [] );
+				}
+
+				// pluck slide content from markdown input
+				content = markdown.substring( lastIndex, matches.index );
+
+				if( isHorizontal && wasHorizontal ) {
+					// add to horizontal stack
+					sectionStack.push( content );
+				}
+				else {
+					// add to vertical stack
+					sectionStack[sectionStack.length-1].push( content );
+				}
+
+				lastIndex = separatorRegex.lastIndex;
+				wasHorizontal = isHorizontal;
+			}
+
+			// add the remaining slide
+			( wasHorizontal ? sectionStack : sectionStack[sectionStack.length-1] ).push( markdown.substring( lastIndex ) );
+
+			var markdownSections = '';
+
+			// flatten the hierarchical stack, and insert <section data-markdown> tags
+			for( var i = 0, len = sectionStack.length; i < len; i++ ) {
+				// vertical
+				if( sectionStack[i] instanceof Array ) {
+					markdownSections += '<section '+ options.attributes +'>';
+
+					sectionStack[i].forEach( function( child ) {
+						markdownSections += '<section data-markdown>' +  createMarkdownSlide( child, options ) + '</section>';
+					} );
+
+					markdownSections += '</section>';
+				}
+				else {
+					markdownSections += '<section '+ options.attributes +' data-markdown>' + createMarkdownSlide( sectionStack[i], options ) + '</section>';
+				}
+			}
+
+			return markdownSections;
+
+		}
+
+		/**
+		 * Parses any current data-markdown slides, splits
+		 * multi-slide markdown into separate sections and
+		 * handles loading of external markdown.
+		 */
+		function processSlides() {
+
+			var sections = document.querySelectorAll( '[data-markdown]'),
+				section;
+
+			for( var i = 0, len = sections.length; i < len; i++ ) {
+
+				section = sections[i];
+
+				if( section.getAttribute( 'data-markdown' ).length ) {
+
+					var xhr = new XMLHttpRequest(),
+						url = section.getAttribute( 'data-markdown' );
+
+					datacharset = section.getAttribute( 'data-charset' );
+
+					// see https://developer.mozilla.org/en-US/docs/Web/API/element.getAttribute#Notes
+					if( datacharset != null && datacharset != '' ) {
+						xhr.overrideMimeType( 'text/html; charset=' + datacharset );
+					}
+
+					xhr.onreadystatechange = function() {
+						if( xhr.readyState === 4 ) {
+							// file protocol yields status code 0 (useful for local debug, mobile applications etc.)
+							if ( ( xhr.status >= 200 && xhr.status < 300 ) || xhr.status === 0 ) {
+
+								section.outerHTML = slidify( xhr.responseText, {
+									separator: section.getAttribute( 'data-separator' ),
+									verticalSeparator: section.getAttribute( 'data-separator-vertical' ),
+									notesSeparator: section.getAttribute( 'data-separator-notes' ),
+									attributes: getForwardedAttributes( section )
+								});
+
+							}
+							else {
+
+								section.outerHTML = '<section data-state="alert">' +
+									'ERROR: The attempt to fetch ' + url + ' failed with HTTP status ' + xhr.status + '.' +
+									'Check your browser\'s JavaScript console for more details.' +
+									'<p>Remember that you need to serve the presentation HTML from a HTTP server.</p>' +
+									'</section>';
+
+							}
+						}
+					};
+
+					xhr.open( 'GET', url, false );
+
+					try {
+						xhr.send();
+					}
+					catch ( e ) {
+						alert( 'Failed to get the Markdown file ' + url + '. Make sure that the presentation and the file are served by a HTTP server and the file can be found there. ' + e );
+					}
+
+				}
+				else if( section.getAttribute( 'data-separator' ) || section.getAttribute( 'data-separator-vertical' ) || section.getAttribute( 'data-separator-notes' ) ) {
+
+					section.outerHTML = slidify( getMarkdownFromSlide( section ), {
+						separator: section.getAttribute( 'data-separator' ),
+						verticalSeparator: section.getAttribute( 'data-separator-vertical' ),
+						notesSeparator: section.getAttribute( 'data-separator-notes' ),
+						attributes: getForwardedAttributes( section )
+					});
+
+				}
+				else {
+					section.innerHTML = createMarkdownSlide( getMarkdownFromSlide( section ) );
+				}
+			}
+
+		}
+
+		/**
+		 * Check if a node value has the attributes pattern.
+		 * If yes, extract it and add that value as one or several attributes
+		 * the the terget element.
+		 *
+		 * You need Cache Killer on Chrome to see the effect on any FOM transformation
+		 * directly on refresh (F5)
+		 * http://stackoverflow.com/questions/5690269/disabling-chrome-cache-for-website-development/7000899#answer-11786277
+		 */
+		function addAttributeInElement( node, elementTarget, separator ) {
+
+			var mardownClassesInElementsRegex = new RegExp( separator, 'mg' );
+			var mardownClassRegex = new RegExp( "([^\"= ]+?)=\"([^\"=]+?)\"", 'mg' );
+			var nodeValue = node.nodeValue;
+			if( matches = mardownClassesInElementsRegex.exec( nodeValue ) ) {
+
+				var classes = matches[1];
+				nodeValue = nodeValue.substring( 0, matches.index ) + nodeValue.substring( mardownClassesInElementsRegex.lastIndex );
+				node.nodeValue = nodeValue;
+				while( matchesClass = mardownClassRegex.exec( classes ) ) {
+					elementTarget.setAttribute( matchesClass[1], matchesClass[2] );
+				}
+				return true;
+			}
+			return false;
+		}
+
+		/**
+		 * Add attributes to the parent element of a text node,
+		 * or the element of an attribute node.
+		 */
+		function addAttributes( section, element, previousElement, separatorElementAttributes, separatorSectionAttributes ) {
+
+			if ( element != null && element.childNodes != undefined && element.childNodes.length > 0 ) {
+				previousParentElement = element;
+				for( var i = 0; i < element.childNodes.length; i++ ) {
+					childElement = element.childNodes[i];
+					if ( i > 0 ) {
+						j = i - 1;
+						while ( j >= 0 ) {
+							aPreviousChildElement = element.childNodes[j];
+							if ( typeof aPreviousChildElement.setAttribute == 'function' && aPreviousChildElement.tagName != "BR" ) {
+								previousParentElement = aPreviousChildElement;
+								break;
+							}
+							j = j - 1;
+						}
+					}
+					parentSection = section;
+					if( childElement.nodeName ==  "section" ) {
+						parentSection = childElement ;
+						previousParentElement = childElement ;
+					}
+					if ( typeof childElement.setAttribute == 'function' || childElement.nodeType == Node.COMMENT_NODE ) {
+						addAttributes( parentSection, childElement, previousParentElement, separatorElementAttributes, separatorSectionAttributes );
+					}
+				}
+			}
+
+			if ( element.nodeType == Node.COMMENT_NODE ) {
+				if ( addAttributeInElement( element, previousElement, separatorElementAttributes ) == false ) {
+					addAttributeInElement( element, section, separatorSectionAttributes );
+				}
+			}
+		}
+
+		/**
+		 * Converts any current data-markdown slides in the
+		 * DOM to HTML.
+		 */
+		function convertSlides() {
+
+			var sections = document.querySelectorAll( '[data-markdown]');
+
+			for( var i = 0, len = sections.length; i < len; i++ ) {
+
+				var section = sections[i];
+
+				// Only parse the same slide once
+				if( !section.getAttribute( 'data-markdown-parsed' ) ) {
+
+					section.setAttribute( 'data-markdown-parsed', true )
+
+					var notes = section.querySelector( 'aside.notes' );
+					var markdown = getMarkdownFromSlide( section );
+
+					section.innerHTML = marked( markdown );
+					addAttributes( 	section, section, null, section.getAttribute( 'data-element-attributes' ) ||
+									section.parentNode.getAttribute( 'data-element-attributes' ) ||
+									DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR,
+									section.getAttribute( 'data-attributes' ) ||
+									section.parentNode.getAttribute( 'data-attributes' ) ||
+									DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR);
+
+					// If there were notes, we need to re-add them after
+					// having overwritten the section's HTML
+					if( notes ) {
+						section.appendChild( notes );
+					}
+
+				}
+
+			}
+
+		}
+
+		// API
+		return {
+
+			initialize: function() {
+				processSlides();
+				convertSlides();
+			},
+
+			// TODO: Do these belong in the API?
+			processSlides: processSlides,
+			convertSlides: convertSlides,
+			slidify: slidify
+
+		};
+
+	}));
+
 
 /***/ }
 /******/ ]);
