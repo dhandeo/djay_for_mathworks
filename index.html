@@ -81,7 +81,15 @@
   <section>Notable Projects</section>
   <section>Microscopy Automation</section>
   <section>Digital SlideAtlas</section>
-  <section>Aladdin GENIE</section>
+  <section>
+    <section data-markdown>
+      ##Aladdin GENIE
+    </section>
+    <section>
+      <p> <img src="img/semantic_exploration.svg">
+    </section>
+  </section>
+  <section>
   <section>Visual Recognition of Objects</section>
   <section>Digital Surgery Simulation</section>
   <section data-markdown>
@@ -120,10 +128,34 @@
 <section data-markdown>Logistics</section>
 
 <section>
-  <section>Image pyramid
-  <p> <img src="img/pyramid.png"> </section>
-  <section>Locating the image tile</section>
-  <section data-markdown> <script type="text/template">
+  <section>
+    <section data-markdown>### Multiresolution image streaming
+      - What to store and What to compute
+    <img src="img/pyramid.png" class="stretch">
+    </section>
+
+    <section>
+      <h3>Locating the image tile</h3>
+      <img src="img/tile_names.jpg" class="stretch">
+      <p>
+    </section>
+
+  </section>
+
+  <section><h3>Image pyramid</h3>
+  <img src="img/pyramid.png" class="stretch">
+  </section>
+
+  <section>
+    <h3>Locating the image tile</h3>
+    <img src="img/tile_names.jpg" class="stretch">
+    <p>
+  </section>
+
+</section>
+
+
+<section data-markdown> <script type="text/template">
     ## Cutting the corners
     - Jpeg quantization tables
     - Websockets
@@ -175,63 +207,93 @@
   <section>Deployment</section>
 </section>
 
-<section data-markdown> <script type="text/template">
-    # Memory mapped files
+<section data-markdown>
+    ### Memory mapped files
 
     - Map files in virtual memory and access data directly instead of file io system calls
     - Efficient access for large files
     - Easy to share large file resources across processes
 
-</script> </section>
+</section>
 
-<section data-markdown> <script type="text/template">
-    # Memory mapped files
+<section data-markdown>
+    ### LRU Cache
 
     - Map files in virtual memory and access data directly instead of file io system calls
     - Efficient access for large files
     - Easy to share large file resources across processes
 
-</script> </section>
-
+</section>
 
 <section>
   <section data-markdown>
-    ### Plugin system
+    ## Plugin system
+
   </section>
-<section>Analysis plugins
-<img src="img/histograms.png" height="70%">
+
+  <section data-markdown>
+    ### On client side component in javascript
+    - Creates button(s) and registers callbacks
+    - User actions
+      - Identify image region(s)
+      - Select the parameters for operation
+      - Submit the task to server
+      - Long poll / websockets to wait and fetch
+      - Control how vector and raster overlays are displayed
+  </section>
+
+  <section data-markdown>
+    ### On server side component in javascript
+    - Web server accepts an analysis request
+    - Submit the analysis task to a job queue
+    - Queue assembles the image as specified
+    - Runs analysis
+    - Compile results
+    - Results returned when requested by client
+    - Book keeping
+  </section>
+
+  <section> <h3> Analysis color thresholding </h3>
+    <img src="img/histograms.png" class="stretch">
+  </section>
+
+  <section>Machine learning plugin
+    <img src="img/histograms.png" height="70%">
+  </section>
+
 </section>
 
 <section>
-<section>Profiling and automated tests
-<p><img src="img/testing.jpg">
-</section>
-<section data-markdown> <script type="text/template">
-  ### Performance tests
-  - Selenium to complete user interaction for a particular configuration
-  - Reports statistics (response time, latency etc)
-  ### Unit tests
-  Internal API tests, also useful to demonstrate usage
-  ### Smoke test
-  Selenium to complete user interaction
-</script> </section>
+  <section data-markdown>###Profiling and automated tests
+  <p><img src="img/testing.jpg">
+  </section>
+  <section data-markdown>
+    ### Performance tests
+    - Selenium to complete user interaction for a particular configuration
+    - Reports statistics (response time, latency etc)
+
+    ### Unit tests
+    Internal API tests, also useful to demonstrate usage
+
+    ### Smoke test
+    Selenium to complete user interaction
+  </section>
 </section>
 
-<section data-markdown> <script type="text/template">
-# Latest/Future considerations
+<section data-markdown>
+### Latest/Future considerations
 - Portable embeddeble module
 - Use of memory maps for TIFF storage
 - ZeroMQ connected server and image tile serving microservices
 - Continuous integration
 - Distribution as a plugin for girder
+</section>
 
-</script> </section>
+<section> <h3> Questions, Comments, Advisements ? </h3>
+  <img src="img/dilbert.jpg" class="stretch">
+</section>
 
-
-
-<section>Questions</section>
-<section>Thank you !</section>
-
+<section data-markdown>###Thank you !</section>
 
       </div>
     </div>
