@@ -47,15 +47,18 @@
 <section>
   <section data-markdown>###Outline
   - About us
-  - My background
+  - Experiences
     - Education
     - Notable projects
-    - Digital SlideAtlas
   - Digital SlideAtlas in detail
-    - Features
-    - Challenges
-    - Image streaming
-    - Server
+      - Features (demo)
+      - Challenges
+      - Image streaming
+      - Server architecture
+      - Optimizations
+      - Maintainance
+      - Plugin System
+      - Impact
   </section>
 
   <section data-markdown>
@@ -92,22 +95,36 @@
 </section>
 
 <section>
-  <section>Notable Projects</section>
-  <section>Microscopy Automation</section>
+  <section>
+    <h3>Notable Projects<h3>
+    <p> TODO: add technologies used in each
+  </section>
 
   <section>
     <h3> Digital SlideAtlas </h3>
     <img src="img/multiuser.svg" class="stretch">
   </section>
 
-  <section data-markdown>
-    ###Aladdin GENIE
-    <img src="img/semantic_exploration.svg" class="stretch">
+  <section>
+    <h4> Aladdin GENIE - General Engine for Indexing Events </h4>
+    <img src="img/genie.png" class="stretch">
   </section>
 
   <section>
+    <h4> Aladdin GENIE (live) </h4>
+    <iframe src="http://genie.kitware.com/help" class="stretch">
+     Sorry your browser does not support inline frames.
+    </iframe>
+  </section>
+
+  <!-- <section>
+    <h4> Aladdin GENIE - General Engine for Indexing Events </h4>
+    <img src="img/semantic_exploration.svg" class="stretch">
+  </section> -->
+
+  <section>
     <h3> Visual Recognition of Objects in image </h3>
-    <img src="img/phynness.png" class="stretch">
+    <img src="img/machine-learning.jpg" class="stretch">
   </section>
 
   <section>
@@ -115,30 +132,30 @@
     <img src="img/phynness.png" class="stretch">
   </section>
 
+  <section>
+    <h3>Microscopy Automation</h3>
+    <p> TODO: Add a video
+  </section>
+
   <section data-markdown>
   ###Outside work hours
-  - Tinkering with raspbery pi
-  - Endurance cycling
   - 3d modeling and animation
+  - Endurance cycling
   - DIY Furniture design
+
+  TODO: Add pictures
   </section>
 </section>
 
 <section>
   <h3> Digital Slide Atlas </h3>
-  <aside class="notes">
-    I'm your Notes :)
-  </aside>
-</section>
-
-<section data-markdown>
-  ###Challenges
-  - Large image size (1gb compressed, often )
+  <iframe src="http://slide-atlas.org" class="stretch">
+   Sorry your browser does not support inline frames.
+  </iframe>
 </section>
 
 <section data-markdown>
   ## Features
-
   - An open-source, web-based microscopy image platform
   - Automated upload and pre-processing, directly from slide scanners
   - Interactive high-performance viewing on desktop and mobile devices
@@ -147,11 +164,26 @@
   - 3D stack creation and viewing
 </section>
 
-<section data-markdown> ## Logistics</section>
+<section data-markdown>
+  ###Challenges
+  - Large image size (1gb compressed, UNCOMPRESSED)
+  - Variety of file formats
+  - Openness of SDK
+  - Trust and confidentiality
+  - Custom metadata (To save or not to save)
+  - Inconsistencies
+      - y axis orientation
+      - Missing data
+</section>
+
+<section data-markdown> ## Logistics
+  TODO: Add workflow diagram
+</section>
 
 <section>
     <section data-markdown>
-      ### Multiresolution image streaming
+      ## Multiresolution image streaming
+      - Minimum data transfer (at interactive rates)
       - What to store and What to compute
       - jpeg2000 vs image pyramid
     </section>
@@ -167,21 +199,36 @@
       <p>
     </section>
 
+    <section data-markdown>
+      ### Image upload
+      - Distributed image compression
+        - Full image fits in memory ?
+        - Full strip ?
+        - 5 tiles ?
+      - Multithreading Symmetric or queue
+      - C++ code wrapped in python for image processing
+      - Job queue
+    </section>
+
 </section>
 
+<section data-markdown>
+    ## Optimizations (Cutting the corners)
+    - Quality of compression
+    - Shared Jpeg quantization tables
+    - Persistent connections Websockets
+    - Improved experience
+</section>
 
 <section data-markdown>
-    ## Cutting the corners
-    - Jpeg quantization tables
-    - Websockets
+  ### Smooth navigation
     - Prefetching
-
-      - Lower resolution tiles first
-      - For smooth navigation
+    - Lower resolution tiles first
+    - When to render
 </section>
 
 <section>
-  <section>Deployment and workflow</section>
+  <section><h3>Deployment and workflow<h3></section>
   <section data-markdown>
     ###Developer setup
     - Docker container with all dependencies
@@ -189,6 +236,8 @@
   </section>
   <section data-markdown>
     ### Production setup
+    - Apache reverse proxy
+    - Python gunicorn wsgi workers
     - MongoDB cluster (Replica set)
     - sqlite for plugin data
     - GlusterFS for remote synced file systems
@@ -230,28 +279,31 @@
       ## Technical features
   </section>
   <section data-markdown>
-    ### Blocking vs non-blocking io
+    ### Non-blocking IO
+    - Network and disc
     - Serve multiple users simultaneously
-    - Monkey patching python standard library for
+    - Monkey patching python standard library for non blocking network IO
+    - Distribute all blocking disc access services to another processes
   </section>
   <section data-markdown>
       ### Memory mapped files
+      - MongoDB
       - Map files in virtual memory and access data directly instead of file io system calls
       - Efficient access for large files
       - Easy to share large file resources across processes
   </section>
   <section data-markdown>
       ### LRU Cache
-
-      - Map files in virtual memory and access data directly instead of file io system calls
-      - Efficient access for large files
-      - Easy to share large file resources across processes
+      - Limit open files over remote file system
+      - Performance against stability
+      - Tune each system and usage pattern
   </section>
 </section>
 
 <section>
   <section data-markdown>
     ## Plugin system
+    TODO: Add picture
   </section>
 
   <section data-markdown>
@@ -281,31 +333,44 @@
   </section>
 
   <section>Machine learning plugin
-    <img src="img/histograms.png" height="70%">
+    <img src="img/machine-learning.jpg" height="70%">
   </section>
 
 </section>
 
 <section>
-  <section data-markdown>###Profiling and automated tests
-  <p><img src="img/testing.jpg">
+
+  <section>
+    <h3>Profiling and automated tests</h3>
+    <img src="img/testing.jpg" class="stretch">
   </section>
+
   <section data-markdown>
     ### Performance tests
     - Selenium to complete user interaction for a particular configuration
     - Reports statistics (response time, latency etc)
-
-    ### Unit tests
-    Internal API tests, also useful to demonstrate usage
-
-    ### Smoke test
-    Selenium to complete user interaction
   </section>
+
+  <section data-markdown>
+    ### Unit tests
+    - Internal API tests
+    - Useful to demonstrate usage
+  </section>
+
+  <section data-markdown>
+    ### Smoke test
+    - Connect with developer machine or live server
+    - Selenium to complete user interaction
+    - Compare screenshots
+    - Run javascript tests
+  </section>
+
 </section>
 
 <section data-markdown>
 ### Latest/Future considerations
 - Portable embeddeble module
+- Tradeoff interactivity for scalability
 - WebGL rendering of selected overlays
 - Use of memory maps for TIFF readers
 - ZeroMQ connected server and image tile serving microservices
@@ -318,12 +383,14 @@
   - Creative prototypes
  </section>
 
-<section> <h3> Questions, Comments, Advisements ? </h3>
+<section>
   <img src="img/dilbert.jpg" class="stretch">
 </section>
 
-<section data-markdown>###Thank you !</section>
+<section data-markdown>###Thank you !
 
+Questions, Comments, Advisements ?
+</section>
       </div>
     </div>
 
