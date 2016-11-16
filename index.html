@@ -121,9 +121,7 @@
   - Large image size (1gb compressed, often )
 </section>
 
-
-
-<section data-markdown> <script type="text/template">
+<section data-markdown>
   ## Features
 
   - An open-source, web-based microscopy image platform
@@ -132,15 +130,20 @@
   - Archiving, access control, and voice search features
   - Annotation tools
   - 3D stack creation and viewing
-</script></section>
+</section>
 
 <section data-markdown>Logistics</section>
 
 <section>
-  <section>
-    <section data-markdown>### Multiresolution image streaming
+    <section data-markdown>
+      ### Multiresolution image streaming
       - What to store and What to compute
-    <img src="img/pyramid.png" class="stretch">
+      - jpeg2000 vs image pyramid
+    </section>
+
+    <section>
+      <h3>Image pyramid</h3>
+      <img src="img/pyramid.png" class="stretch">
     </section>
 
     <section>
@@ -149,22 +152,10 @@
       <p>
     </section>
 
-  </section>
-
-  <section><h3>Image pyramid</h3>
-  <img src="img/pyramid.png" class="stretch">
-  </section>
-
-  <section>
-    <h3>Locating the image tile</h3>
-    <img src="img/tile_names.jpg" class="stretch">
-    <p>
-  </section>
-
 </section>
 
 
-<section data-markdown> <script type="text/template">
+<section data-markdown>
     ## Cutting the corners
     - Jpeg quantization tables
     - Websockets
@@ -172,7 +163,6 @@
 
       - Lower resolution tiles first
       - For smooth navigation
-  </script> </section>
 </section>
 
 <section>
@@ -183,61 +173,73 @@
       - Dummy database or map ports to production database
     <p>
   </section>
-  <section>Production</section>
-  <section>Sustainance</section>
+  <section data-markdown>
+    ### Production setup
+    - MongoDB cluster (Replica set)
+    - sqlite for plugin data
+    - GlusterFS for remote synced file systems
+    - git hookes to restart server on push
+  </section>
+  <section data-markdown>
+    ### Sustainance
+    - Pingdom
+    - check_mk or nagios
+    - Backup
+      - File system backup
+      - MongoDB does not support hot backup
+      - Slave node backup
+  </section>
 </section>
-
-<section data-markdown> <script type="text/template">
-    ## Education
-    - Targeting medical schools, residency training, continuing education
-    - Features for selective hiding of annotations, quiz mode, and full-screen presentation creation
-    - Remote and collaborative viewing
-
-    ## Research
-    - Supporting image processing algorithms, and very large datasets
-    - Consulting
-    - Automatic batch upload of images
-</script> </section>
-
-<section data-markdown> <script type="text/template">
-  ## Blocking vs non-blocking io
-  - Serve multiple users simultaneously
-  - Monkey patching python standard library for
-</script> </section>
 
 <section>
-  <section data-markdown> <script type="text/template">
-    ## Design decisions
-    - Websockets
-    - Monkey patching python standard library
+  <section data-markdown>
+    ## Impact
+  </section>
+
+  <section data-markdown>
+      ### Education
+      - Targeting medical schools, residency training, continuing education
+      - Features for selective hiding of annotations, quiz mode, and full-screen presentation creation
+      - Remote and collaborative viewing
+    </section>
+
+    <section data-markdown>
+      ### Research
+      - Supporting image processing algorithms, and very large datasets
+      - Consulting
+      - Automatic batch upload of images
   </script> </section>
-  <section>Design decisions</section>
-  <section>MongoDB</section>
-  <section>Deployment</section>
 </section>
 
-<section data-markdown>
-    ### Memory mapped files
+<section>
+  <section data-markdown>
+      ## Technical features
+  </section>
+  <section data-markdown> <script type="text/template">
+    ### Blocking vs non-blocking io
+    - Serve multiple users simultaneously
+    - Monkey patching python standard library for
+  </section>
+  <section data-markdown>
+      ### Memory mapped files
 
-    - Map files in virtual memory and access data directly instead of file io system calls
-    - Efficient access for large files
-    - Easy to share large file resources across processes
+      - Map files in virtual memory and access data directly instead of file io system calls
+      - Efficient access for large files
+      - Easy to share large file resources across processes
 
-</section>
+  </section>
+  <section data-markdown>
+      ### LRU Cache
 
-<section data-markdown>
-    ### LRU Cache
-
-    - Map files in virtual memory and access data directly instead of file io system calls
-    - Efficient access for large files
-    - Easy to share large file resources across processes
-
+      - Map files in virtual memory and access data directly instead of file io system calls
+      - Efficient access for large files
+      - Easy to share large file resources across processes
+  </section>
 </section>
 
 <section>
   <section data-markdown>
     ## Plugin system
-
   </section>
 
   <section data-markdown>
@@ -292,10 +294,16 @@
 <section data-markdown>
 ### Latest/Future considerations
 - Portable embeddeble module
-- Use of memory maps for TIFF storage
+- WebGL rendering of selected overlays
+- Use of memory maps for TIFF readers
 - ZeroMQ connected server and image tile serving microservices
-- Continuous integration
-- Distribution as a plugin for girder
+</section>
+
+<section data-markdown>
+  ### Summary
+  - Diverse skillsets
+  - End-to-end agile development
+  - Creative prototypes
 </section>
 
 <section> <h3> Questions, Comments, Advisements ? </h3>
