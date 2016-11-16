@@ -9,6 +9,9 @@
     .slide-number {
       font-size:24px;
     }
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+      text-transform: none!important;
+    }
     </style>
   </head>
   <body>
@@ -16,16 +19,49 @@
       <div class="slides">
 
 <section>
-  <section>Djay for <img src="img/mathworks_logo.jpg" style="vertical-align: middle;"></section>
-  <section></section>
-  <section>About me</section>
+  <section>Djay for <img src="img/mathworks_logo.jpg" style="vertical-align: middle;">
+  <p>
+  </section>
+  <section data-markdown>
+    ##For interview team members
+    - David Boissy (Control Design Automation)
+    - Mike Carvill (Human Resources)
+    - Kunal Kadakia (Control Design Automation)
+    - Gagan Mahan (Control Design Automation)
+    - George Quievryn (Control Design Automation)
+    - TODO: Add last minute additions
+  </section>
+  <section data-markdown>
+    ##About me
+    - mailto:dhandeo@gmail.com
+    - https://github.com/dhandeo
+    - https://www.linkedin.com/in/dhandeo
+    - https://twitter.com/dhandeo
+  </section>
 </section>
 
 <section>
-  <section>Outline</section>
-  <section>About this Presentation</section>
-  <section>Why web</section>
-  <section>Where to find it</section>
+  <section data-markdown>
+  ###About this Presentation
+  - Built with [reveal.js](http://lab.hakim.se/reveal-js/#/)
+  - Hosted at [dhandeo.github.io](https://dhandeo.github.io/djay_for_mathworks/#/)
+  </section>
+  <section data-markdown>
+  ###Why web
+  - Always wanted a hands on experience
+  - Like the nested slide layout
+  - Good for interactive demos over web (no alt+tab)
+  - Easy support over all smart devices
+  </section>
+  <section data-markdown>###Outline
+  - About us
+  - My background
+    - Education
+    - Notable projects
+    - Digital SlideAtlas
+    - Surgery Simulation
+  - Digital SlideAtlas in detail
+  </section>
 </section>
 
 <section>
@@ -48,7 +84,13 @@
   <section>Aladdin GENIE</section>
   <section>Visual Recognition of Objects</section>
   <section>Digital Surgery Simulation</section>
-  <section>Outside work hours</section>
+  <section data-markdown>
+  ###Outside work hours
+  - Tinkering with raspbery pi
+  - Endurance cycling
+  - 3d modeling and animation
+  - DIY Furniture design
+  </section>
 </section>
 
 <section>Digital Slide Atlas</section>
@@ -57,7 +99,13 @@
   </aside>
 </section>
 
-<section>Challenges</section>
+<section data-markdown>
+  ###Challenges
+  - Large image size (1gb compressed, often )
+</section>
+
+
+
 <section data-markdown> <script type="text/template">
   ## Features
 
@@ -69,21 +117,31 @@
   - 3D stack creation and viewing
 </script></section>
 
-<section>Logistics</section>
+<section data-markdown>Logistics</section>
 
 <section>
-  <section>Image pyramid</section>
+  <section>Image pyramid
+  <p> <img src="img/pyramid.png"> </section>
   <section>Locating the image tile</section>
   <section data-markdown> <script type="text/template">
     ## Cutting the corners
     - Jpeg quantization tables
     - Websockets
+    - Prefetching
+
+      - Lower resolution tiles first
+      - For smooth navigation
   </script> </section>
 </section>
 
 <section>
   <section>Deployment and workflow</section>
-  <section>Developer setup</section>
+  <section data-markdown>Developer setup
+    <p>
+      - Docker container with all dependencies
+      - Dummy database or map ports to production database
+    <p>
+  </section>
   <section>Production</section>
   <section>Sustainance</section>
 </section>
@@ -103,7 +161,7 @@
 <section data-markdown> <script type="text/template">
   ## Blocking vs non-blocking io
   - Serve multiple users simultaneously
-  - Monkey patching python standard library
+  - Monkey patching python standard library for
 </script> </section>
 
 <section>
@@ -126,7 +184,20 @@
 
 </script> </section>
 
-<section>Annotation management</section>
+<section data-markdown> <script type="text/template">
+    # Memory mapped files
+
+    - Map files in virtual memory and access data directly instead of file io system calls
+    - Efficient access for large files
+    - Easy to share large file resources across processes
+
+</script> </section>
+
+
+<section>
+  <section data-markdown>
+    ### Plugin system
+  </section>
 <section>Analysis plugins
 <img src="img/histograms.png" height="70%">
 </section>
@@ -136,7 +207,13 @@
 <p><img src="img/testing.jpg">
 </section>
 <section data-markdown> <script type="text/template">
-  # Empty
+  ### Performance tests
+  - Selenium to complete user interaction for a particular configuration
+  - Reports statistics (response time, latency etc)
+  ### Unit tests
+  Internal API tests, also useful to demonstrate usage
+  ### Smoke test
+  Selenium to complete user interaction
 </script> </section>
 </section>
 
