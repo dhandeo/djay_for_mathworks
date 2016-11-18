@@ -132,47 +132,66 @@
 </section>
 
 <section>
-  <section>
-    <h3>Notable projects at Kitware Inc <img src="img/kitware.jpg" style="vertical-align:middle"> </h3>
-    <br>
-    <p> Kitware is technical software company specializing in R and D in the domains of medical imaging, computer vision and scientific visualization
-  </section>
+  <h3>Notable projects at Kitware Inc <img src="img/kitware.jpg" style="vertical-align:middle"> </h3>
+  <br>
+  <p> Kitware is technical software company specializing in R and D in the domains of medical imaging, computer vision and scientific visualization
+</section>
+
+<section>
 
   <section>
-    <h4> Aladdin GENIE - General Engine for Indexing Events </h4>
-    <img src="img/genie.jpg" class="stretch">
-  </section>
-
-  <section>
-    <h4> Aladdin GENIE (live) </h4>
-    <iframe src="http://genie-new.kitware.com/help" class="stretch">
-     Sorry your browser does not support inline frames.
-    </iframe>
-  </section>
-
-  <!-- <section>
-    <h4> Aladdin GENIE - General Engine for Indexing Events </h4>
-    <img src="img/semantic_exploration.svg" class="stretch">
-  </section> -->
-
-  <section>
-    <h3> Visual Recognition of Objects in image </h3>
-    <img src="img/machine-learning.jpg" class="stretch">
+    <video src="img/triage.webm" controls class="stretch">
+      Your browser does not support the <code>video</code> element.
+    </video>
+    <p> Disclaimer: my words but not my voice
   </section>
 
   <section>
-    <h3>Microscopy Automation</h3>
-    <p> TODO: Add a video
+    <h2> Kitware GENIE </h2>
+    <p>  General Engine for Indexing Events </p>
+    <p class="fragment"> Content based video classification and search
+    <p class="fragment"> Interactive evaluation of machine learning system
+    <!-- <p class="fragment"> One shot video search pipeline -->
+    <p class="fragment" style="color:red"> Demo again ?</span>
   </section>
 
-  <section data-markdown>
-  ###Outside work hours
-  - 3d modeling and animation
-  - Endurance cycling
-  - DIY Furniture design
-
-  TODO: Add pictures
+  <section>
+    <video src="img/iqr.webm" controls class="stretch">
+      Your browser does not support the <code>video</code> element.
+    </video>
+    <p> full stack web, python, javascript, celery, MongoDB, sqlite3
+    <p> "IARPA Program manager included this demo in her deck"
   </section>
+
+  <section>
+    <p class="fragment"> Accept query in natural language and match to the higher level features available
+    <p class="fragment"> How to combine scores of each selected feature for ultimate ranking
+    <p class="fragment" style="color:red"> How ?
+    <p class="fragment"> ScoreFusion vs RankFusion vs TwistedStrategyMarch6
+    <img class="fragment stretch" src="img/scorefusion.jpg">
+  </section>
+
+  <section>
+    <img class="stretch" style="border:none" src="img/semantic_exploration.svg">
+  </section>
+
+  <section>
+    <p class="fragment"> Intelligence Advanced Research Projects Activity (IARPA)
+    <p class="fragment"> TrevVID multimedia event detection and recounting
+  </section>
+</section>
+
+<section data-markdown>
+###Outside work hours
+- 3d modeling and animation
+- Endurance cycling
+- DIY Furniture design
+</section>
+
+
+<section>
+  <h3> Digital SlideAtlas </h3>
+  <img src="img/multiuser.jpg" class="stretch">
 </section>
 
 <section>
@@ -193,66 +212,128 @@
 </section>
 
 <section data-markdown>
-  ###Challenges
-  - Large image size (1gb compressed, UNCOMPRESSED)
-  - Variety of file formats
-  - Openness of SDK
-  - Trust and confidentiality
-  - Custom metadata (To save or not to save)
-  - Inconsistencies
-      - y axis orientation
-      - Missing data
-</section>
-
-<section data-markdown> ## Logistics
-  TODO: Add workflow diagram
+  ##Technical Challenges
 </section>
 
 <section>
-    <section data-markdown>
-      ## Multiresolution image streaming
-      - Minimum data transfer (at interactive rates)
-      - What to store and What to compute
-      - jpeg2000 vs image pyramid
-    </section>
+  <section>
+    <h3> Large scale of image data </h3>
+    <p class="fragment"> Typical whole slide image size 1gb
+    <p class="fragment" style="color:red"> compressed (150000x85000px ~ 12 GigaPixel)
+    <p class="fragment"> Largest was over 1 tera pixel, and sometimes there is a stack
+    <p class="fragment"> A hundred can be loaded in cartrige
+    <p class="fragment"> Hundreds of students per session
+    <p class="fragment" style="color:green"> Thankfully will access similar set of images
+    <p class="fragment"> Data copy becomes prohibitive
+  </section>
 
-    <section>
-      <h3>Image pyramid</h3>
-      <img src="img/pyramid.jpg" class="stretch">
-    </section>
+  <section>
+    <p class="fragment"> Variety of file formats, vendor specific, source specific
+    <p class="fragment"> Open source ?
+    <p class="fragment"> SDK available ?
+    <p class="fragment"> Specification available?
+    <p class="fragment"> Versions ?
+    <p class="fragment"> Endianness ?
+    <p class="fragment" style="color:red">
+  </section>
 
-    <section>
-      <h3>Locating the image tile</h3>
-      <img src="img/tile_names.jpg" class="stretch">
-      <p>
-    </section>
+  <section>
+    <p class="fragment"> Do we support ?
+    <p class="fragment">   Should we ?
+    <p class="fragment">    Could we ?
+    <p class="fragment" style="color:red"> support contract ?
+  </section>
 
-    <section data-markdown>
-      ### Image upload
-      - Distributed image compression
-        - Full image fits in memory ?
-        - Full strip ?
-        - 5 tiles ?
-      - Multithreading Symmetric or queue
-      - C++ code wrapped in python for image processing
-      - Job queue
-    </section>
+  <section>
+    <h3> Additional infomation (metadata) </h3>
+    <p class="fragment"> Custom metadata like bar code
+    <p class="fragment"> Absence of expected label image etc
+    <p class="fragment"> unknown metadata (To save or not to save)
+    <p class="fragment"> Anonymize patient information
+    <p class="fragment"> Owners copyright and trust
+    <p class="fragment"> Security and access control list
+  </section>
+</section>
 
+<section>
+  <section data-markdown>
+    ## Multiresolution image streaming
+
+    - Minimum data transfer (at interactive rates)
+    - What to store and What to compute
+    - Jpeg2000 vs image pyramid
+  </section>
+
+  <section>
+    <h3>Image pyramid</h3>
+    <img src="img/pyramid.jpg" class="stretch">
+  </section>
+
+  <section>
+    <h3>Locating the image tile</h3>
+    <img src="img/tile_names.jpg" class="stretch">
+  </section>
+
+  <section data-markdown>
+    ## Image stores
+
+      - Abstract interface
+      - MongdoDB collection
+      - Indexed binary blob directly in record
+      - File based store - pyramidal TIFF format
+      - Configurable stores
+      - Remotely hosted (you host your own data)
+  </section>
+
+  <section>
+    <h3> Uploaded over web </h3>
+      <p class="fragment"> Diced on client into 1mb chunks,
+      <p class="fragment"> Last chunk of the upload stream triggers processing task
+      <p class="fragment"> Distributed task queue asssembles the file and converts to image pyramid
+      <p class="fragment"> Named queues, to leverage platform specific SDK
+      <p class="fragment"> Image avaiable for interactive viewing
+  </section>
+  <section>
+    <h3> Images deposited in shared folder </h3>
+    <p class="fragment"> For certain labs microscopes
+    <p class="fragment"> Hearbeat process monitors the folder for any additions
+    <p class="fragment"> Files are queued for processing
+  </section>
+
+  <section>
+    <p class="fragment"> Decision tree to select best reader
+    <!-- <pre class="fragment"><code data-trim data-noescape>
+    reader->CanReadFile() // returns 0, 1, 2, 3
+    </pre> -->
+
+    <p class="fragment"> Normalize coordinate system
+    <p class="fragment"> Pre compute thumbnails
+  </section>
+
+  <section data-markdown>
+    ### Compression
+    - Distributed image compression
+      - Will full image fit in memory ?
+      - Full strip (256px x height)?
+      - 5 tiles ?
+    - Multithreading Symmetric or queue consumers
+    - C++ code wrapped in python for image processing
+  </section>
 </section>
 
 <section data-markdown>
-    ## Optimizations (Cutting the corners)
+    ### Optimizations (Cutting the corners)
+
     - Quality of compression
-    - Shared Jpeg quantization tables
+    - Shared Jpeg quantization tables (TIFF jpeg compression mode 6)
     - Persistent connections Websockets
-    - Improved experience
 </section>
 
 <section data-markdown>
-  ### Smooth navigation
+  ### Smoother navigation
     - Prefetching
     - Lower resolution tiles first
-    - When to render
+    - Suppress interactivity while rendering
 </section>
 
 <section>
@@ -279,26 +360,6 @@
       - File system backup
       - MongoDB does not support hot backup
       - Slave node backup
-  </section>
-</section>
-
-<section>
-  <section data-markdown>
-  ## Impact
-  </section>
-
-  <section data-markdown>
-    ### Education
-    - Targeting medical schools, residency training, continuing education
-    - Features for selective hiding of annotations, quiz mode, and full-screen presentation creation
-    - Remote and collaborative viewing
-  </section>
-
-  <section data-markdown>
-    ### Research
-    - Supporting image processing algorithms, and very large datasets
-    - Consulting
-    - Automatic batch upload of images
   </section>
 </section>
 
@@ -331,7 +392,23 @@
 
 <section>
   <section data-markdown>
-    ## Plugin system
+    ## Plugins / custom development
+  </section>
+
+  <section> <h3> Color histograms and thresholding </h3>
+    <img src="img/histograms.jpg" class="stretch">
+  </section>
+
+  <section><h3>Object level change detections plugin </h3>
+    <img src="img/machine-learning.jpg" class="stretch">
+  </section>
+
+  <section>
+    <h3> Machine learning </h3>
+      <p class="fragment"> SlideAtlas as annotation platform to generate ground truth
+      <p class="fragment"> Deep convolutional neural networks trained with Caffe
+      <p class="fragment"> Transfer learning from CIFAR-10 dataset
+      <p class="fragment"> Multi class object detector
   </section>
 
   <section data-markdown>
@@ -356,27 +433,24 @@
     - Book keeping
   </section>
 
-  <section> <h3> Color histograms and thresholding </h3>
-    <img src="img/histograms.jpg" class="stretch">
-  </section>
-
-  <section><h3>Machine learning plugin </h3>
-    <img src="img/machine-learning.jpg" class="stretch">
-  </section>
-
+  <!-- <section>
+    <h3>Microscopy Automation</h3>
+    <p> TODO: Add a video
+  </section> -->
 </section>
 
 <section>
-
   <section>
     <h3>Profiling and automated tests</h3>
     <img src="img/testing.jpg" class="stretch">
   </section>
 
   <section data-markdown>
-    ### Performance tests
-    - Selenium to complete user interaction for a particular configuration
-    - Reports statistics (response time, latency etc)
+    ### Smoke test
+    - Connect with developer machine or live server
+    - Selenium to complete user interaction
+    - Compare screenshots
+    - Run javascript tests
   </section>
 
   <section data-markdown>
@@ -386,11 +460,9 @@
   </section>
 
   <section data-markdown>
-    ### Smoke test
-    - Connect with developer machine or live server
-    - Selenium to complete user interaction
-    - Compare screenshots
-    - Run javascript tests
+    ### Performance tests
+    - Selenium to complete user interaction for a particular configuration
+    - Reports statistics (response time, latency etc)
   </section>
 
 </section>
@@ -404,17 +476,30 @@
 - ZeroMQ connected server and image tile serving microservices
 </section>
 
+<section>
+  <section data-markdown>
+    ### Promise for Education
+    - Curated image archive with annotations from generations of clinical practice
+    - Targeting medical schools, residency training, continuing education
+    - Features for selective hiding of annotations, quiz mode, and full-screen presentation creation
+    - Remote and collaborative viewing
+
+  </section>
+
+  <section data-markdown>
+    ### Promise for Research
+    - Supporting image processing algorithms, and very large datasets
+    - Consulting
+    - Automatic batch upload of images
+  </section>
+</section>
+
 <section data-markdown>
   ### Summary
   - Diverse skillsets
-  - End-to-end agile development
+  - End-to-end research and development
   - Creative prototypes
  </section>
-
-<section>
-  <h3>Thank you ! </h3>
-  <img src="img/dilbert.jpg" class="stretch">
-</section>
 
 <section>
   <h3> Questions, Comments, Advisements ?</h3>
@@ -427,6 +512,11 @@
    https://www.linkedin.com/in/dhandeo
            https://twitter.com/dhandeo
   </pre>
+</section>
+
+<section>
+  <h3>Thank you ! </h3>
+  <img src="img/dilbert.jpg" class="stretch">
 </section>
 
 
